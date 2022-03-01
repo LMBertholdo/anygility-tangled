@@ -1,0 +1,9 @@
+#policy,positive-20473:6000xfr-par
+#timestamp,1646050679
+#hitlist,not_provided
+site,counts,percent
+au-syd-anycast01,7933,88
+uk-lnd-anycast02,611,6
+fr-par-anycast01,313,3
+us-mia-anycast01,81,0
+

@@ -1,0 +1,6 @@
+#policy,positive-20473:6601xau-syd
+#ipv4,us-mia,uk-lnd,au-syd
+site,prefix,peer_as,neighbor,attributes
+au-syd-anycast01,145.100.118.0/23,64515,169.254.169.254,community 20473:6601
+uk-lnd-anycast02,145.100.118.0/23,64515,169.254.169.254,
+us-mia-anycast01,145.100.118.0/23,20080,198.32.252.96,

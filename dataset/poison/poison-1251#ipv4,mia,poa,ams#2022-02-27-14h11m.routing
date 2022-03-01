@@ -1,0 +1,8 @@
+#policy,poison-1251
+#ipv4,us-mia,nl-ams,br-poa
+site,prefix,peer_as,neighbor,attributes
+br-poa-anycast02,145.100.118.0/23,264575,177.52.38.113,
+br-poa-anycast02,145.100.118.0/23,262605,177.184.254.161,
+br-poa-anycast02,145.100.118.0/23,64552,145.100.119.1,
+nl-ams-anycast01,145.100.118.0/23,64515,169.254.169.254,
+us-mia-anycast01,145.100.118.0/23,20080,198.32.252.96,as-path [ 1149 1251 1149 ]

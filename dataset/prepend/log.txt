@@ -1,0 +1,131 @@
+Thu Feb 24 19:27:25 UTC 2022
+Sending Datasets to /home/testbed/work/catchment_manipulation/dataset/2022-02-24-19h27m 
+Checking SSH Tunnel to Master
+Checking Verfploeter connection
++-------+------------------+---------+
+| Index | Hostname         | Version |
+| 4     | au-syd-anycast01 | 0.1.42  |
+| 12    | dk-cop-anycast01 | 0.1.42  |
+| 16    | nl-ens-anycast02 | 0.1.42  |
+| 11    | br-poa-anycast02 | 0.1.42  |
+| 8     | us-was-anycast01 | 0.1.42  |
+| 9     | us-sea-anycast01 | 0.1.42  |
+| 1     | fr-par-anycast01 | 0.1.42  |
+| 5     | uk-lnd-anycast02 | 0.1.42  |
+| 6     | us-mia-anycast01 | 0.1.42  |
+| 10    | us-los-anycast01 | 0.1.42  |
+| 14    | nl-arn-anycast01 | 0.1.42  |
+| 2     | br-gru-anycast01 | 0.1.42  |
+| 3     | sg-sin-anycast01 | 0.1.42  |
+| 15    | de-fra-anycast01 | 0.1.42  |
+| 13    | za-jnb-anycast01 | 0.1.42  |
+| 7     | nl-ams-anycast01 | 0.1.42  |
++-------+------------------+---------+
+Connected clients: 16
+Cleaning routing configurations
+Anycast baseline measurement started: Thu Feb 24 19:27:54 UTC 2022 
+Activating anycast prefix  
+Checking active nodes on Tangled
+-------
+ We are generating packet in: us-mia-anycast01 
+ We set this BGP Policy: baseline 
+ Verfploter starting...
+/home/testbed/.cargo/bin/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/testbed/work/catchment_manipulation/tools/hitlist_example.txt  -a /home/testbed/work/catchment_manipulation/tools/GeoLite2-ASN.mmdb -c /home/testbed/work/catchment_manipulation/tools/GeoLite2-Country.mmdb  > /home/testbed/work/catchment_manipulation/dataset/2022-02-24-19h27m/baseline#ipv4,nl-ams,br-poa,us-mia#2022-02-24-19h27m.csv
+-------------------------------------------------------------------------
+ Baseline Finished!
+ Output at /home/testbed/work/catchment_manipulation/dataset/2022-02-24-19h27m/baseline#ipv4,nl-ams,br-poa,us-mia#2022-02-24-19h27m
+-------------------------------------------------------------------------
+-------
+Add 1 prepend on node br-poa-anycast02
+-------
+-------
+ We are generating packet in: us-mia-anycast01 
+ We set this BGP Policy: 1xPOA 
+ Verfploter starting...
+/home/testbed/.cargo/bin/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/testbed/work/catchment_manipulation/tools/hitlist_example.txt  -a /home/testbed/work/catchment_manipulation/tools/GeoLite2-ASN.mmdb -c /home/testbed/work/catchment_manipulation/tools/GeoLite2-Country.mmdb  > /home/testbed/work/catchment_manipulation/dataset/2022-02-24-19h27m/1xPOA#ipv4,br-poa,us-mia,nl-ams#2022-02-24-19h27m.csv
+remove announcement from br-poa-anycast02
+add prefix announcement for br-poa-anycast02
+-------
+Add 1 prepend on node us-mia-anycast01
+-------
+-------
+ We are generating packet in: us-mia-anycast01 
+ We set this BGP Policy: 1xMIA 
+ Verfploter starting...
+/home/testbed/.cargo/bin/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/testbed/work/catchment_manipulation/tools/hitlist_example.txt  -a /home/testbed/work/catchment_manipulation/tools/GeoLite2-ASN.mmdb -c /home/testbed/work/catchment_manipulation/tools/GeoLite2-Country.mmdb  > /home/testbed/work/catchment_manipulation/dataset/2022-02-24-19h27m/1xMIA#ipv4,nl-ams,us-mia,br-poa#2022-02-24-19h27m.csv
+remove announcement from us-mia-anycast01
+add prefix announcement for us-mia-anycast01
+-------
+Add 1 prepend on node nl-ams-anycast01
+-------
+-------
+ We are generating packet in: us-mia-anycast01 
+ We set this BGP Policy: 1xAMS 
+ Verfploter starting...
+/home/testbed/.cargo/bin/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/testbed/work/catchment_manipulation/tools/hitlist_example.txt  -a /home/testbed/work/catchment_manipulation/tools/GeoLite2-ASN.mmdb -c /home/testbed/work/catchment_manipulation/tools/GeoLite2-Country.mmdb  > /home/testbed/work/catchment_manipulation/dataset/2022-02-24-19h27m/1xAMS#ipv4,nl-ams,us-mia,br-poa#2022-02-24-19h27m.csv
+remove announcement from nl-ams-anycast01
+add prefix announcement for nl-ams-anycast01
+-------
+Add 2 prepend on node br-poa-anycast02
+-------
+-------
+ We are generating packet in: us-mia-anycast01 
+ We set this BGP Policy: 2xPOA 
+ Verfploter starting...
+/home/testbed/.cargo/bin/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/testbed/work/catchment_manipulation/tools/hitlist_example.txt  -a /home/testbed/work/catchment_manipulation/tools/GeoLite2-ASN.mmdb -c /home/testbed/work/catchment_manipulation/tools/GeoLite2-Country.mmdb  > /home/testbed/work/catchment_manipulation/dataset/2022-02-24-19h27m/2xPOA#ipv4,us-mia,nl-ams,br-poa#2022-02-24-19h27m.csv
+remove announcement from br-poa-anycast02
+add prefix announcement for br-poa-anycast02
+-------
+Add 2 prepend on node us-mia-anycast01
+-------
+-------
+ We are generating packet in: us-mia-anycast01 
+ We set this BGP Policy: 2xMIA 
+ Verfploter starting...
+/home/testbed/.cargo/bin/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/testbed/work/catchment_manipulation/tools/hitlist_example.txt  -a /home/testbed/work/catchment_manipulation/tools/GeoLite2-ASN.mmdb -c /home/testbed/work/catchment_manipulation/tools/GeoLite2-Country.mmdb  > /home/testbed/work/catchment_manipulation/dataset/2022-02-24-19h27m/2xMIA#ipv4,us-mia,br-poa,nl-ams#2022-02-24-19h27m.csv
+remove announcement from us-mia-anycast01
+add prefix announcement for us-mia-anycast01
+-------
+Add 2 prepend on node nl-ams-anycast01
+-------
+-------
+ We are generating packet in: us-mia-anycast01 
+ We set this BGP Policy: 2xAMS 
+ Verfploter starting...
+/home/testbed/.cargo/bin/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/testbed/work/catchment_manipulation/tools/hitlist_example.txt  -a /home/testbed/work/catchment_manipulation/tools/GeoLite2-ASN.mmdb -c /home/testbed/work/catchment_manipulation/tools/GeoLite2-Country.mmdb  > /home/testbed/work/catchment_manipulation/dataset/2022-02-24-19h27m/2xAMS#ipv4,br-poa,nl-ams,us-mia#2022-02-24-19h27m.csv
+remove announcement from nl-ams-anycast01
+add prefix announcement for nl-ams-anycast01
+-------
+Add 3 prepend on node br-poa-anycast02
+-------
+-------
+ We are generating packet in: us-mia-anycast01 
+ We set this BGP Policy: 3xPOA 
+ Verfploter starting...
+/home/testbed/.cargo/bin/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/testbed/work/catchment_manipulation/tools/hitlist_example.txt  -a /home/testbed/work/catchment_manipulation/tools/GeoLite2-ASN.mmdb -c /home/testbed/work/catchment_manipulation/tools/GeoLite2-Country.mmdb  > /home/testbed/work/catchment_manipulation/dataset/2022-02-24-19h27m/3xPOA#ipv4,nl-ams,br-poa,us-mia#2022-02-24-19h27m.csv
+remove announcement from br-poa-anycast02
+add prefix announcement for br-poa-anycast02
+-------
+Add 3 prepend on node us-mia-anycast01
+-------
+-------
+ We are generating packet in: us-mia-anycast01 
+ We set this BGP Policy: 3xMIA 
+ Verfploter starting...
+/home/testbed/.cargo/bin/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/testbed/work/catchment_manipulation/tools/hitlist_example.txt  -a /home/testbed/work/catchment_manipulation/tools/GeoLite2-ASN.mmdb -c /home/testbed/work/catchment_manipulation/tools/GeoLite2-Country.mmdb  > /home/testbed/work/catchment_manipulation/dataset/2022-02-24-19h27m/3xMIA#ipv4,us-mia,nl-ams,br-poa#2022-02-24-19h27m.csv
+remove announcement from us-mia-anycast01
+add prefix announcement for us-mia-anycast01
+-------
+Add 3 prepend on node nl-ams-anycast01
+-------
+-------
+ We are generating packet in: us-mia-anycast01 
+ We set this BGP Policy: 3xAMS 
+ Verfploter starting...
+/home/testbed/.cargo/bin/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/testbed/work/catchment_manipulation/tools/hitlist_example.txt  -a /home/testbed/work/catchment_manipulation/tools/GeoLite2-ASN.mmdb -c /home/testbed/work/catchment_manipulation/tools/GeoLite2-Country.mmdb  > /home/testbed/work/catchment_manipulation/dataset/2022-02-24-19h27m/3xAMS#ipv4,nl-ams,br-poa,us-mia#2022-02-24-19h27m.csv
+remove announcement from nl-ams-anycast01
+add prefix announcement for nl-ams-anycast01
+-------------------------------------------------------------------------
+ Prepend Finished!
+ Output at /home/testbed/work/catchment_manipulation/dataset/2022-02-24-19h27m/3xAMS#ipv4,nl-ams,br-poa,us-mia#2022-02-24-19h27m
+-------------------------------------------------------------------------

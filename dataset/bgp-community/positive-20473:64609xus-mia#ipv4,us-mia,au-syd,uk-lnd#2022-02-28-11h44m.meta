@@ -1,0 +1,1 @@
+/home/testbed/work/catchment_manipulation/tools/vp-cli.py -s us-mia-anycast01  -b \"positive-20473:64609xus-mia\"  -f /home/testbed/work/catchment_manipulation/dataset/2022-02-28-11h44m/positive-20473:64609xus-mia#ipv4,us-mia,au-syd,uk-lnd#2022-02-28-11h44m.csv.gz

@@ -1,0 +1,75 @@
+Fri Feb 25 11:00:45 UTC 2022
+Sending Datasets to /home/testbed/work/catchment_manipulation/dataset/2022-02-25-11h00m 
+Checking SSH Tunnel to Master
+Checking Verfploeter connection
++-------+------------------+---------+
+| Index | Hostname         | Version |
+| 4     | au-syd-anycast01 | 0.1.42  |
+| 12    | dk-cop-anycast01 | 0.1.42  |
+| 16    | nl-ens-anycast02 | 0.1.42  |
+| 11    | br-poa-anycast02 | 0.1.42  |
+| 8     | us-was-anycast01 | 0.1.42  |
+| 9     | us-sea-anycast01 | 0.1.42  |
+| 1     | fr-par-anycast01 | 0.1.42  |
+| 5     | uk-lnd-anycast02 | 0.1.42  |
+| 6     | us-mia-anycast01 | 0.1.42  |
+| 10    | us-los-anycast01 | 0.1.42  |
+| 14    | nl-arn-anycast01 | 0.1.42  |
+| 2     | br-gru-anycast01 | 0.1.42  |
+| 3     | sg-sin-anycast01 | 0.1.42  |
+| 15    | de-fra-anycast01 | 0.1.42  |
+| 13    | za-jnb-anycast01 | 0.1.42  |
+| 7     | nl-ams-anycast01 | 0.1.42  |
++-------+------------------+---------+
+Connected clients: 16
+Cleaning routing configurations
+Fri Feb 25 11:00:54 UTC 2022
+Sending Datasets to /home/testbed/work/catchment_manipulation/dataset/2022-02-25-11h00m 
+Checking SSH Tunnel to Master
+Checking Verfploeter connection
++-------+------------------+---------+
+| Index | Hostname         | Version |
+| 4     | au-syd-anycast01 | 0.1.42  |
+| 12    | dk-cop-anycast01 | 0.1.42  |
+| 16    | nl-ens-anycast02 | 0.1.42  |
+| 11    | br-poa-anycast02 | 0.1.42  |
+| 8     | us-was-anycast01 | 0.1.42  |
+| 9     | us-sea-anycast01 | 0.1.42  |
+| 1     | fr-par-anycast01 | 0.1.42  |
+| 5     | uk-lnd-anycast02 | 0.1.42  |
+| 6     | us-mia-anycast01 | 0.1.42  |
+| 10    | us-los-anycast01 | 0.1.42  |
+| 14    | nl-arn-anycast01 | 0.1.42  |
+| 2     | br-gru-anycast01 | 0.1.42  |
+| 3     | sg-sin-anycast01 | 0.1.42  |
+| 15    | de-fra-anycast01 | 0.1.42  |
+| 13    | za-jnb-anycast01 | 0.1.42  |
+| 7     | nl-ams-anycast01 | 0.1.42  |
++-------+------------------+---------+
+Connected clients: 16
+Cleaning routing configurations
+Announce route [145.100.118.0/23] on node [br-poa-anycast02]
+1 negative Prepend for node br-poa-anycast02 ( -1xPOA )
+/home/testbed/.cargo/bin/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/testbed/work/catchment_manipulation/tools/hitlist_example.txt  -a /home/testbed/work/catchment_manipulation/tools/GeoLite2-ASN.mmdb -c /home/testbed/work/catchment_manipulation/tools/GeoLite2-Country.mmdb  > /home/testbed/work/catchment_manipulation/dataset/2022-02-25-11h00m/negative_-1xPOA#ipv4,nl-ams,br-poa,us-mia#2022-02-25-11h00m.csv
+2 negative Prepend for node br-poa-anycast02 ( -2xPOA )
+/home/testbed/.cargo/bin/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/testbed/work/catchment_manipulation/tools/hitlist_example.txt  -a /home/testbed/work/catchment_manipulation/tools/GeoLite2-ASN.mmdb -c /home/testbed/work/catchment_manipulation/tools/GeoLite2-Country.mmdb  > /home/testbed/work/catchment_manipulation/dataset/2022-02-25-11h00m/negative_-2xPOA#ipv4,nl-ams,us-mia,br-poa#2022-02-25-11h00m.csv
+3 negative Prepend for node br-poa-anycast02 ( -3xPOA )
+/home/testbed/.cargo/bin/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/testbed/work/catchment_manipulation/tools/hitlist_example.txt  -a /home/testbed/work/catchment_manipulation/tools/GeoLite2-ASN.mmdb -c /home/testbed/work/catchment_manipulation/tools/GeoLite2-Country.mmdb  > /home/testbed/work/catchment_manipulation/dataset/2022-02-25-11h00m/negative_-3xPOA#ipv4,us-mia,nl-ams,br-poa#2022-02-25-11h00m.csv
+Announce route [145.100.118.0/23] on node [us-mia-anycast01]
+1 negative Prepend for node us-mia-anycast01 ( -1xMIA )
+/home/testbed/.cargo/bin/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/testbed/work/catchment_manipulation/tools/hitlist_example.txt  -a /home/testbed/work/catchment_manipulation/tools/GeoLite2-ASN.mmdb -c /home/testbed/work/catchment_manipulation/tools/GeoLite2-Country.mmdb  > /home/testbed/work/catchment_manipulation/dataset/2022-02-25-11h00m/negative_-1xMIA#ipv4,nl-ams,us-mia,br-poa#2022-02-25-11h00m.csv
+2 negative Prepend for node us-mia-anycast01 ( -2xMIA )
+/home/testbed/.cargo/bin/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/testbed/work/catchment_manipulation/tools/hitlist_example.txt  -a /home/testbed/work/catchment_manipulation/tools/GeoLite2-ASN.mmdb -c /home/testbed/work/catchment_manipulation/tools/GeoLite2-Country.mmdb  > /home/testbed/work/catchment_manipulation/dataset/2022-02-25-11h00m/negative_-2xMIA#ipv4,nl-ams,us-mia,br-poa#2022-02-25-11h00m.csv
+3 negative Prepend for node us-mia-anycast01 ( -3xMIA )
+/home/testbed/.cargo/bin/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/testbed/work/catchment_manipulation/tools/hitlist_example.txt  -a /home/testbed/work/catchment_manipulation/tools/GeoLite2-ASN.mmdb -c /home/testbed/work/catchment_manipulation/tools/GeoLite2-Country.mmdb  > /home/testbed/work/catchment_manipulation/dataset/2022-02-25-11h00m/negative_-3xMIA#ipv4,nl-ams,us-mia,br-poa#2022-02-25-11h00m.csv
+Announce route [145.100.118.0/23] on node [nl-ams-anycast01]
+1 negative Prepend for node nl-ams-anycast01 ( -1xAMS )
+/home/testbed/.cargo/bin/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/testbed/work/catchment_manipulation/tools/hitlist_example.txt  -a /home/testbed/work/catchment_manipulation/tools/GeoLite2-ASN.mmdb -c /home/testbed/work/catchment_manipulation/tools/GeoLite2-Country.mmdb  > /home/testbed/work/catchment_manipulation/dataset/2022-02-25-11h00m/negative_-1xAMS#ipv4,br-poa,us-mia,nl-ams#2022-02-25-11h00m.csv
+2 negative Prepend for node nl-ams-anycast01 ( -2xAMS )
+/home/testbed/.cargo/bin/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/testbed/work/catchment_manipulation/tools/hitlist_example.txt  -a /home/testbed/work/catchment_manipulation/tools/GeoLite2-ASN.mmdb -c /home/testbed/work/catchment_manipulation/tools/GeoLite2-Country.mmdb  > /home/testbed/work/catchment_manipulation/dataset/2022-02-25-11h00m/negative_-2xAMS#ipv4,nl-ams,us-mia,br-poa#2022-02-25-11h00m.csv
+3 negative Prepend for node nl-ams-anycast01 ( -3xAMS )
+/home/testbed/.cargo/bin/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/testbed/work/catchment_manipulation/tools/hitlist_example.txt  -a /home/testbed/work/catchment_manipulation/tools/GeoLite2-ASN.mmdb -c /home/testbed/work/catchment_manipulation/tools/GeoLite2-Country.mmdb  > /home/testbed/work/catchment_manipulation/dataset/2022-02-25-11h00m/negative_-3xAMS#ipv4,us-mia,nl-ams,br-poa#2022-02-25-11h00m.csv
+-------------------------------------------------------------------------
+ Negative Prepend Finished!
+ Output at /home/testbed/work/catchment_manipulation/dataset/2022-02-25-11h00m
+-------------------------------------------------------------------------

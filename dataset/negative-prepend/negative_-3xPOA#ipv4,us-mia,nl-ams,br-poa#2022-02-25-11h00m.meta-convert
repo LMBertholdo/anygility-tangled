@@ -1,0 +1,1 @@
+/home/testbed/work/catchment_manipulation/tools/vp-cli.py -s us-mia-anycast01  -b \"-3xPOA\" -g /home/testbed/work/catchment_manipulation/tools/IP2LOCATION-LITE-DB9.BIN  -f /home/testbed/work/catchment_manipulation/dataset/2022-02-25-11h00m/negative_-3xPOA#ipv4,us-mia,nl-ams,br-poa#2022-02-25-11h00m.csv.gz -n

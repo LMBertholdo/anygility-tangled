@@ -1,0 +1,6 @@
+#policy,positive-20080:701xus-mia
+#ipv4,us-mia,au-syd,uk-lnd
+site,prefix,peer_as,neighbor,attributes
+au-syd-anycast01,145.100.118.0/23,64515,169.254.169.254,
+uk-lnd-anycast02,145.100.118.0/23,64515,169.254.169.254,
+us-mia-anycast01,145.100.118.0/23,20080,198.32.252.96,community 20080:701

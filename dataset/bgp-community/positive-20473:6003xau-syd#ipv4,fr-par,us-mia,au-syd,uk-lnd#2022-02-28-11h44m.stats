@@ -1,0 +1,9 @@
+#policy,positive-20473:6003xau-syd
+#timestamp,1646053112
+#hitlist,not_provided
+site,counts,percent
+fr-par-anycast01,4522,50
+uk-lnd-anycast02,1954,21
+us-mia-anycast01,1596,17
+au-syd-anycast01,933,10
+

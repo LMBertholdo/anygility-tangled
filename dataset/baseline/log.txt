@@ -1,0 +1,41 @@
+Mon Feb 28 16:10:22 UTC 2022
+Sending Datasets to /home/testbed/work/catchment_manipulation/dataset/2022-02-28-16h10m 
+Checking SSH Tunnel to Master
+Checking Verfploeter connection
++-------+------------------+---------+
+| Index | Hostname         | Version |
+| 2     | nl-ams-anycast01 | 0.1.42  |
+| 15    | au-syd-anycast01 | 0.1.42  |
+| 4     | us-sea-anycast01 | 0.1.42  |
+| 9     | nl-arn-anycast01 | 0.1.42  |
+| 8     | us-mia-anycast01 | 0.1.42  |
+| 14    | za-jnb-anycast01 | 0.1.42  |
+| 13    | br-gru-anycast01 | 0.1.42  |
+| 11    | us-los-anycast01 | 0.1.42  |
+| 6     | nl-ens-anycast02 | 0.1.42  |
+| 1     | dk-cop-anycast01 | 0.1.42  |
+| 7     | us-was-anycast01 | 0.1.42  |
+| 10    | br-poa-anycast02 | 0.1.42  |
+| 12    | sg-sin-anycast01 | 0.1.42  |
+| 5     | uk-lnd-anycast02 | 0.1.42  |
+| 3     | fr-par-anycast01 | 0.1.42  |
+| 16    | de-fra-anycast01 | 0.1.42  |
++-------+------------------+---------+
+Connected clients: 16
+Cleaning routing configurations
+we are using 3 nodes in this experiment
+br-poa-anycast02
+us-mia-anycast01
+nl-ams-anycast01
+Anycast baseline measurement started: Mon Feb 28 16:11:04 UTC 2022 
+Activating anycast prefix  
+Checking active nodes on Tangled
+-------
+ We are generating packet in: us-mia-anycast01 
+ We set this BGP Policy: baseline 
+ Verfploter starting...
+/home/testbed/.cargo/bin/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/testbed/work/catchment_manipulation/tools/hitlist_example.txt  -a /home/testbed/work/catchment_manipulation/tools/GeoLite2-ASN.mmdb -c /home/testbed/work/catchment_manipulation/tools/GeoLite2-Country.mmdb  > /home/testbed/work/catchment_manipulation/dataset/2022-02-28-16h10m/baseline#ipv4,us-mia,br-poa,nl-ams#2022-02-28-16h10m.csv
+-------------------------------------------------------------------------
+ Baseline Finished!
+ Output at /home/testbed/work/catchment_manipulation/dataset/2022-02-28-16h10m/baseline#ipv4,us-mia,br-poa,nl-ams#2022-02-28-16h10m
+-------------------------------------------------------------------------

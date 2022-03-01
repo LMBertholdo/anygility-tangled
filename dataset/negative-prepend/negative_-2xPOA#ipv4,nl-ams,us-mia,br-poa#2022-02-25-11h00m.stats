@@ -1,0 +1,8 @@
+#policy,-2xPOA
+#timestamp,1645787351
+#hitlist,not_provided
+site,counts,percent
+br-poa-anycast02,6128,67
+nl-ams-anycast01,2915,32
+us-mia-anycast01,75,0
+

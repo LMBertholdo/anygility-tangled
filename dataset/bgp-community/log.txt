@@ -1,0 +1,260 @@
+Mon Feb 28 11:44:04 UTC 2022
+anycast service is ready for communities experiment: Mon Feb 28 11:45:01 UTC 2022 
+add community 20473:6601 on node au-syd-anycast01
+site,prefix,peer_as,neighbor,attributes
+au-syd-anycast01,145.100.118.0/23,64515,169.254.169.254,community 20473:6601
+uk-lnd-anycast02,145.100.118.0/23,64515,169.254.169.254,
+us-mia-anycast01,145.100.118.0/23,20080,198.32.252.96,
+/home/testbed/.cargo/bin/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/testbed/work/catchment_manipulation/tools/hitlist_example.txt  -a /home/testbed/work/catchment_manipulation/tools/GeoLite2-ASN.mmdb -c /home/testbed/work/catchment_manipulation/tools/GeoLite2-Country.mmdb  > /home/testbed/work/catchment_manipulation/dataset/2022-02-28-11h44m/positive-20473:6601xau-syd#ipv4,uk-lnd,us-mia,au-syd#2022-02-28-11h44m.csv
+remove announcement from au-syd-anycast01
+add prefix announcement for au-syd-anycast01
+add community 20473:6601 on node uk-lnd-anycast02
+site,prefix,peer_as,neighbor,attributes
+au-syd-anycast01,145.100.118.0/23,64515,169.254.169.254,
+uk-lnd-anycast02,145.100.118.0/23,64515,169.254.169.254,community 20473:6601
+us-mia-anycast01,145.100.118.0/23,20080,198.32.252.96,
+/home/testbed/.cargo/bin/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/testbed/work/catchment_manipulation/tools/hitlist_example.txt  -a /home/testbed/work/catchment_manipulation/tools/GeoLite2-ASN.mmdb -c /home/testbed/work/catchment_manipulation/tools/GeoLite2-Country.mmdb  > /home/testbed/work/catchment_manipulation/dataset/2022-02-28-11h44m/positive-20473:6601xuk-lnd#ipv4,uk-lnd,au-syd,us-mia#2022-02-28-11h44m.csv
+remove announcement from uk-lnd-anycast02
+add prefix announcement for uk-lnd-anycast02
+add community 20473:6601 on node fr-par-anycast01
+site,prefix,peer_as,neighbor,attributes
+au-syd-anycast01,145.100.118.0/23,64515,169.254.169.254,
+fr-par-anycast01,145.100.118.0/23,64515,169.254.169.254,community 20473:6601
+uk-lnd-anycast02,145.100.118.0/23,64515,169.254.169.254,
+us-mia-anycast01,145.100.118.0/23,20080,198.32.252.96,
+/home/testbed/.cargo/bin/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/testbed/work/catchment_manipulation/tools/hitlist_example.txt  -a /home/testbed/work/catchment_manipulation/tools/GeoLite2-ASN.mmdb -c /home/testbed/work/catchment_manipulation/tools/GeoLite2-Country.mmdb  > /home/testbed/work/catchment_manipulation/dataset/2022-02-28-11h44m/positive-20473:6601xfr-par#ipv4,fr-par,uk-lnd,au-syd,us-mia#2022-02-28-11h44m.csv
+remove announcement from fr-par-anycast01
+add prefix announcement for fr-par-anycast01
+add community 20473:6000 on node au-syd-anycast01
+site,prefix,peer_as,neighbor,attributes
+au-syd-anycast01,145.100.118.0/23,64515,169.254.169.254,community 20473:6000
+fr-par-anycast01,145.100.118.0/23,64515,169.254.169.254,
+uk-lnd-anycast02,145.100.118.0/23,64515,169.254.169.254,
+us-mia-anycast01,145.100.118.0/23,20080,198.32.252.96,
+/home/testbed/.cargo/bin/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/testbed/work/catchment_manipulation/tools/hitlist_example.txt  -a /home/testbed/work/catchment_manipulation/tools/GeoLite2-ASN.mmdb -c /home/testbed/work/catchment_manipulation/tools/GeoLite2-Country.mmdb  > /home/testbed/work/catchment_manipulation/dataset/2022-02-28-11h44m/positive-20473:6000xau-syd#ipv4,uk-lnd,au-syd,fr-par,us-mia#2022-02-28-11h44m.csv
+remove announcement from au-syd-anycast01
+add prefix announcement for au-syd-anycast01
+add community 20473:6000 on node uk-lnd-anycast02
+site,prefix,peer_as,neighbor,attributes
+au-syd-anycast01,145.100.118.0/23,64515,169.254.169.254,
+fr-par-anycast01,145.100.118.0/23,64515,169.254.169.254,
+uk-lnd-anycast02,145.100.118.0/23,64515,169.254.169.254,community 20473:6000
+us-mia-anycast01,145.100.118.0/23,20080,198.32.252.96,
+/home/testbed/.cargo/bin/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/testbed/work/catchment_manipulation/tools/hitlist_example.txt  -a /home/testbed/work/catchment_manipulation/tools/GeoLite2-ASN.mmdb -c /home/testbed/work/catchment_manipulation/tools/GeoLite2-Country.mmdb  > /home/testbed/work/catchment_manipulation/dataset/2022-02-28-11h44m/positive-20473:6000xuk-lnd#ipv4,fr-par,us-mia,uk-lnd,au-syd#2022-02-28-11h44m.csv
+remove announcement from uk-lnd-anycast02
+add prefix announcement for uk-lnd-anycast02
+add community 20473:6000 on node fr-par-anycast01
+site,prefix,peer_as,neighbor,attributes
+au-syd-anycast01,145.100.118.0/23,64515,169.254.169.254,
+fr-par-anycast01,145.100.118.0/23,64515,169.254.169.254,community 20473:6000
+uk-lnd-anycast02,145.100.118.0/23,64515,169.254.169.254,
+us-mia-anycast01,145.100.118.0/23,20080,198.32.252.96,
+/home/testbed/.cargo/bin/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/testbed/work/catchment_manipulation/tools/hitlist_example.txt  -a /home/testbed/work/catchment_manipulation/tools/GeoLite2-ASN.mmdb -c /home/testbed/work/catchment_manipulation/tools/GeoLite2-Country.mmdb  > /home/testbed/work/catchment_manipulation/dataset/2022-02-28-11h44m/positive-20473:6000xfr-par#ipv4,us-mia,fr-par,au-syd,uk-lnd#2022-02-28-11h44m.csv
+remove announcement from fr-par-anycast01
+add prefix announcement for fr-par-anycast01
+add community 20473:6001 on node au-syd-anycast01
+site,prefix,peer_as,neighbor,attributes
+au-syd-anycast01,145.100.118.0/23,64515,169.254.169.254,community 20473:6001
+fr-par-anycast01,145.100.118.0/23,64515,169.254.169.254,
+uk-lnd-anycast02,145.100.118.0/23,64515,169.254.169.254,
+us-mia-anycast01,145.100.118.0/23,20080,198.32.252.96,
+/home/testbed/.cargo/bin/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/testbed/work/catchment_manipulation/tools/hitlist_example.txt  -a /home/testbed/work/catchment_manipulation/tools/GeoLite2-ASN.mmdb -c /home/testbed/work/catchment_manipulation/tools/GeoLite2-Country.mmdb  > /home/testbed/work/catchment_manipulation/dataset/2022-02-28-11h44m/positive-20473:6001xau-syd#ipv4,fr-par,us-mia,uk-lnd,au-syd#2022-02-28-11h44m.csv
+remove announcement from au-syd-anycast01
+add prefix announcement for au-syd-anycast01
+add community 20473:6001 on node uk-lnd-anycast02
+site,prefix,peer_as,neighbor,attributes
+au-syd-anycast01,145.100.118.0/23,64515,169.254.169.254,
+fr-par-anycast01,145.100.118.0/23,64515,169.254.169.254,
+uk-lnd-anycast02,145.100.118.0/23,64515,169.254.169.254,community 20473:6001
+us-mia-anycast01,145.100.118.0/23,20080,198.32.252.96,
+/home/testbed/.cargo/bin/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/testbed/work/catchment_manipulation/tools/hitlist_example.txt  -a /home/testbed/work/catchment_manipulation/tools/GeoLite2-ASN.mmdb -c /home/testbed/work/catchment_manipulation/tools/GeoLite2-Country.mmdb  > /home/testbed/work/catchment_manipulation/dataset/2022-02-28-11h44m/positive-20473:6001xuk-lnd#ipv4,au-syd,us-mia,uk-lnd,fr-par#2022-02-28-11h44m.csv
+remove announcement from uk-lnd-anycast02
+add prefix announcement for uk-lnd-anycast02
+add community 20473:6001 on node fr-par-anycast01
+site,prefix,peer_as,neighbor,attributes
+au-syd-anycast01,145.100.118.0/23,64515,169.254.169.254,
+fr-par-anycast01,145.100.118.0/23,64515,169.254.169.254,community 20473:6001
+uk-lnd-anycast02,145.100.118.0/23,64515,169.254.169.254,
+us-mia-anycast01,145.100.118.0/23,20080,198.32.252.96,
+/home/testbed/.cargo/bin/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/testbed/work/catchment_manipulation/tools/hitlist_example.txt  -a /home/testbed/work/catchment_manipulation/tools/GeoLite2-ASN.mmdb -c /home/testbed/work/catchment_manipulation/tools/GeoLite2-Country.mmdb  > /home/testbed/work/catchment_manipulation/dataset/2022-02-28-11h44m/positive-20473:6001xfr-par#ipv4,fr-par,us-mia,uk-lnd,au-syd#2022-02-28-11h44m.csv
+remove announcement from fr-par-anycast01
+add prefix announcement for fr-par-anycast01
+add community 20473:6002 on node au-syd-anycast01
+site,prefix,peer_as,neighbor,attributes
+au-syd-anycast01,145.100.118.0/23,64515,169.254.169.254,community 20473:6002
+fr-par-anycast01,145.100.118.0/23,64515,169.254.169.254,
+uk-lnd-anycast02,145.100.118.0/23,64515,169.254.169.254,
+us-mia-anycast01,145.100.118.0/23,20080,198.32.252.96,
+/home/testbed/.cargo/bin/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/testbed/work/catchment_manipulation/tools/hitlist_example.txt  -a /home/testbed/work/catchment_manipulation/tools/GeoLite2-ASN.mmdb -c /home/testbed/work/catchment_manipulation/tools/GeoLite2-Country.mmdb  > /home/testbed/work/catchment_manipulation/dataset/2022-02-28-11h44m/positive-20473:6002xau-syd#ipv4,us-mia,fr-par,au-syd,uk-lnd#2022-02-28-11h44m.csv
+remove announcement from au-syd-anycast01
+add prefix announcement for au-syd-anycast01
+add community 20473:6002 on node uk-lnd-anycast02
+site,prefix,peer_as,neighbor,attributes
+au-syd-anycast01,145.100.118.0/23,64515,169.254.169.254,
+fr-par-anycast01,145.100.118.0/23,64515,169.254.169.254,
+uk-lnd-anycast02,145.100.118.0/23,64515,169.254.169.254,community 20473:6002
+us-mia-anycast01,145.100.118.0/23,20080,198.32.252.96,
+/home/testbed/.cargo/bin/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/testbed/work/catchment_manipulation/tools/hitlist_example.txt  -a /home/testbed/work/catchment_manipulation/tools/GeoLite2-ASN.mmdb -c /home/testbed/work/catchment_manipulation/tools/GeoLite2-Country.mmdb  > /home/testbed/work/catchment_manipulation/dataset/2022-02-28-11h44m/positive-20473:6002xuk-lnd#ipv4,us-mia,au-syd,uk-lnd,fr-par#2022-02-28-11h44m.csv
+remove announcement from uk-lnd-anycast02
+add prefix announcement for uk-lnd-anycast02
+add community 20473:6002 on node fr-par-anycast01
+site,prefix,peer_as,neighbor,attributes
+au-syd-anycast01,145.100.118.0/23,64515,169.254.169.254,
+fr-par-anycast01,145.100.118.0/23,64515,169.254.169.254,community 20473:6002
+uk-lnd-anycast02,145.100.118.0/23,64515,169.254.169.254,
+us-mia-anycast01,145.100.118.0/23,20080,198.32.252.96,
+/home/testbed/.cargo/bin/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/testbed/work/catchment_manipulation/tools/hitlist_example.txt  -a /home/testbed/work/catchment_manipulation/tools/GeoLite2-ASN.mmdb -c /home/testbed/work/catchment_manipulation/tools/GeoLite2-Country.mmdb  > /home/testbed/work/catchment_manipulation/dataset/2022-02-28-11h44m/positive-20473:6002xfr-par#ipv4,uk-lnd,us-mia,au-syd,fr-par#2022-02-28-11h44m.csv
+remove announcement from fr-par-anycast01
+add prefix announcement for fr-par-anycast01
+add community 20473:6003 on node au-syd-anycast01
+site,prefix,peer_as,neighbor,attributes
+au-syd-anycast01,145.100.118.0/23,64515,169.254.169.254,community 20473:6003
+fr-par-anycast01,145.100.118.0/23,64515,169.254.169.254,
+uk-lnd-anycast02,145.100.118.0/23,64515,169.254.169.254,
+us-mia-anycast01,145.100.118.0/23,20080,198.32.252.96,
+/home/testbed/.cargo/bin/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/testbed/work/catchment_manipulation/tools/hitlist_example.txt  -a /home/testbed/work/catchment_manipulation/tools/GeoLite2-ASN.mmdb -c /home/testbed/work/catchment_manipulation/tools/GeoLite2-Country.mmdb  > /home/testbed/work/catchment_manipulation/dataset/2022-02-28-11h44m/positive-20473:6003xau-syd#ipv4,fr-par,us-mia,au-syd,uk-lnd#2022-02-28-11h44m.csv
+remove announcement from au-syd-anycast01
+add prefix announcement for au-syd-anycast01
+add community 20473:6003 on node uk-lnd-anycast02
+site,prefix,peer_as,neighbor,attributes
+au-syd-anycast01,145.100.118.0/23,64515,169.254.169.254,
+fr-par-anycast01,145.100.118.0/23,64515,169.254.169.254,
+uk-lnd-anycast02,145.100.118.0/23,64515,169.254.169.254,community 20473:6003
+us-mia-anycast01,145.100.118.0/23,20080,198.32.252.96,
+/home/testbed/.cargo/bin/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/testbed/work/catchment_manipulation/tools/hitlist_example.txt  -a /home/testbed/work/catchment_manipulation/tools/GeoLite2-ASN.mmdb -c /home/testbed/work/catchment_manipulation/tools/GeoLite2-Country.mmdb  > /home/testbed/work/catchment_manipulation/dataset/2022-02-28-11h44m/positive-20473:6003xuk-lnd#ipv4,us-mia,fr-par,au-syd,uk-lnd#2022-02-28-11h44m.csv
+remove announcement from uk-lnd-anycast02
+add prefix announcement for uk-lnd-anycast02
+add community 20473:6003 on node fr-par-anycast01
+site,prefix,peer_as,neighbor,attributes
+au-syd-anycast01,145.100.118.0/23,64515,169.254.169.254,
+fr-par-anycast01,145.100.118.0/23,64515,169.254.169.254,community 20473:6003
+uk-lnd-anycast02,145.100.118.0/23,64515,169.254.169.254,
+us-mia-anycast01,145.100.118.0/23,20080,198.32.252.96,
+/home/testbed/.cargo/bin/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/testbed/work/catchment_manipulation/tools/hitlist_example.txt  -a /home/testbed/work/catchment_manipulation/tools/GeoLite2-ASN.mmdb -c /home/testbed/work/catchment_manipulation/tools/GeoLite2-Country.mmdb  > /home/testbed/work/catchment_manipulation/dataset/2022-02-28-11h44m/positive-20473:6003xfr-par#ipv4,fr-par,uk-lnd,au-syd,us-mia#2022-02-28-11h44m.csv
+remove announcement from fr-par-anycast01
+add prefix announcement for fr-par-anycast01
+add community 20473:64609 on node au-syd-anycast01
+site,prefix,peer_as,neighbor,attributes
+au-syd-anycast01,145.100.118.0/23,64515,169.254.169.254,community 20473:64609
+fr-par-anycast01,145.100.118.0/23,64515,169.254.169.254,
+uk-lnd-anycast02,145.100.118.0/23,64515,169.254.169.254,
+us-mia-anycast01,145.100.118.0/23,20080,198.32.252.96,
+/home/testbed/.cargo/bin/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/testbed/work/catchment_manipulation/tools/hitlist_example.txt  -a /home/testbed/work/catchment_manipulation/tools/GeoLite2-ASN.mmdb -c /home/testbed/work/catchment_manipulation/tools/GeoLite2-Country.mmdb  > /home/testbed/work/catchment_manipulation/dataset/2022-02-28-11h44m/positive-20473:64609xau-syd#ipv4,uk-lnd,us-mia,fr-par,au-syd#2022-02-28-11h44m.csv
+remove announcement from au-syd-anycast01
+add prefix announcement for au-syd-anycast01
+add community 20473:64609 on node uk-lnd-anycast02
+site,prefix,peer_as,neighbor,attributes
+au-syd-anycast01,145.100.118.0/23,64515,169.254.169.254,
+fr-par-anycast01,145.100.118.0/23,64515,169.254.169.254,
+uk-lnd-anycast02,145.100.118.0/23,64515,169.254.169.254,community 20473:64609
+us-mia-anycast01,145.100.118.0/23,20080,198.32.252.96,
+/home/testbed/.cargo/bin/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/testbed/work/catchment_manipulation/tools/hitlist_example.txt  -a /home/testbed/work/catchment_manipulation/tools/GeoLite2-ASN.mmdb -c /home/testbed/work/catchment_manipulation/tools/GeoLite2-Country.mmdb  > /home/testbed/work/catchment_manipulation/dataset/2022-02-28-11h44m/positive-20473:64609xuk-lnd#ipv4,au-syd,fr-par,us-mia,uk-lnd#2022-02-28-11h44m.csv
+remove announcement from uk-lnd-anycast02
+add prefix announcement for uk-lnd-anycast02
+add community 20473:64609 on node fr-par-anycast01
+site,prefix,peer_as,neighbor,attributes
+au-syd-anycast01,145.100.118.0/23,64515,169.254.169.254,
+fr-par-anycast01,145.100.118.0/23,64515,169.254.169.254,community 20473:64609
+uk-lnd-anycast02,145.100.118.0/23,64515,169.254.169.254,
+us-mia-anycast01,145.100.118.0/23,20080,198.32.252.96,
+/home/testbed/.cargo/bin/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/testbed/work/catchment_manipulation/tools/hitlist_example.txt  -a /home/testbed/work/catchment_manipulation/tools/GeoLite2-ASN.mmdb -c /home/testbed/work/catchment_manipulation/tools/GeoLite2-Country.mmdb  > /home/testbed/work/catchment_manipulation/dataset/2022-02-28-11h44m/positive-20473:64609xfr-par#ipv4,uk-lnd,au-syd,us-mia,fr-par#2022-02-28-11h44m.csv
+remove announcement from fr-par-anycast01
+add prefix announcement for fr-par-anycast01
+anycast communities experiment finished: Mon Feb 28 13:30:16 UTC 2022 
+add community 20473:6601 on node us-mia-anycast01
+site,prefix,peer_as,neighbor,attributes
+au-syd-anycast01,145.100.118.0/23,64515,169.254.169.254,
+uk-lnd-anycast02,145.100.118.0/23,64515,169.254.169.254,
+us-mia-anycast01,145.100.118.0/23,20080,198.32.252.96,community 20473:6601
+/home/testbed/.cargo/bin/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/testbed/work/catchment_manipulation/tools/hitlist_example.txt  -a /home/testbed/work/catchment_manipulation/tools/GeoLite2-ASN.mmdb -c /home/testbed/work/catchment_manipulation/tools/GeoLite2-Country.mmdb  > /home/testbed/work/catchment_manipulation/dataset/2022-02-28-11h44m/positive-20473:6601xus-mia#ipv4,uk-lnd,au-syd,us-mia#2022-02-28-11h44m.csv
+remove announcement from us-mia-anycast01
+add prefix announcement for us-mia-anycast01
+add community 20473:6000 on node us-mia-anycast01
+site,prefix,peer_as,neighbor,attributes
+au-syd-anycast01,145.100.118.0/23,64515,169.254.169.254,
+uk-lnd-anycast02,145.100.118.0/23,64515,169.254.169.254,
+us-mia-anycast01,145.100.118.0/23,20080,198.32.252.96,community 20473:6000
+/home/testbed/.cargo/bin/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/testbed/work/catchment_manipulation/tools/hitlist_example.txt  -a /home/testbed/work/catchment_manipulation/tools/GeoLite2-ASN.mmdb -c /home/testbed/work/catchment_manipulation/tools/GeoLite2-Country.mmdb  > /home/testbed/work/catchment_manipulation/dataset/2022-02-28-11h44m/positive-20473:6000xus-mia#ipv4,us-mia,au-syd,uk-lnd#2022-02-28-11h44m.csv
+remove announcement from us-mia-anycast01
+add prefix announcement for us-mia-anycast01
+add community 20473:6001 on node us-mia-anycast01
+site,prefix,peer_as,neighbor,attributes
+au-syd-anycast01,145.100.118.0/23,64515,169.254.169.254,
+uk-lnd-anycast02,145.100.118.0/23,64515,169.254.169.254,
+us-mia-anycast01,145.100.118.0/23,20080,198.32.252.96,community 20473:6001
+/home/testbed/.cargo/bin/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/testbed/work/catchment_manipulation/tools/hitlist_example.txt  -a /home/testbed/work/catchment_manipulation/tools/GeoLite2-ASN.mmdb -c /home/testbed/work/catchment_manipulation/tools/GeoLite2-Country.mmdb  > /home/testbed/work/catchment_manipulation/dataset/2022-02-28-11h44m/positive-20473:6001xus-mia#ipv4,us-mia,uk-lnd,au-syd#2022-02-28-11h44m.csv
+remove announcement from us-mia-anycast01
+add prefix announcement for us-mia-anycast01
+add community 20473:6002 on node us-mia-anycast01
+site,prefix,peer_as,neighbor,attributes
+au-syd-anycast01,145.100.118.0/23,64515,169.254.169.254,
+uk-lnd-anycast02,145.100.118.0/23,64515,169.254.169.254,
+us-mia-anycast01,145.100.118.0/23,20080,198.32.252.96,community 20473:6002
+/home/testbed/.cargo/bin/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/testbed/work/catchment_manipulation/tools/hitlist_example.txt  -a /home/testbed/work/catchment_manipulation/tools/GeoLite2-ASN.mmdb -c /home/testbed/work/catchment_manipulation/tools/GeoLite2-Country.mmdb  > /home/testbed/work/catchment_manipulation/dataset/2022-02-28-11h44m/positive-20473:6002xus-mia#ipv4,uk-lnd,au-syd,us-mia#2022-02-28-11h44m.csv
+remove announcement from us-mia-anycast01
+add prefix announcement for us-mia-anycast01
+add community 20473:6003 on node us-mia-anycast01
+site,prefix,peer_as,neighbor,attributes
+au-syd-anycast01,145.100.118.0/23,64515,169.254.169.254,
+uk-lnd-anycast02,145.100.118.0/23,64515,169.254.169.254,
+us-mia-anycast01,145.100.118.0/23,20080,198.32.252.96,community 20473:6003
+/home/testbed/.cargo/bin/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/testbed/work/catchment_manipulation/tools/hitlist_example.txt  -a /home/testbed/work/catchment_manipulation/tools/GeoLite2-ASN.mmdb -c /home/testbed/work/catchment_manipulation/tools/GeoLite2-Country.mmdb  > /home/testbed/work/catchment_manipulation/dataset/2022-02-28-11h44m/positive-20473:6003xus-mia#ipv4,us-mia,uk-lnd,au-syd#2022-02-28-11h44m.csv
+remove announcement from us-mia-anycast01
+add prefix announcement for us-mia-anycast01
+add community 20473:64609 on node us-mia-anycast01
+site,prefix,peer_as,neighbor,attributes
+au-syd-anycast01,145.100.118.0/23,64515,169.254.169.254,
+uk-lnd-anycast02,145.100.118.0/23,64515,169.254.169.254,
+us-mia-anycast01,145.100.118.0/23,20080,198.32.252.96,community 20473:64609
+/home/testbed/.cargo/bin/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/testbed/work/catchment_manipulation/tools/hitlist_example.txt  -a /home/testbed/work/catchment_manipulation/tools/GeoLite2-ASN.mmdb -c /home/testbed/work/catchment_manipulation/tools/GeoLite2-Country.mmdb  > /home/testbed/work/catchment_manipulation/dataset/2022-02-28-11h44m/positive-20473:64609xus-mia#ipv4,us-mia,au-syd,uk-lnd#2022-02-28-11h44m.csv
+remove announcement from us-mia-anycast01
+add prefix announcement for us-mia-anycast01
+add community 20080:700 on node us-mia-anycast01
+site,prefix,peer_as,neighbor,attributes
+au-syd-anycast01,145.100.118.0/23,64515,169.254.169.254,
+uk-lnd-anycast02,145.100.118.0/23,64515,169.254.169.254,
+us-mia-anycast01,145.100.118.0/23,20080,198.32.252.96,community 20080:700
+/home/testbed/.cargo/bin/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/testbed/work/catchment_manipulation/tools/hitlist_example.txt  -a /home/testbed/work/catchment_manipulation/tools/GeoLite2-ASN.mmdb -c /home/testbed/work/catchment_manipulation/tools/GeoLite2-Country.mmdb  > /home/testbed/work/catchment_manipulation/dataset/2022-02-28-11h44m/positive-20080:700xus-mia#ipv4,us-mia,uk-lnd,au-syd#2022-02-28-11h44m.csv
+remove announcement from us-mia-anycast01
+add prefix announcement for us-mia-anycast01
+add community 20080:701 on node us-mia-anycast01
+site,prefix,peer_as,neighbor,attributes
+au-syd-anycast01,145.100.118.0/23,64515,169.254.169.254,
+uk-lnd-anycast02,145.100.118.0/23,64515,169.254.169.254,
+us-mia-anycast01,145.100.118.0/23,20080,198.32.252.96,community 20080:701
+/home/testbed/.cargo/bin/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/testbed/work/catchment_manipulation/tools/hitlist_example.txt  -a /home/testbed/work/catchment_manipulation/tools/GeoLite2-ASN.mmdb -c /home/testbed/work/catchment_manipulation/tools/GeoLite2-Country.mmdb  > /home/testbed/work/catchment_manipulation/dataset/2022-02-28-11h44m/positive-20080:701xus-mia#ipv4,au-syd,uk-lnd,us-mia#2022-02-28-11h44m.csv
+remove announcement from us-mia-anycast01
+add prefix announcement for us-mia-anycast01
+add community 20080:702 on node us-mia-anycast01
+site,prefix,peer_as,neighbor,attributes
+au-syd-anycast01,145.100.118.0/23,64515,169.254.169.254,
+uk-lnd-anycast02,145.100.118.0/23,64515,169.254.169.254,
+us-mia-anycast01,145.100.118.0/23,20080,198.32.252.96,community 20080:702
+/home/testbed/.cargo/bin/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/testbed/work/catchment_manipulation/tools/hitlist_example.txt  -a /home/testbed/work/catchment_manipulation/tools/GeoLite2-ASN.mmdb -c /home/testbed/work/catchment_manipulation/tools/GeoLite2-Country.mmdb  > /home/testbed/work/catchment_manipulation/dataset/2022-02-28-11h44m/positive-20080:702xus-mia#ipv4,uk-lnd,us-mia,au-syd#2022-02-28-11h44m.csv
+remove announcement from us-mia-anycast01
+add prefix announcement for us-mia-anycast01
+add community 20080:700 20080:702 on node us-mia-anycast01
+site,prefix,peer_as,neighbor,attributes
+au-syd-anycast01,145.100.118.0/23,64515,169.254.169.254,
+uk-lnd-anycast02,145.100.118.0/23,64515,169.254.169.254,
+us-mia-anycast01,145.100.118.0/23,20080,198.32.252.96,community [ 20080:700 20080:702 ]
+/home/testbed/.cargo/bin/verfploeter cli start 20080:702xus-mia#ipv4,au-syd,us-mia,uk-lnd#2022-02-28-11h44m 145.100.118.1  /home/testbed/work/catchment_manipulation/tools/hitlist_example.txt  -a /home/testbed/work/catchment_manipulation/tools/GeoLite2-ASN.mmdb -c /home/testbed/work/catchment_manipulation/tools/GeoLite2-Country.mmdb  > /home/testbed/work/catchment_manipulation/dataset/2022-02-28-11h44m/positive-20080:700.csv
+------------------------------------------------------------------
+### ERROR:: output presented a LOW NUMBER OF LINES [0] ###
+------------------------------------------------------------------
+/home/testbed/.cargo/bin/verfploeter cli start 20080:702xus-mia#ipv4,au-syd,us-mia,uk-lnd#2022-02-28-11h44m 145.100.118.1  /home/testbed/work/catchment_manipulation/tools/hitlist_example.txt  -a /home/testbed/work/catchment_manipulation/tools/GeoLite2-ASN.mmdb -c /home/testbed/work/catchment_manipulation/tools/GeoLite2-Country.mmdb  > /home/testbed/work/catchment_manipulation/dataset/2022-02-28-11h44m/positive-20080:700.csv
+------------------------------------------------------------------
+### ERROR:: output presented a LOW NUMBER OF LINES [0] ###
+------------------------------------------------------------------
+/home/testbed/.cargo/bin/verfploeter cli start 20080:702xus-mia#ipv4,au-syd,us-mia,uk-lnd#2022-02-28-11h44m 145.100.118.1  /home/testbed/work/catchment_manipulation/tools/hitlist_example.txt  -a /home/testbed/work/catchment_manipulation/tools/GeoLite2-ASN.mmdb -c /home/testbed/work/catchment_manipulation/tools/GeoLite2-Country.mmdb  > /home/testbed/work/catchment_manipulation/dataset/2022-02-28-11h44m/positive-20080:700.csv
+------------------------------------------------------------------
+### ERROR:: output presented a LOW NUMBER OF LINES [0] ###
+------------------------------------------------------------------
+/home/testbed/.cargo/bin/verfploeter cli start 20080:702xus-mia#ipv4,au-syd,us-mia,uk-lnd#2022-02-28-11h44m 145.100.118.1  /home/testbed/work/catchment_manipulation/tools/hitlist_example.txt  -a /home/testbed/work/catchment_manipulation/tools/GeoLite2-ASN.mmdb -c /home/testbed/work/catchment_manipulation/tools/GeoLite2-Country.mmdb  > /home/testbed/work/catchment_manipulation/dataset/2022-02-28-11h44m/positive-20080:700.csv
+------------------------------------------------------------------
+### ERROR:: output presented a LOW NUMBER OF LINES [0] ###
+------------------------------------------------------------------
+/home/testbed/.cargo/bin/verfploeter cli start 20080:702xus-mia#ipv4,au-syd,us-mia,uk-lnd#2022-02-28-11h44m 145.100.118.1  /home/testbed/work/catchment_manipulation/tools/hitlist_example.txt  -a /home/testbed/work/catchment_manipulation/tools/GeoLite2-ASN.mmdb -c /home/testbed/work/catchment_manipulation/tools/GeoLite2-Country.mmdb  > /home/testbed/work/catchment_manipulation/dataset/2022-02-28-11h44m/positive-20080:700.csv
+------------------------------------------------------------------
+### ERROR:: output presented a LOW NUMBER OF LINES [0] ###
+------------------------------------------------------------------
