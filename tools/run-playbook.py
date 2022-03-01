@@ -21,7 +21,7 @@
 # with this program; if not, write to the Free Software Foundation, Inc.,
 # 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 ###############################################################################
-version = 0.10
+version = 0.21
 verbose = True
 
 ###############################################################################
@@ -218,6 +218,7 @@ def run_cmd(node, user, key, cmd):
 
 #------------------------------------------------------------------------------
 def check_playbook_file (playbook):
+    logging.info("check_playbook")
     min_info=['site', 'prefix']
 
     try :
@@ -242,60 +243,66 @@ def run_playbook (playbook,user,key):
     logging.info("Running Playbook")
     df=pd.read_csv(playbook,comment='#')
     df=df.fillna('')
+
+    #print ('Configuring: ', end='')
+
     for index, row in df.iterrows():
         logging.info(f"ROW: {row.to_dict()}")
-        #(node,prefix,peer_as,nei,attr)=(row['site'], row['prefix'], row['peer_as'], row['neighbor'], row['attributes'])
-        #logging.info(node,prefix,peer_as,nei,attr)
-        #print (f"Announcing {prefix} on {node} to [AS{peer_as}] {attr}")
-        #cmd = f"exabgpcli neighbor {nei} announce route {prefix}  next-hop self"
-        #output = run_cmd(node,user,key,cmd)
-        
-        #if (output):
-        #    print (output)
-        #    break;
-
 
         # look what columns this playbook entry have
         col_names=row.index
         node=row['site']
         prefix=row['prefix']
 
-        if ('peer_as' in col_names):# and (row['peer_as']):
+        #print (f' {node}', end='')#
+
+        # Check if routing file have some fields
+        if ('peer_as' in col_names) and len(str(row['peer_as'])):
             peer_as=row['peer_as']
         else: 
-            peer_as=False
-            #print (node,prefix,peer_as)
-        if ('neighbor' in col_names):# and (row['neighbor']):
+            peer_as=None
+
+        if ('neighbor' in col_names) and len(row['neighbor']):
             nei=row['neighbor']
-            #print (node,prefix,neighbor)
         else: 
             nei=None
-        if ('attributes' in col_names):# and (row['attributes']):
+
+        if ('attributes' in col_names) and len(row['attributes']):
             attr=row['attributes']
-            #print (node,prefix,attr)
         else:
             attr=None
 
+        logging.info(f'=== node [{node}]  nei[{nei}]  prefix [{prefix}]  attr [{attr}]===')
 
         # Decide what to run on testbed node
-        if (node and nei and prefix and attr):
+        if ( (node is not None) and (nei is not None) and (prefix is not None) and (attr is not None) ):
+            # bgp community
             if 'community' in attr:
-                print (f"Announcing {prefix} on {node} peer {nei} {attr}") 
-                logging.debug('bgp community found')
+                logging.info('==> bgp community found')                
                 attr=attr.replace('community','')
                 cmd = f"exabgpcli neighbor {nei} announce route {prefix}  next-hop self extended-community {attr}"
                 logging.info(cmd)
+                logging.info (f"[{node}] Announcing {prefix} on neighbor {nei} comm {attr}") 
                 output = run_cmd(node,user,key,cmd)
 
-        elif (node and nei and prefix):
+            # prepends and poisoning
+            if 'as-path' in attr:
+                logging.info('==> as-path found')
+                cmd = f"exabgpcli neighbor {nei} announce route {prefix}  next-hop self {attr}"
+                logging.info(cmd)
+                logging.info (f"[{node}] Announcing {prefix} on neighbor {nei} {attr}") 
+                output = run_cmd(node,user,key,cmd)
+
+        elif ( (node is not None) and (nei is not None) and (prefix is not None) ):
             cmd=f"exabgpcli neighbor {nei} announce route {prefix}  next-hop self"
             logging.info(cmd)
+            logging.info (f"[{node}] Announcing {prefix} on neighbor {nei}") 
             output = run_cmd(node,user,key,cmd)
             
-        elif (node and prefix):  
+        elif ((node is not None) and (prefix is not None)):  
             # advertise on all neighbors 
             logging.info(f"finding neighbor for {node}")
-            print (f"Announcing {prefix} at All Peers on {node}")
+            logging.info (f" Announcing {prefix} to All Peers on {node}")
 
             # need to discover active neighbors
             cmd = "exabgpcli show neighbor summary"
@@ -315,6 +322,7 @@ def run_playbook (playbook,user,key):
             for nei in neighbor_list:
                 cmd=f"exabgpcli neighbor {nei} announce route {prefix} next-hop self"
                 logging.info(cmd)
+                logging.info (f"[{node}] Announcing {prefix} on neighbor {nei}") 
                 output = run_cmd(node,user,key,cmd)
                 if (output):
                     print (output)
@@ -322,6 +330,7 @@ def run_playbook (playbook,user,key):
         else:
             print ('Could not exec Playbook...')
 
+    #print ('\n')
         
     
 
@@ -333,24 +342,28 @@ def show_active_routes_on_node(node,user,key):
     if (not output):
         return False;
     else:
-        print ("== {}".format(node))
+        #print ("== {}".format(node))
         for line in (output):
             if (" in-open ipv4" in line):
                 route_search = re.search('neighbor\s+(.*)\s+local-ip+.*in-open ipv\d\sunicast\s+(.*?)\s+next-hop self\s+(.*)',line,re.IGNORECASE)
-                print ("neighbor {} prefix {} {} ".format(route_search.group(1),route_search.group(2),route_search.group(3)))
+                print ("[{}] neighbor {} prefix {} {} ".format(node, route_search.group(1),route_search.group(2),route_search.group(3)))
             else:
                 print(line)    
         return True
+
 #------------------------------------------------------------------------------
 def show_all_active_routes(user,key):
+    print ('Configuring routes...')
     active_nodes=0
     for node in nodes:
         if show_active_routes_on_node(node,user,key):
             active_nodes=active_nodes+1
     if active_nodes:
-        print (f" Found [{active_nodes}] nodes ") 
+        print (f" Configured [{active_nodes}] nodes ") 
     else:
         print(f"Currently zero prefixes announced")
+
+
 
 #------------------------------------------------------------------------------
 def parse_peers(output):
@@ -375,15 +388,66 @@ def parse_peers(output):
 
     return (peer)
 
-#------------------------------------------------------------------------------
-
+# #------------------------------------------------------------------------------
+# def remove_all_testbed_routes(user,key):
+#     logging.info(f"Clearing testbed routing")
+#     for node in list(nodes.keys()):
+#         cmd = "exabgpcli show adj-rib out extensive"
+#         output = run_cmd(node,user,key,cmd)
+#         
+#         # empty table
+#         if (not output):
+#             logging.info(f"[{node}] No adj-rib out ")
+#             continue;
+#             
+#         #got something - go to parse
+#         output = parse_withdraw_routes(output)
+#         logging.info("parsed --> %s",output)   
+#         
+#         # No route found
+#         if not output:
+#             logging.info(f"[{node}] No routes")
+#             continue;
+#             
+#         else:
+#             # route found - remove
+#             for announces in output:
+#                 cmd = "exabgpcli neighbor {} {} ".format(announces['ip'],announces['cmd'])
+#                 logging.info(f"withdraw: {output}")
+#                 output = run_cmd(node,cmd)
+#                 logging.debug(output)
+#                 print (f"{cmd} withdraw... done!")
+#     return None
+#     
+# #------------------------------------------------------------------------------
+# def parse_withdraw_routes(output):
+#     """ Parse the output from the command show neighbor adj-out
+#         param: output
+#         return: dictionary of peer and respective status
+#     """
+#     peer = []
+#     status = []
+#     result = []
+#     for line in (output):
+#         route_search = re.search('neighbor\s+(.*)\s+local-ip+.*in-open ipv\d\sunicast\s+(.*?)\s+next-hop self\s+(.*)',line,re.IGNORECASE)
+#         #route_search = re.search('neighbor\s+(.*)\s+local-ip+.*in-open ipv\d\sunicast\s+(.*)', line, re.IGNORECASE)
+# 
+#         if ( not args.route or args.route == route_search.group(2)):
+#             result = {
+#                 "ip": route_search.group(1),
+#                 "cmd" : "withdraw route "+route_search.group(2)
+#                 }
+#             peer.append(result)
+# 
+#         else:
+#             logging.debug("Route [%s] for withdraw not found on peer [%s] route [%s]", args.route, route_search.group(1), route_search.group(2))
+#     return (peer)
 
 ###############################################################################
 ### Main Process
 if __name__ == '__main__':
     signal.signal(signal.SIGINT, signal_handler)
 
-    #available_nodes = list(nodes.keys())
     args = evaluate_args()
     logging.debug(args)
 
