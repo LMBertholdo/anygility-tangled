@@ -1,0 +1,9 @@
+#policy,community-20473:6001xSYD
+#timestamp,1646401362
+#hitlist,not_provided
+site,counts,percent
+fr-par-anycast01,4312,49
+uk-lnd-anycast02,2064,23
+us-mia-anycast01,1494,17
+au-syd-anycast01,933,10
+

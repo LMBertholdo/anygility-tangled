@@ -14,7 +14,7 @@ source 00-functions.sh
 
 ###############################################################################
 # short hitlist for testing purposes
-HITLIST="$EXECDIR/tools/hitlist_example.txt"
+#HITLIST="$EXECDIR/toolbox/hitlist_example.txt"
 
 # Origin of icmp packets
 PINGER="us-mia-anycast01"
@@ -22,12 +22,11 @@ PINGER="us-mia-anycast01"
 # nodes on this experiment
 unset NODES
 declare -a NODES
-NODES+=("br-poa-anycast02")
-NODES+=("us-mia-anycast01")
-#NODES+=("uk-lnd-anycast02")  
-NODES+=("nl-ams-anycast01")  
+NODES+=("uk-lnd-anycast02")
+NODES+=("fr-par-anycast01")
+NODES+=("au-syd-anycast01")
 
-SLEEP=60 #fast mode
+#SLEEP=60 #fast mode
 
 ###############################################################################
 ### MAIN
@@ -70,10 +69,11 @@ do
 	# Announce on working_node 
 	advertise_on_node $WORKING_NODE $ANYCAST_PREFIX
 
-        IATA=$(echo $WORKING_NODE | tr "[:lower:]" "[:upper:]" | cut -d"-" -f2 )
+        # IATA=$(echo $WORKING_NODE | tr "[:lower:]" "[:upper:]" | cut -d"-" -f2 )
 	for num_prepend in `seq $MAX_NEGATIVE_PREPENDS`
 	do 
-        	BGP="-$num_prepend"x"$IATA"
+        	#BGP="-$num_prepend"x"$IATA"
+		BGP="-$num_prepend"x"${IATA[$WORKING_NODE]}"
 		echo "-------"
 		echo "$num_prepend negative Prepend for node $WORKING_NODE ( ${BGP} )" | tee -a $LOG
                 echo "-------"

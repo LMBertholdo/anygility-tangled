@@ -1,1 +1,0 @@
-/home/testbed/work/catchment_manipulation/tools/vp-cli.py -s us-mia-anycast01  -b \"baseline\" -g /home/testbed/work/catchment_manipulation/tools/IP2LOCATION-LITE-DB9.BIN  -f /home/testbed/work/catchment_manipulation/dataset/2022-02-28-16h10m/baseline#ipv4,us-mia,br-poa,nl-ams#2022-02-28-16h10m.csv.gz -n

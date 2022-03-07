@@ -1,0 +1,9 @@
+#policy,community-20473:64609xLHR
+#timestamp,1646403244
+#hitlist,not_provided
+site,counts,percent
+au-syd-anycast01,7896,88
+uk-lnd-anycast02,522,5
+fr-par-anycast01,409,4
+us-mia-anycast01,77,0
+

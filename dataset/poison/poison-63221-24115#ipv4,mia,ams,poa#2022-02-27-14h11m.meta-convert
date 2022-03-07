@@ -1,1 +1,0 @@
-/home/testbed/work/catchment_manipulation/tools/vp-cli.py -s us-mia-anycast01  -b \"poison-63221-24115\" -g /home/testbed/work/catchment_manipulation/tools/IP2LOCATION-LITE-DB9.BIN  -f /home/testbed/work/catchment_manipulation/dataset/2022-02-27-14h11m/poison-63221-24115#ipv4,mia,ams,poa#2022-02-27-14h11m.csv.gz -n

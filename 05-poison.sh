@@ -13,9 +13,9 @@ source 00-functions.sh
 
 ###############################################################################
 ### Program settings
-HITLIST="$EXECDIR/tools/hitlist_example.txt"
+#HITLIST="$EXECDIR/toolbox/hitlist_example.txt"
 PINGER="us-mia-anycast01"
-SLEEP=60
+#SLEEP=60
 ANYCAST_PREFIX="145.100.118.0/23"
 
 # REDefine nodes (from 00-globalvar)

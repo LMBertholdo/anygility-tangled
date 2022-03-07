@@ -9,18 +9,21 @@ RETVAL=""  #define to global return of verfploeter (dont change)
 ###############################################################################
 ### Path configuration
 # base execution dir (untar place)
-EXECDIR="$HOME/work/catchment_manipulation"
+#EXECDIR="$HOME/work/catchment_manipulation"
+EXECDIR="$HOME/anygility-tangled"
 
 # verfploter configs
-VP_BIN="$HOME/.cargo/bin/verfploeter"
+#VP_BIN="$HOME/.cargo/bin/verfploeter"
+VP_BIN="$EXECDIR/toolbox/verfploeter"
 
 # hitlist
-HITLIST="$EXECDIR/tools/hitlist.txt"
+HITLIST="$EXECDIR/toolbox/hitlist.txt"
+#HITLIST="$EXECDIR/toolbox/hitlist_example.txt"
 
 # geolocation databases
-ASN_DB="$EXECDIR/tools/GeoLite2-ASN.mmdb"
-GEO_DB="$EXECDIR/tools/GeoLite2-Country.mmdb"
-IP2LOCATION="$EXECDIR/tools/IP2LOCATION-LITE-DB9.BIN"
+ASN_DB="$EXECDIR/toolbox/GeoLite2-ASN.mmdb"
+GEO_DB="$EXECDIR/toolbox/GeoLite2-Country.mmdb"
+IP2LOCATION="$EXECDIR/toolbox/IP2LOCATION-LITE-DB9.BIN"
 
 # Tangler-cli
 TANGLER_CLI="$EXECDIR/tools/tangler-cli.py -4"
@@ -48,7 +51,7 @@ LOG="$REPO/log.txt"
 ###############################################################################
 ### Routing setups
 # time to wait between routing setup and start measuring
-# 600s=conservative 300s=good  60s=testing
+# 600s=conservative 300s=good  180s=acceptable  60s=testing
 SLEEP=600
 
 # default name for BGP policy - to be reset on scripts
@@ -78,7 +81,25 @@ NODES+=("dk-cop-anycast01")
 NODES+=("za-jnb-anycast01") 
 NODES+=("nl-ens-anycast02")
 NODES+=("nl-ams-anycast01") 
-NODES+=("nl-arn-anycast01")
+#NODES+=("nl-arn-anycast01")
+
+declare -A IATA=(
+               ["au-syd-anycast01"]="SYD"
+               ["br-gru-anycast01"]="GRU"
+               ["br-poa-anycast02"]="POA"
+               ["fr-par-anycast01"]="CDG"
+               ["uk-lnd-anycast02"]="LHR"
+               ["us-sea-anycast01"]="SEA"
+               ["us-los-anycast01"]="LAX"
+               ["us-mia-anycast01"]="MIA"
+               ["us-was-anycast01"]="IAD"
+               ["de-fra-anycast01"]="FRA"
+               ["sg-sin-anycast01"]="SIN"
+               ["dk-cop-anycast01"]="COP"
+               ["za-jnb-anycast01"]="JNB"
+               ["nl-ens-anycast02"]="ENS"
+               ["nl-ams-anycast01"]="AMS"
+               ["nl-arn-anycast01"]="ARN" )
 
 ### HEFICED_nodes
 declare -a IXP_HEFICED

@@ -1,0 +1,1 @@
+/home/usenix/anygility-tangled/tools/vp-cli.py -s us-mia-anycast01  -b \"2xCDG\" -g /home/usenix/anygility-tangled/toolbox/IP2LOCATION-LITE-DB9.BIN  -f /home/usenix/anygility-tangled/dataset/2022-03-02-22h50m/2xCDG#ipv4,au-syd,uk-lnd,fr-par#2022-03-02-22h50m.csv.gz -n

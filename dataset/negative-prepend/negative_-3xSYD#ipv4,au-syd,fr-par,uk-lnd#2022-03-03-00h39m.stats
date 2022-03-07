@@ -1,0 +1,7 @@
+#policy,-3xSYD
+#timestamp,1646274755
+#hitlist,not_provided
+site,counts,percent
+au-syd-anycast01,8880,99
+uk-lnd-anycast02,47,0
+

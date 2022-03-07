@@ -14,7 +14,7 @@ source 00-functions.sh
 
 ###############################################################################
 # short hitlist for testing purposes
-HITLIST="$EXECDIR/tools/hitlist_example.txt"
+#HITLIST="$EXECDIR/toolbox/hitlist_example.txt"
 
 # Origin of icmp packets
 PINGER="us-mia-anycast01"
@@ -22,12 +22,15 @@ PINGER="us-mia-anycast01"
 # nodes on this experiment
 unset NODES
 declare -a NODES
-NODES+=("br-poa-anycast02")
-NODES+=("us-mia-anycast01")
-#NODES+=("uk-lnd-anycast02")  
-NODES+=("nl-ams-anycast01")  
+NODES+=("uk-lnd-anycast02")  
+NODES+=("fr-par-anycast01")  
+NODES+=("au-syd-anycast01")  
 
-SLEEP=180 #fast mode
+#NODES+=("br-poa-anycast02")
+#NODES+=("us-mia-anycast01")
+#NODES+=("nl-ams-anycast01")  
+
+#SLEEP=180 #fast mode
 
 ###############################################################################
 ### MAIN
@@ -50,13 +53,16 @@ echo
 echo "-------------------------------------------------------------------------"
 echo "Cleaning routing configurations" | tee -a $LOG
 $TANGLER_CLI -4 -6 -w 
-
+echo "Configuring Baseline" | tee -a $LOG
+advertise_on_all_nodes $ANYCAST_PREFIX
+echo "-------------------------------------------------------------------------"
 # Show experiment nodes
 show_nodes
 
 #----------------------------------------------------------
 # 2 - POSITIVE PREPEND
 #----------------------------------------------------------
+#
 # start prepending
 NUM_PREPEND=3
 for num_prepend in `seq $NUM_PREPEND`;
@@ -73,8 +79,9 @@ do
         ## run VERFPLOETER
 	echo "Checking active nodes"
         ACTIVE_BGP_NODES=$($TANGLER_CLI --nodes-with-announces |  sed "s/-anycast[0-9][0-9]//g")
-	IATA=$(echo $NODE | tr "[:lower:]" "[:upper:]" | cut -d"-" -f2 )
-        BGP="$num_prepend"x"$IATA"
+	#IATA=$(echo $NODE | tr "[:lower:]" "[:upper:]" | cut -d"-" -f2 )
+        #BGP="$num_prepend"x"$IATA"
+        BGP="$num_prepend"x"${IATA[$NODE]}"
         #OUTFILE="$REPO/prepend-$num_prepend"x"-$NODE-$ACTIVE_BGP_NODES-$DATE_VAR"
         OUTFILE="${BGP}${ACTIVE_BGP_NODES}#${DATE_VAR}"
 	echo "Active nodes"

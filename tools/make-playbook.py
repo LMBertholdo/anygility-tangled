@@ -5,8 +5,7 @@
 #               information using command line arguments
 #
 # Copyright (C) 2022 by University of Twente
-# Written by Joao Ceron <ceron@botlog.org> and
-#            Leandro Bertholdo <leandro.bertholdo@gmail.com>
+# Written by Leandro Bertholdo <leandro.bertholdo@gmail.com>
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License,
@@ -36,7 +35,7 @@ from IPython.display import display
 ###############################################################################
 ### Program settings
 program_name = sys.argv[0][:-3]
-version = 0.3
+version = "0.7"
 
 # convert sites to IATA
 iata = {
@@ -88,7 +87,32 @@ def parser_args ():
     parser.add_argument('--routing', help="add routing information to playbook file", action='store_true')
     parser.add_argument('--dir', help="directory with vp-cli stats files", action='append')
     parser.add_argument('--out', nargs='?', help="File name to save Playbook results")
+    parser.add_argument('--fsdb', nargs='?', help="File name to save Playbook in FSDB format (to be used for playbook_tuner)")
     return parser
+
+#------------------------------------------------------------------------------
+def check_stats_file(fstats):
+    ''' Check stats file if is consistent
+        return: True is ok 
+                False if is error
+    '''
+    # Check stats file for more than ohe header
+    num_headers=0
+    df=pd.read_csv(fstats,comment='#')
+    try:
+        num_headers=df['site'].value_counts()['site'] # found column name as column data
+    except KeyError: 
+        # not found 'site' as data... so its good
+        return True
+    
+    # more than one header = two measurements in same file (measurement script with error)
+    if num_headers:
+        print (f'ERROR:: on file {fstats}')
+        print (f'ERROR:: We found ({num_headers}) duplicated header on this file')
+        print (f'ERROR:: Check your measurement! More than one measurement is overlapping to same filename!')
+        return False
+    
+    return False
 
 #------------------------------------------------------------------------------
 def read_vpcli_stats_folder (stats_dir, routing_option): 
@@ -99,49 +123,134 @@ def read_vpcli_stats_folder (stats_dir, routing_option):
         returns: df in format ['site', 'counts', 'percent', 'bgp']
     """ 
     print (f"Building Playbook from {stats_dir}")
-
+    
     # Empty df
-    df_all=pd.DataFrame(columns=['site'])
+    df_all=pd.DataFrame(columns=['site','bgp'])
     
     flist=glob.glob(stats_dir+'/*.stats')
     if not flist:
-        print(f'Folder {stats_dir}')
+       print(f'ERROR:: Folder {stats_dir} does not contain *.stats files')
+       sys.exit(0)
 
     # Read stats files from directory
     for fstats in flist:
-        # Read stats df
         logging.info(f"Statistics [{fstats}]")
+
+        # Check if statistics file is OK
+        if not check_stats_file(fstats):
+            print (f'This file is damaged --> {fstats}')
+            print ('Skipping...\n')
+            continue 
+
+        # Read stats df
         df=pd.read_csv(fstats,comment='#')
     
         # Add BGP_Policy from stats comments
         df['bgp']=get_bgp_policy(fstats)
-    
-        #Buid Routing information dataframe
-        routing_info=fstats.split('/')[-1].replace(".stats",".routing",1)
-        logging.info(f"Routing Policy [{routing_info}]")
-        df['routing_info']=routing_info    
+            
+        # Add Routing information to dataframe
+        if (routing_option):
+            #routing_info=fstats.split('/')[-1].replace(".stats",".routing",1)            
+            routing_info=fstats.replace(".stats",".routing",1)            
+            df['routing_info']=routing_info    
+            logging.info(f"Added Routing Information [{routing_info}]")
         
-        # Join stats to all
+        #Check duplicated policies
+        if not df_all.empty:
+            pol_lst=df_all['bgp'].to_list()
+            policy=df['bgp'][0]
+            if policy in pol_lst :
+                logging.info(f"read_vpcli:: FOUND DUPLICATED POLICY AT {fstats}")
+                print(f'WARNING::: This policy [{policy}] already exists!')
+                print(f'Check if its ok for you! [{fstats}]')
+                print ('Skipping...\n')
+                continue    
+                
+        # Append DF to playbook
+        logging.debug(f"read_vpcli:: append df_all {fstats}")
         df_all=df_all.append(df)
-    
+        
+    # We just want Integers on values
+    df_all=df_all.astype({"counts":'int', "percent":'int'})
+
     # Map site to IATA code
-    df_all['site']=df_all['site'].map(iata)
-    
+    logging.debug("Mapping IATA")       
+    df_all['site']=df_all['site'].map(iata)       
+
     # Convert to playbook format
-    df = df_all.groupby(['site','bgp'])['percent'].sum().unstack().T.fillna(0)
-    
-    # Build Routing info df and join info to playbook
-    df_routing=df_all[['bgp','routing_info']].drop_duplicates()
-    df_routing=df_routing.set_index(['bgp'])
-    df_res = pd.concat([df,df_routing], axis=1)
-    df_res.index.name='bgp'
+    logging.debug("Creating Playbook")   
+    #logging.debug(display(df_all))
+    df_res = df_all.groupby(['site','bgp'])['percent'].sum().unstack().T.fillna(0)
 
     if (routing_option):
-        # return df_res if you want a playbook with routing information
-        return df_res
-    else:
-        # return df if you want stats only
-        return df
+        # Add Routing information entries to playbook
+        logging.debug("Adding routing information to Playbook")
+        df_routing=df_all[['bgp','routing_info']].drop_duplicates()
+        df_routing=df_routing.set_index(['bgp'])
+        df_res = pd.concat([df_res,df_routing], axis=1)
+        df_res.index.name='bgp'
+    
+        #logging.debug("\n=== DF_ROUTING ===")
+        #logging.debug(display(df_routing))
+
+    df_res=df_res.reset_index()
+    return df_res
+
+
+#------------------------------------------------------------------------------
+def playbook_to_fsdb(df, outfile):
+    ''' Save playbook in FSDB format to be used by playbook_tuner
+    receive: playbook dataframe
+    '''
+
+    logging.debug("playbook_to_fsdb")
+    # open file to save playbook in FSDB format
+    f = open(outfile, "wt")
+    
+    # get sites info
+    sites=df.columns.to_list()
+    # remove 1st column header (bgp or site)
+    #sites.remove('bgp')
+    del sites[0]
+    
+    # nrosites to fsdb header
+    f.write(f'{str(len(sites))}\n')
+    
+    # sites to fsdb
+    line=( '\t'.join(map(str,sites)))
+    f.write(f'{line}\n')
+    
+    # limit site load to fsdb
+    limits=[50000.0]*len(sites)
+    line='\t'.join(map(str,limits))
+    f.write(f'{line}\n')
+
+    #logging.debug(display(df)) 
+
+    # This is a kludge for playbook-tuner (need a Baseline with "B" uppercase)
+    # Change other 'baseline' word variation to 'Baseline'
+    baseline_df=df[df['bgp'].str.contains(r'(?:\s|^)baseline(?:\s|$)',case=False)]
+    
+    if ( baseline_df['bgp'].count()==1 ):
+        df['bgp']=df['bgp'].str.replace(r'(?:\s|^)baseline(?:\s|$)','Baseline')
+    elif ( baseline_df['bgp'].count()<1 ):
+        print ('ERROR: No baseline - Baseline is needed for playbook-tuner')
+    elif ( baseline_df['bgp'].count()>1 ):
+        print('Take care. You selected more than one BASELINE')
+        print('Cant generate a trustable playbook')    
+        print('Tip: Chose only the right one')    
+      
+    # all bgp policies to fsdb
+    logging.debug(f'fsdb:: {df.index}')
+    for index, row in df.iterrows():
+        #print (row)
+        line=( '\t'.join(map(str,row.to_list())))
+        logging.debug(f'FSDB:: line = {line}')
+        f.write(f'{line}\n')
+
+    f.close()    
+
+
 
 #------------------------------------------------------------------------------
 def set_log_level(log_level=logging.INFO):
@@ -182,7 +291,7 @@ def evaluate_args():
         print (version)
         sys.exit(0)
 
-    if args.dir:
+    if (args.dir):
         return (args)
 
    
@@ -208,18 +317,25 @@ if __name__ == '__main__':
     
             # load all stats file on folder to df
             df=read_vpcli_stats_folder(stats_dir, args.routing)
-            logging.info(f'=== df from {stats_dir}') 
             df_all=df_all.append(df)
 
         # Case you are mixing sites (policy using different sites)
         # just fill with zero sites not used on that policy
         df_all=df_all.fillna(0)
-        logging.info(display(df_all))
+        print ('=== Playbook ===')
+        display(df_all)
+        print ('================')
+
 
         # Save results 
         if (args.out):
-            df_all.to_csv(args.out)
-            print(f'\nPlaybook file saved to [{args.out}]\n')
+            df_all.to_csv(args.out, index=False)
+            print(f'Playbook CSV saved to [{args.out}]')
+
+        # Saving to FSDB playbook format 
+        if (args.fsdb):
+            playbook_to_fsdb(df_all,args.fsdb)
+            print(f'Playbook FSDB saved to [{args.fsdb}]')
 
 
     

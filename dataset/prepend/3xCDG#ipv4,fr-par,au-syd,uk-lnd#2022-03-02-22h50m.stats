@@ -1,0 +1,7 @@
+#policy,3xCDG
+#timestamp,1646267131
+#hitlist,not_provided
+site,counts,percent
+au-syd-anycast01,7991,89
+uk-lnd-anycast02,961,10
+

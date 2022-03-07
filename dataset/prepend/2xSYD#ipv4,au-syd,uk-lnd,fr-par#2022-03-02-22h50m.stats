@@ -1,0 +1,8 @@
+#policy,2xSYD
+#timestamp,1646265706
+#hitlist,not_provided
+site,counts,percent
+fr-par-anycast01,7116,79
+au-syd-anycast01,958,10
+uk-lnd-anycast02,868,9
+

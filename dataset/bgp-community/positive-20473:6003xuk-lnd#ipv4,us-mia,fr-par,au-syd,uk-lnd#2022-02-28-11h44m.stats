@@ -1,9 +1,0 @@
-#policy,positive-20473:6003xuk-lnd
-#timestamp,1646053637
-#hitlist,not_provided
-site,counts,percent
-au-syd-anycast01,7872,88
-fr-par-anycast01,877,9
-us-mia-anycast01,180,2
-uk-lnd-anycast02,1,0
-

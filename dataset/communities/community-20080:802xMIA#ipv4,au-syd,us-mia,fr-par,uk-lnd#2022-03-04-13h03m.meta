@@ -1,0 +1,1 @@
+/home/usenix/anygility-tangled/tools/vp-cli.py -s us-mia-anycast01  -b \"community-20080:802xMIA\"  -f /home/usenix/anygility-tangled/dataset/2022-03-04-13h03m/community-20080:802xMIA#ipv4,au-syd,us-mia,fr-par,uk-lnd#2022-03-04-13h03m.csv.gz

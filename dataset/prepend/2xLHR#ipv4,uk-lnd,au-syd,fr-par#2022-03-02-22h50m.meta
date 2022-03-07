@@ -1,0 +1,1 @@
+/home/usenix/anygility-tangled/tools/vp-cli.py -s us-mia-anycast01  -b \"2xLHR\"  -f /home/usenix/anygility-tangled/dataset/2022-03-02-22h50m/2xLHR#ipv4,uk-lnd,au-syd,fr-par#2022-03-02-22h50m.csv.gz

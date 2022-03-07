@@ -1,0 +1,8 @@
+#policy,-2xCDG
+#timestamp,1646271748
+#hitlist,not_provided
+site,counts,percent
+fr-par-anycast01,7981,89
+au-syd-anycast01,900,10
+uk-lnd-anycast02,46,0
+

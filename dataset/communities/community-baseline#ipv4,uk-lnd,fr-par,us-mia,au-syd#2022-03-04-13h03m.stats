@@ -1,0 +1,9 @@
+#policy,community-baseline
+#timestamp,1646399467
+#hitlist,not_provided
+site,counts,percent
+au-syd-anycast01,7943,89
+uk-lnd-anycast02,666,7
+fr-par-anycast01,219,2
+us-mia-anycast01,84,0
+

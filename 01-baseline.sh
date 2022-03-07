@@ -14,7 +14,8 @@ source 00-functions.sh
 
 ###############################################################################
 # short hitlist for testing purposes
-HITLIST="$EXECDIR/tools/hitlist_example.txt"
+#HITLIST="$EXECDIR/toolbox/hitlist_example.txt"
+#SLEEP=180 #fast mode
 
 # Origin of icmp packets
 PINGER="us-mia-anycast01"
@@ -22,12 +23,10 @@ PINGER="us-mia-anycast01"
 # nodes on this experiment
 unset NODES
 declare -a NODES
-NODES+=("br-poa-anycast02")
-NODES+=("us-mia-anycast01")
-#NODES+=("uk-lnd-anycast02")  
-NODES+=("nl-ams-anycast01")  
+NODES+=("uk-lnd-anycast02")
+NODES+=("fr-par-anycast01")
+NODES+=("au-syd-anycast01")
 
-SLEEP=180 #fast mode
 
 ###############################################################################
 ### MAIN

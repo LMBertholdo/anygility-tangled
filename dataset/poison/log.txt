@@ -1,181 +1,181 @@
-Sun Feb 27 14:11:50 UTC 2022
+Thu Mar  3 11:14:48 UTC 2022
 we are using 3 nodes in this experiment
 br-poa-anycast02
 us-mia-anycast01
 nl-ams-anycast01
 +-------+------------------+---------+
 | Index | Hostname         | Version |
-| 12    | dk-cop-anycast01 | 0.1.42  |
-| 19    | uk-lnd-anycast02 | 0.1.42  |
-| 16    | nl-ens-anycast02 | 0.1.42  |
-| 18    | au-syd-anycast01 | 0.1.42  |
-| 11    | br-poa-anycast02 | 0.1.42  |
-| 17    | us-was-anycast01 | 0.1.42  |
-| 9     | us-sea-anycast01 | 0.1.42  |
-| 1     | fr-par-anycast01 | 0.1.42  |
-| 6     | us-mia-anycast01 | 0.1.42  |
-| 10    | us-los-anycast01 | 0.1.42  |
-| 14    | nl-arn-anycast01 | 0.1.42  |
-| 2     | br-gru-anycast01 | 0.1.42  |
-| 3     | sg-sin-anycast01 | 0.1.42  |
-| 15    | de-fra-anycast01 | 0.1.42  |
-| 13    | za-jnb-anycast01 | 0.1.42  |
-| 7     | nl-ams-anycast01 | 0.1.42  |
+| 12    | br-gru-anycast01 | 0.1.42  |
+| 11    | us-los-anycast01 | 0.1.42  |
+| 1     | uk-lnd-anycast02 | 0.1.42  |
+| 3     | nl-ams-anycast01 | 0.1.42  |
+| 8     | us-sea-anycast01 | 0.1.42  |
+| 13    | sg-sin-anycast01 | 0.1.42  |
+| 4     | us-mia-anycast01 | 0.1.42  |
+| 5     | fr-par-anycast01 | 0.1.42  |
+| 16    | de-fra-anycast01 | 0.1.42  |
+| 2     | dk-cop-anycast01 | 0.1.42  |
+| 6     | us-was-anycast01 | 0.1.42  |
+| 7     | nl-ens-anycast02 | 0.1.42  |
+| 9     | nl-arn-anycast01 | 0.1.42  |
+| 14    | za-jnb-anycast01 | 0.1.42  |
+| 15    | au-syd-anycast01 | 0.1.42  |
+| 10    | br-poa-anycast02 | 0.1.42  |
 +-------+------------------+---------+
 Connected clients: 16
-Anycast baseline measurement started: Sun Feb 27 14:12:32 UTC 2022 
+Anycast baseline measurement started: Thu Mar  3 11:15:30 UTC 2022 
 Activating anycast prefix  
 ------- Verfploeter setup -------
-ACTIVE_BGP_NODES [#ipv4,ams,poa,mia]
-OUTFILE [poison-baseline#ipv4,ams,poa,mia#2022-02-27-14h11m]
-/home/testbed/.cargo/bin/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/testbed/work/catchment_manipulation/tools/hitlist_example.txt  -a /home/testbed/work/catchment_manipulation/tools/GeoLite2-ASN.mmdb -c /home/testbed/work/catchment_manipulation/tools/GeoLite2-Country.mmdb  > /home/testbed/work/catchment_manipulation/dataset/2022-02-27-14h11m/poison-baseline#ipv4,ams,poa,mia#2022-02-27-14h11m.csv
+ACTIVE_BGP_NODES [#ipv4,poa,ams,mia]
+OUTFILE [poison-baseline#ipv4,poa,ams,mia#2022-03-03-11h14m]
+/home/usenix/anygility-tangled/toolbox/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/usenix/anygility-tangled/toolbox/hitlist_example.txt  -a /home/usenix/anygility-tangled/toolbox/GeoLite2-ASN.mmdb -c /home/usenix/anygility-tangled/toolbox/GeoLite2-Country.mmdb  > /home/usenix/anygility-tangled/dataset/2022-03-03-11h14m/poison-baseline#ipv4,poa,ams,mia#2022-03-03-11h14m.csv
 Announce Poison [1149_1149] [145.100.118.0/23] on node [us-mia-anycast01]
 CMD=exabgpcli neighbor 198.32.252.96  announce route 145.100.118.0/23 next-hop self as-path [ 1149 1149 ]
 ------- Verfploeter setup -------
-ACTIVE_BGP_NODES [#ipv4,poa,ams,mia]
-OUTFILE [poison-1xMIA#ipv4,poa,ams,mia#2022-02-27-14h11m]
-/home/testbed/.cargo/bin/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/testbed/work/catchment_manipulation/tools/hitlist_example.txt  -a /home/testbed/work/catchment_manipulation/tools/GeoLite2-ASN.mmdb -c /home/testbed/work/catchment_manipulation/tools/GeoLite2-Country.mmdb  > /home/testbed/work/catchment_manipulation/dataset/2022-02-27-14h11m/poison-1xMIA#ipv4,poa,ams,mia#2022-02-27-14h11m.csv
+ACTIVE_BGP_NODES [#ipv4,mia,poa,ams]
+OUTFILE [poison-1xMIA#ipv4,mia,poa,ams#2022-03-03-11h14m]
+/home/usenix/anygility-tangled/toolbox/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/usenix/anygility-tangled/toolbox/hitlist_example.txt  -a /home/usenix/anygility-tangled/toolbox/GeoLite2-ASN.mmdb -c /home/usenix/anygility-tangled/toolbox/GeoLite2-Country.mmdb  > /home/usenix/anygility-tangled/dataset/2022-03-03-11h14m/poison-1xMIA#ipv4,mia,poa,ams#2022-03-03-11h14m.csv
 Announce Poison [1149_1149_1149] [145.100.118.0/23] on node [us-mia-anycast01]
 CMD=exabgpcli neighbor 198.32.252.96  announce route 145.100.118.0/23 next-hop self as-path [ 1149 1149 1149 ]
 ------- Verfploeter setup -------
 ACTIVE_BGP_NODES [#ipv4,mia,ams,poa]
-OUTFILE [poison-2xMIA#ipv4,mia,ams,poa#2022-02-27-14h11m]
-/home/testbed/.cargo/bin/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/testbed/work/catchment_manipulation/tools/hitlist_example.txt  -a /home/testbed/work/catchment_manipulation/tools/GeoLite2-ASN.mmdb -c /home/testbed/work/catchment_manipulation/tools/GeoLite2-Country.mmdb  > /home/testbed/work/catchment_manipulation/dataset/2022-02-27-14h11m/poison-2xMIA#ipv4,mia,ams,poa#2022-02-27-14h11m.csv
+OUTFILE [poison-2xMIA#ipv4,mia,ams,poa#2022-03-03-11h14m]
+/home/usenix/anygility-tangled/toolbox/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/usenix/anygility-tangled/toolbox/hitlist_example.txt  -a /home/usenix/anygility-tangled/toolbox/GeoLite2-ASN.mmdb -c /home/usenix/anygility-tangled/toolbox/GeoLite2-Country.mmdb  > /home/usenix/anygility-tangled/dataset/2022-03-03-11h14m/poison-2xMIA#ipv4,mia,ams,poa#2022-03-03-11h14m.csv
 Announce Poison [1149_63221_1149] [145.100.118.0/23] on node [us-mia-anycast01]
 CMD=exabgpcli neighbor 198.32.252.96  announce route 145.100.118.0/23 next-hop self as-path [ 1149 63221 1149 ]
 ------- Verfploeter setup -------
 ACTIVE_BGP_NODES [#ipv4,mia,poa,ams]
-OUTFILE [poison-63221#ipv4,mia,poa,ams#2022-02-27-14h11m]
-/home/testbed/.cargo/bin/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/testbed/work/catchment_manipulation/tools/hitlist_example.txt  -a /home/testbed/work/catchment_manipulation/tools/GeoLite2-ASN.mmdb -c /home/testbed/work/catchment_manipulation/tools/GeoLite2-Country.mmdb  > /home/testbed/work/catchment_manipulation/dataset/2022-02-27-14h11m/poison-63221#ipv4,mia,poa,ams#2022-02-27-14h11m.csv
+OUTFILE [poison-63221#ipv4,mia,poa,ams#2022-03-03-11h14m]
+/home/usenix/anygility-tangled/toolbox/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/usenix/anygility-tangled/toolbox/hitlist_example.txt  -a /home/usenix/anygility-tangled/toolbox/GeoLite2-ASN.mmdb -c /home/usenix/anygility-tangled/toolbox/GeoLite2-Country.mmdb  > /home/usenix/anygility-tangled/dataset/2022-03-03-11h14m/poison-63221#ipv4,mia,poa,ams#2022-03-03-11h14m.csv
 Announce Poison [1149_24115_1149] [145.100.118.0/23] on node [us-mia-anycast01]
 CMD=exabgpcli neighbor 198.32.252.96  announce route 145.100.118.0/23 next-hop self as-path [ 1149 24115 1149 ]
 ------- Verfploeter setup -------
-ACTIVE_BGP_NODES [#ipv4,poa,mia,ams]
-OUTFILE [poison-24115#ipv4,poa,mia,ams#2022-02-27-14h11m]
-/home/testbed/.cargo/bin/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/testbed/work/catchment_manipulation/tools/hitlist_example.txt  -a /home/testbed/work/catchment_manipulation/tools/GeoLite2-ASN.mmdb -c /home/testbed/work/catchment_manipulation/tools/GeoLite2-Country.mmdb  > /home/testbed/work/catchment_manipulation/dataset/2022-02-27-14h11m/poison-24115#ipv4,poa,mia,ams#2022-02-27-14h11m.csv
+ACTIVE_BGP_NODES [#ipv4,mia,ams,poa]
+OUTFILE [poison-24115#ipv4,mia,ams,poa#2022-03-03-11h14m]
+/home/usenix/anygility-tangled/toolbox/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/usenix/anygility-tangled/toolbox/hitlist_example.txt  -a /home/usenix/anygility-tangled/toolbox/GeoLite2-ASN.mmdb -c /home/usenix/anygility-tangled/toolbox/GeoLite2-Country.mmdb  > /home/usenix/anygility-tangled/dataset/2022-03-03-11h14m/poison-24115#ipv4,mia,ams,poa#2022-03-03-11h14m.csv
 Announce Poison [1149_2914_1149] [145.100.118.0/23] on node [us-mia-anycast01]
 CMD=exabgpcli neighbor 198.32.252.96  announce route 145.100.118.0/23 next-hop self as-path [ 1149 2914 1149 ]
 ------- Verfploeter setup -------
 ACTIVE_BGP_NODES [#ipv4,mia,ams,poa]
-OUTFILE [poison-2914#ipv4,mia,ams,poa#2022-02-27-14h11m]
-/home/testbed/.cargo/bin/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/testbed/work/catchment_manipulation/tools/hitlist_example.txt  -a /home/testbed/work/catchment_manipulation/tools/GeoLite2-ASN.mmdb -c /home/testbed/work/catchment_manipulation/tools/GeoLite2-Country.mmdb  > /home/testbed/work/catchment_manipulation/dataset/2022-02-27-14h11m/poison-2914#ipv4,mia,ams,poa#2022-02-27-14h11m.csv
+OUTFILE [poison-2914#ipv4,mia,ams,poa#2022-03-03-11h14m]
+/home/usenix/anygility-tangled/toolbox/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/usenix/anygility-tangled/toolbox/hitlist_example.txt  -a /home/usenix/anygility-tangled/toolbox/GeoLite2-ASN.mmdb -c /home/usenix/anygility-tangled/toolbox/GeoLite2-Country.mmdb  > /home/usenix/anygility-tangled/dataset/2022-03-03-11h14m/poison-2914#ipv4,mia,ams,poa#2022-03-03-11h14m.csv
 Announce Poison [1149_6939_1149] [145.100.118.0/23] on node [us-mia-anycast01]
 CMD=exabgpcli neighbor 198.32.252.96  announce route 145.100.118.0/23 next-hop self as-path [ 1149 6939 1149 ]
 ------- Verfploeter setup -------
-ACTIVE_BGP_NODES [#ipv4,poa,mia,ams]
-OUTFILE [poison-6939#ipv4,poa,mia,ams#2022-02-27-14h11m]
-/home/testbed/.cargo/bin/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/testbed/work/catchment_manipulation/tools/hitlist_example.txt  -a /home/testbed/work/catchment_manipulation/tools/GeoLite2-ASN.mmdb -c /home/testbed/work/catchment_manipulation/tools/GeoLite2-Country.mmdb  > /home/testbed/work/catchment_manipulation/dataset/2022-02-27-14h11m/poison-6939#ipv4,poa,mia,ams#2022-02-27-14h11m.csv
+ACTIVE_BGP_NODES [#ipv4,mia,ams,poa]
+OUTFILE [poison-6939#ipv4,mia,ams,poa#2022-03-03-11h14m]
+/home/usenix/anygility-tangled/toolbox/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/usenix/anygility-tangled/toolbox/hitlist_example.txt  -a /home/usenix/anygility-tangled/toolbox/GeoLite2-ASN.mmdb -c /home/usenix/anygility-tangled/toolbox/GeoLite2-Country.mmdb  > /home/usenix/anygility-tangled/dataset/2022-03-03-11h14m/poison-6939#ipv4,mia,ams,poa#2022-03-03-11h14m.csv
 Announce Poison [1149_7018_1149] [145.100.118.0/23] on node [us-mia-anycast01]
 CMD=exabgpcli neighbor 198.32.252.96  announce route 145.100.118.0/23 next-hop self as-path [ 1149 7018 1149 ]
 ------- Verfploeter setup -------
-ACTIVE_BGP_NODES [#ipv4,poa,ams,mia]
-OUTFILE [poison-7018#ipv4,poa,ams,mia#2022-02-27-14h11m]
-/home/testbed/.cargo/bin/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/testbed/work/catchment_manipulation/tools/hitlist_example.txt  -a /home/testbed/work/catchment_manipulation/tools/GeoLite2-ASN.mmdb -c /home/testbed/work/catchment_manipulation/tools/GeoLite2-Country.mmdb  > /home/testbed/work/catchment_manipulation/dataset/2022-02-27-14h11m/poison-7018#ipv4,poa,ams,mia#2022-02-27-14h11m.csv
+ACTIVE_BGP_NODES [#ipv4,ams,mia,poa]
+OUTFILE [poison-7018#ipv4,ams,mia,poa#2022-03-03-11h14m]
+/home/usenix/anygility-tangled/toolbox/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/usenix/anygility-tangled/toolbox/hitlist_example.txt  -a /home/usenix/anygility-tangled/toolbox/GeoLite2-ASN.mmdb -c /home/usenix/anygility-tangled/toolbox/GeoLite2-Country.mmdb  > /home/usenix/anygility-tangled/dataset/2022-03-03-11h14m/poison-7018#ipv4,ams,mia,poa#2022-03-03-11h14m.csv
 Announce Poison [1149_701_1149] [145.100.118.0/23] on node [us-mia-anycast01]
 CMD=exabgpcli neighbor 198.32.252.96  announce route 145.100.118.0/23 next-hop self as-path [ 1149 701 1149 ]
 ------- Verfploeter setup -------
-ACTIVE_BGP_NODES [#ipv4,mia,ams,poa]
-OUTFILE [poison-701#ipv4,mia,ams,poa#2022-02-27-14h11m]
-/home/testbed/.cargo/bin/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/testbed/work/catchment_manipulation/tools/hitlist_example.txt  -a /home/testbed/work/catchment_manipulation/tools/GeoLite2-ASN.mmdb -c /home/testbed/work/catchment_manipulation/tools/GeoLite2-Country.mmdb  > /home/testbed/work/catchment_manipulation/dataset/2022-02-27-14h11m/poison-701#ipv4,mia,ams,poa#2022-02-27-14h11m.csv
+ACTIVE_BGP_NODES [#ipv4,ams,poa,mia]
+OUTFILE [poison-701#ipv4,ams,poa,mia#2022-03-03-11h14m]
+/home/usenix/anygility-tangled/toolbox/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/usenix/anygility-tangled/toolbox/hitlist_example.txt  -a /home/usenix/anygility-tangled/toolbox/GeoLite2-ASN.mmdb -c /home/usenix/anygility-tangled/toolbox/GeoLite2-Country.mmdb  > /home/usenix/anygility-tangled/dataset/2022-03-03-11h14m/poison-701#ipv4,ams,poa,mia#2022-03-03-11h14m.csv
 Announce Poison [1149_6762_1149] [145.100.118.0/23] on node [us-mia-anycast01]
 CMD=exabgpcli neighbor 198.32.252.96  announce route 145.100.118.0/23 next-hop self as-path [ 1149 6762 1149 ]
 ------- Verfploeter setup -------
-ACTIVE_BGP_NODES [#ipv4,poa,ams,mia]
-OUTFILE [poison-6762#ipv4,poa,ams,mia#2022-02-27-14h11m]
-/home/testbed/.cargo/bin/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/testbed/work/catchment_manipulation/tools/hitlist_example.txt  -a /home/testbed/work/catchment_manipulation/tools/GeoLite2-ASN.mmdb -c /home/testbed/work/catchment_manipulation/tools/GeoLite2-Country.mmdb  > /home/testbed/work/catchment_manipulation/dataset/2022-02-27-14h11m/poison-6762#ipv4,poa,ams,mia#2022-02-27-14h11m.csv
+ACTIVE_BGP_NODES [#ipv4,mia,poa,ams]
+OUTFILE [poison-6762#ipv4,mia,poa,ams#2022-03-03-11h14m]
+/home/usenix/anygility-tangled/toolbox/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/usenix/anygility-tangled/toolbox/hitlist_example.txt  -a /home/usenix/anygility-tangled/toolbox/GeoLite2-ASN.mmdb -c /home/usenix/anygility-tangled/toolbox/GeoLite2-Country.mmdb  > /home/usenix/anygility-tangled/dataset/2022-03-03-11h14m/poison-6762#ipv4,mia,poa,ams#2022-03-03-11h14m.csv
 Announce Poison [1149_3257_1149] [145.100.118.0/23] on node [us-mia-anycast01]
 CMD=exabgpcli neighbor 198.32.252.96  announce route 145.100.118.0/23 next-hop self as-path [ 1149 3257 1149 ]
 ------- Verfploeter setup -------
 ACTIVE_BGP_NODES [#ipv4,poa,mia,ams]
-OUTFILE [poison-3257#ipv4,poa,mia,ams#2022-02-27-14h11m]
-/home/testbed/.cargo/bin/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/testbed/work/catchment_manipulation/tools/hitlist_example.txt  -a /home/testbed/work/catchment_manipulation/tools/GeoLite2-ASN.mmdb -c /home/testbed/work/catchment_manipulation/tools/GeoLite2-Country.mmdb  > /home/testbed/work/catchment_manipulation/dataset/2022-02-27-14h11m/poison-3257#ipv4,poa,mia,ams#2022-02-27-14h11m.csv
+OUTFILE [poison-3257#ipv4,poa,mia,ams#2022-03-03-11h14m]
+/home/usenix/anygility-tangled/toolbox/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/usenix/anygility-tangled/toolbox/hitlist_example.txt  -a /home/usenix/anygility-tangled/toolbox/GeoLite2-ASN.mmdb -c /home/usenix/anygility-tangled/toolbox/GeoLite2-Country.mmdb  > /home/usenix/anygility-tangled/dataset/2022-03-03-11h14m/poison-3257#ipv4,poa,mia,ams#2022-03-03-11h14m.csv
 Announce Poison [1149_6461_1149] [145.100.118.0/23] on node [us-mia-anycast01]
 CMD=exabgpcli neighbor 198.32.252.96  announce route 145.100.118.0/23 next-hop self as-path [ 1149 6461 1149 ]
 ------- Verfploeter setup -------
-ACTIVE_BGP_NODES [#ipv4,mia,poa,ams]
-OUTFILE [poison-6461#ipv4,mia,poa,ams#2022-02-27-14h11m]
-/home/testbed/.cargo/bin/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/testbed/work/catchment_manipulation/tools/hitlist_example.txt  -a /home/testbed/work/catchment_manipulation/tools/GeoLite2-ASN.mmdb -c /home/testbed/work/catchment_manipulation/tools/GeoLite2-Country.mmdb  > /home/testbed/work/catchment_manipulation/dataset/2022-02-27-14h11m/poison-6461#ipv4,mia,poa,ams#2022-02-27-14h11m.csv
+ACTIVE_BGP_NODES [#ipv4,poa,ams,mia]
+OUTFILE [poison-6461#ipv4,poa,ams,mia#2022-03-03-11h14m]
+/home/usenix/anygility-tangled/toolbox/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/usenix/anygility-tangled/toolbox/hitlist_example.txt  -a /home/usenix/anygility-tangled/toolbox/GeoLite2-ASN.mmdb -c /home/usenix/anygility-tangled/toolbox/GeoLite2-Country.mmdb  > /home/usenix/anygility-tangled/dataset/2022-03-03-11h14m/poison-6461#ipv4,poa,ams,mia#2022-03-03-11h14m.csv
 Announce Poison [1149_12953_1149] [145.100.118.0/23] on node [us-mia-anycast01]
 CMD=exabgpcli neighbor 198.32.252.96  announce route 145.100.118.0/23 next-hop self as-path [ 1149 12953 1149 ]
 ------- Verfploeter setup -------
-ACTIVE_BGP_NODES [#ipv4,ams,poa,mia]
-OUTFILE [poison-12953#ipv4,ams,poa,mia#2022-02-27-14h11m]
-/home/testbed/.cargo/bin/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/testbed/work/catchment_manipulation/tools/hitlist_example.txt  -a /home/testbed/work/catchment_manipulation/tools/GeoLite2-ASN.mmdb -c /home/testbed/work/catchment_manipulation/tools/GeoLite2-Country.mmdb  > /home/testbed/work/catchment_manipulation/dataset/2022-02-27-14h11m/poison-12953#ipv4,ams,poa,mia#2022-02-27-14h11m.csv
+ACTIVE_BGP_NODES [#ipv4,ams,mia,poa]
+OUTFILE [poison-12953#ipv4,ams,mia,poa#2022-03-03-11h14m]
+/home/usenix/anygility-tangled/toolbox/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/usenix/anygility-tangled/toolbox/hitlist_example.txt  -a /home/usenix/anygility-tangled/toolbox/GeoLite2-ASN.mmdb -c /home/usenix/anygility-tangled/toolbox/GeoLite2-Country.mmdb  > /home/usenix/anygility-tangled/dataset/2022-03-03-11h14m/poison-12953#ipv4,ams,mia,poa#2022-03-03-11h14m.csv
 Announce Poison [1149_174_1149] [145.100.118.0/23] on node [us-mia-anycast01]
 CMD=exabgpcli neighbor 198.32.252.96  announce route 145.100.118.0/23 next-hop self as-path [ 1149 174 1149 ]
 ------- Verfploeter setup -------
-ACTIVE_BGP_NODES [#ipv4,mia,poa,ams]
-OUTFILE [poison-174#ipv4,mia,poa,ams#2022-02-27-14h11m]
-/home/testbed/.cargo/bin/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/testbed/work/catchment_manipulation/tools/hitlist_example.txt  -a /home/testbed/work/catchment_manipulation/tools/GeoLite2-ASN.mmdb -c /home/testbed/work/catchment_manipulation/tools/GeoLite2-Country.mmdb  > /home/testbed/work/catchment_manipulation/dataset/2022-02-27-14h11m/poison-174#ipv4,mia,poa,ams#2022-02-27-14h11m.csv
+ACTIVE_BGP_NODES [#ipv4,ams,mia,poa]
+OUTFILE [poison-174#ipv4,ams,mia,poa#2022-03-03-11h14m]
+/home/usenix/anygility-tangled/toolbox/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/usenix/anygility-tangled/toolbox/hitlist_example.txt  -a /home/usenix/anygility-tangled/toolbox/GeoLite2-ASN.mmdb -c /home/usenix/anygility-tangled/toolbox/GeoLite2-Country.mmdb  > /home/usenix/anygility-tangled/dataset/2022-03-03-11h14m/poison-174#ipv4,ams,mia,poa#2022-03-03-11h14m.csv
 Announce Poison [1149_1239_1149] [145.100.118.0/23] on node [us-mia-anycast01]
 CMD=exabgpcli neighbor 198.32.252.96  announce route 145.100.118.0/23 next-hop self as-path [ 1149 1239 1149 ]
 ------- Verfploeter setup -------
-ACTIVE_BGP_NODES [#ipv4,poa,ams,mia]
-OUTFILE [poison-1239#ipv4,poa,ams,mia#2022-02-27-14h11m]
-/home/testbed/.cargo/bin/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/testbed/work/catchment_manipulation/tools/hitlist_example.txt  -a /home/testbed/work/catchment_manipulation/tools/GeoLite2-ASN.mmdb -c /home/testbed/work/catchment_manipulation/tools/GeoLite2-Country.mmdb  > /home/testbed/work/catchment_manipulation/dataset/2022-02-27-14h11m/poison-1239#ipv4,poa,ams,mia#2022-02-27-14h11m.csv
+ACTIVE_BGP_NODES [#ipv4,ams,mia,poa]
+OUTFILE [poison-1239#ipv4,ams,mia,poa#2022-03-03-11h14m]
+/home/usenix/anygility-tangled/toolbox/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/usenix/anygility-tangled/toolbox/hitlist_example.txt  -a /home/usenix/anygility-tangled/toolbox/GeoLite2-ASN.mmdb -c /home/usenix/anygility-tangled/toolbox/GeoLite2-Country.mmdb  > /home/usenix/anygility-tangled/dataset/2022-03-03-11h14m/poison-1239#ipv4,ams,mia,poa#2022-03-03-11h14m.csv
 Announce Poison [1149_1273_1149] [145.100.118.0/23] on node [us-mia-anycast01]
 CMD=exabgpcli neighbor 198.32.252.96  announce route 145.100.118.0/23 next-hop self as-path [ 1149 1273 1149 ]
 ------- Verfploeter setup -------
-ACTIVE_BGP_NODES [#ipv4,ams,mia,poa]
-OUTFILE [poison-1273#ipv4,ams,mia,poa#2022-02-27-14h11m]
-/home/testbed/.cargo/bin/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/testbed/work/catchment_manipulation/tools/hitlist_example.txt  -a /home/testbed/work/catchment_manipulation/tools/GeoLite2-ASN.mmdb -c /home/testbed/work/catchment_manipulation/tools/GeoLite2-Country.mmdb  > /home/testbed/work/catchment_manipulation/dataset/2022-02-27-14h11m/poison-1273#ipv4,ams,mia,poa#2022-02-27-14h11m.csv
+ACTIVE_BGP_NODES [#ipv4,poa,mia,ams]
+OUTFILE [poison-1273#ipv4,poa,mia,ams#2022-03-03-11h14m]
+/home/usenix/anygility-tangled/toolbox/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/usenix/anygility-tangled/toolbox/hitlist_example.txt  -a /home/usenix/anygility-tangled/toolbox/GeoLite2-ASN.mmdb -c /home/usenix/anygility-tangled/toolbox/GeoLite2-Country.mmdb  > /home/usenix/anygility-tangled/dataset/2022-03-03-11h14m/poison-1273#ipv4,poa,mia,ams#2022-03-03-11h14m.csv
 Announce Poison [1149_1299_1149] [145.100.118.0/23] on node [us-mia-anycast01]
 CMD=exabgpcli neighbor 198.32.252.96  announce route 145.100.118.0/23 next-hop self as-path [ 1149 1299 1149 ]
 ------- Verfploeter setup -------
-ACTIVE_BGP_NODES [#ipv4,mia,poa,ams]
-OUTFILE [poison-1299#ipv4,mia,poa,ams#2022-02-27-14h11m]
-/home/testbed/.cargo/bin/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/testbed/work/catchment_manipulation/tools/hitlist_example.txt  -a /home/testbed/work/catchment_manipulation/tools/GeoLite2-ASN.mmdb -c /home/testbed/work/catchment_manipulation/tools/GeoLite2-Country.mmdb  > /home/testbed/work/catchment_manipulation/dataset/2022-02-27-14h11m/poison-1299#ipv4,mia,poa,ams#2022-02-27-14h11m.csv
+ACTIVE_BGP_NODES [#ipv4,poa,mia,ams]
+OUTFILE [poison-1299#ipv4,poa,mia,ams#2022-03-03-11h14m]
+/home/usenix/anygility-tangled/toolbox/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/usenix/anygility-tangled/toolbox/hitlist_example.txt  -a /home/usenix/anygility-tangled/toolbox/GeoLite2-ASN.mmdb -c /home/usenix/anygility-tangled/toolbox/GeoLite2-Country.mmdb  > /home/usenix/anygility-tangled/dataset/2022-03-03-11h14m/poison-1299#ipv4,poa,mia,ams#2022-03-03-11h14m.csv
 Announce Poison [1149_3320_1149] [145.100.118.0/23] on node [us-mia-anycast01]
 CMD=exabgpcli neighbor 198.32.252.96  announce route 145.100.118.0/23 next-hop self as-path [ 1149 3320 1149 ]
 ------- Verfploeter setup -------
 ACTIVE_BGP_NODES [#ipv4,poa,mia,ams]
-OUTFILE [poison-3320#ipv4,poa,mia,ams#2022-02-27-14h11m]
-/home/testbed/.cargo/bin/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/testbed/work/catchment_manipulation/tools/hitlist_example.txt  -a /home/testbed/work/catchment_manipulation/tools/GeoLite2-ASN.mmdb -c /home/testbed/work/catchment_manipulation/tools/GeoLite2-Country.mmdb  > /home/testbed/work/catchment_manipulation/dataset/2022-02-27-14h11m/poison-3320#ipv4,poa,mia,ams#2022-02-27-14h11m.csv
+OUTFILE [poison-3320#ipv4,poa,mia,ams#2022-03-03-11h14m]
+/home/usenix/anygility-tangled/toolbox/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/usenix/anygility-tangled/toolbox/hitlist_example.txt  -a /home/usenix/anygility-tangled/toolbox/GeoLite2-ASN.mmdb -c /home/usenix/anygility-tangled/toolbox/GeoLite2-Country.mmdb  > /home/usenix/anygility-tangled/dataset/2022-03-03-11h14m/poison-3320#ipv4,poa,mia,ams#2022-03-03-11h14m.csv
 Announce Poison [1149_3356_1149] [145.100.118.0/23] on node [us-mia-anycast01]
 CMD=exabgpcli neighbor 198.32.252.96  announce route 145.100.118.0/23 next-hop self as-path [ 1149 3356 1149 ]
 ------- Verfploeter setup -------
-ACTIVE_BGP_NODES [#ipv4,mia,ams,poa]
-OUTFILE [poison-3356#ipv4,mia,ams,poa#2022-02-27-14h11m]
-/home/testbed/.cargo/bin/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/testbed/work/catchment_manipulation/tools/hitlist_example.txt  -a /home/testbed/work/catchment_manipulation/tools/GeoLite2-ASN.mmdb -c /home/testbed/work/catchment_manipulation/tools/GeoLite2-Country.mmdb  > /home/testbed/work/catchment_manipulation/dataset/2022-02-27-14h11m/poison-3356#ipv4,mia,ams,poa#2022-02-27-14h11m.csv
+ACTIVE_BGP_NODES [#ipv4,ams,poa,mia]
+OUTFILE [poison-3356#ipv4,ams,poa,mia#2022-03-03-11h14m]
+/home/usenix/anygility-tangled/toolbox/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/usenix/anygility-tangled/toolbox/hitlist_example.txt  -a /home/usenix/anygility-tangled/toolbox/GeoLite2-ASN.mmdb -c /home/usenix/anygility-tangled/toolbox/GeoLite2-Country.mmdb  > /home/usenix/anygility-tangled/dataset/2022-03-03-11h14m/poison-3356#ipv4,ams,poa,mia#2022-03-03-11h14m.csv
 Announce Poison [1149_5511_1149] [145.100.118.0/23] on node [us-mia-anycast01]
 CMD=exabgpcli neighbor 198.32.252.96  announce route 145.100.118.0/23 next-hop self as-path [ 1149 5511 1149 ]
 ------- Verfploeter setup -------
-ACTIVE_BGP_NODES [#ipv4,poa,mia,ams]
-OUTFILE [poison-5511#ipv4,poa,mia,ams#2022-02-27-14h11m]
-/home/testbed/.cargo/bin/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/testbed/work/catchment_manipulation/tools/hitlist_example.txt  -a /home/testbed/work/catchment_manipulation/tools/GeoLite2-ASN.mmdb -c /home/testbed/work/catchment_manipulation/tools/GeoLite2-Country.mmdb  > /home/testbed/work/catchment_manipulation/dataset/2022-02-27-14h11m/poison-5511#ipv4,poa,mia,ams#2022-02-27-14h11m.csv
+ACTIVE_BGP_NODES [#ipv4,mia,poa,ams]
+OUTFILE [poison-5511#ipv4,mia,poa,ams#2022-03-03-11h14m]
+/home/usenix/anygility-tangled/toolbox/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/usenix/anygility-tangled/toolbox/hitlist_example.txt  -a /home/usenix/anygility-tangled/toolbox/GeoLite2-ASN.mmdb -c /home/usenix/anygility-tangled/toolbox/GeoLite2-Country.mmdb  > /home/usenix/anygility-tangled/dataset/2022-03-03-11h14m/poison-5511#ipv4,mia,poa,ams#2022-03-03-11h14m.csv
 Announce Poison [1149_6453_1149] [145.100.118.0/23] on node [us-mia-anycast01]
 CMD=exabgpcli neighbor 198.32.252.96  announce route 145.100.118.0/23 next-hop self as-path [ 1149 6453 1149 ]
 ------- Verfploeter setup -------
 ACTIVE_BGP_NODES [#ipv4,ams,mia,poa]
-OUTFILE [poison-6453#ipv4,ams,mia,poa#2022-02-27-14h11m]
-/home/testbed/.cargo/bin/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/testbed/work/catchment_manipulation/tools/hitlist_example.txt  -a /home/testbed/work/catchment_manipulation/tools/GeoLite2-ASN.mmdb -c /home/testbed/work/catchment_manipulation/tools/GeoLite2-Country.mmdb  > /home/testbed/work/catchment_manipulation/dataset/2022-02-27-14h11m/poison-6453#ipv4,ams,mia,poa#2022-02-27-14h11m.csv
+OUTFILE [poison-6453#ipv4,ams,mia,poa#2022-03-03-11h14m]
+/home/usenix/anygility-tangled/toolbox/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/usenix/anygility-tangled/toolbox/hitlist_example.txt  -a /home/usenix/anygility-tangled/toolbox/GeoLite2-ASN.mmdb -c /home/usenix/anygility-tangled/toolbox/GeoLite2-Country.mmdb  > /home/usenix/anygility-tangled/dataset/2022-03-03-11h14m/poison-6453#ipv4,ams,mia,poa#2022-03-03-11h14m.csv
 Announce Poison [1149_63221_24115_1149] [145.100.118.0/23] on node [us-mia-anycast01]
 CMD=exabgpcli neighbor 198.32.252.96  announce route 145.100.118.0/23 next-hop self as-path [ 1149 63221 24115 1149 ]
 ------- Verfploeter setup -------
-ACTIVE_BGP_NODES [#ipv4,mia,ams,poa]
-OUTFILE [poison-63221-24115#ipv4,mia,ams,poa#2022-02-27-14h11m]
-/home/testbed/.cargo/bin/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/testbed/work/catchment_manipulation/tools/hitlist_example.txt  -a /home/testbed/work/catchment_manipulation/tools/GeoLite2-ASN.mmdb -c /home/testbed/work/catchment_manipulation/tools/GeoLite2-Country.mmdb  > /home/testbed/work/catchment_manipulation/dataset/2022-02-27-14h11m/poison-63221-24115#ipv4,mia,ams,poa#2022-02-27-14h11m.csv
+ACTIVE_BGP_NODES [#ipv4,poa,ams,mia]
+OUTFILE [poison-63221-24115#ipv4,poa,ams,mia#2022-03-03-11h14m]
+/home/usenix/anygility-tangled/toolbox/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/usenix/anygility-tangled/toolbox/hitlist_example.txt  -a /home/usenix/anygility-tangled/toolbox/GeoLite2-ASN.mmdb -c /home/usenix/anygility-tangled/toolbox/GeoLite2-Country.mmdb  > /home/usenix/anygility-tangled/dataset/2022-03-03-11h14m/poison-63221-24115#ipv4,poa,ams,mia#2022-03-03-11h14m.csv
 Announce Poison [1149_1916_1149] [145.100.118.0/23] on node [us-mia-anycast01]
 CMD=exabgpcli neighbor 198.32.252.96  announce route 145.100.118.0/23 next-hop self as-path [ 1149 1916 1149 ]
 ------- Verfploeter setup -------
-ACTIVE_BGP_NODES [#ipv4,ams,mia,poa]
-OUTFILE [poison-1916#ipv4,ams,mia,poa#2022-02-27-14h11m]
-/home/testbed/.cargo/bin/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/testbed/work/catchment_manipulation/tools/hitlist_example.txt  -a /home/testbed/work/catchment_manipulation/tools/GeoLite2-ASN.mmdb -c /home/testbed/work/catchment_manipulation/tools/GeoLite2-Country.mmdb  > /home/testbed/work/catchment_manipulation/dataset/2022-02-27-14h11m/poison-1916#ipv4,ams,mia,poa#2022-02-27-14h11m.csv
+ACTIVE_BGP_NODES [#ipv4,mia,poa,ams]
+OUTFILE [poison-1916#ipv4,mia,poa,ams#2022-03-03-11h14m]
+/home/usenix/anygility-tangled/toolbox/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/usenix/anygility-tangled/toolbox/hitlist_example.txt  -a /home/usenix/anygility-tangled/toolbox/GeoLite2-ASN.mmdb -c /home/usenix/anygility-tangled/toolbox/GeoLite2-Country.mmdb  > /home/usenix/anygility-tangled/dataset/2022-03-03-11h14m/poison-1916#ipv4,mia,poa,ams#2022-03-03-11h14m.csv
 Announce Poison [1149_1251_1149] [145.100.118.0/23] on node [us-mia-anycast01]
 CMD=exabgpcli neighbor 198.32.252.96  announce route 145.100.118.0/23 next-hop self as-path [ 1149 1251 1149 ]
 ------- Verfploeter setup -------
-ACTIVE_BGP_NODES [#ipv4,mia,poa,ams]
-OUTFILE [poison-1251#ipv4,mia,poa,ams#2022-02-27-14h11m]
-/home/testbed/.cargo/bin/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/testbed/work/catchment_manipulation/tools/hitlist_example.txt  -a /home/testbed/work/catchment_manipulation/tools/GeoLite2-ASN.mmdb -c /home/testbed/work/catchment_manipulation/tools/GeoLite2-Country.mmdb  > /home/testbed/work/catchment_manipulation/dataset/2022-02-27-14h11m/poison-1251#ipv4,mia,poa,ams#2022-02-27-14h11m.csv
+ACTIVE_BGP_NODES [#ipv4,poa,ams,mia]
+OUTFILE [poison-1251#ipv4,poa,ams,mia#2022-03-03-11h14m]
+/home/usenix/anygility-tangled/toolbox/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/usenix/anygility-tangled/toolbox/hitlist_example.txt  -a /home/usenix/anygility-tangled/toolbox/GeoLite2-ASN.mmdb -c /home/usenix/anygility-tangled/toolbox/GeoLite2-Country.mmdb  > /home/usenix/anygility-tangled/dataset/2022-03-03-11h14m/poison-1251#ipv4,poa,ams,mia#2022-03-03-11h14m.csv
 Announce Poison [1149_16735_1149] [145.100.118.0/23] on node [us-mia-anycast01]
 CMD=exabgpcli neighbor 198.32.252.96  announce route 145.100.118.0/23 next-hop self as-path [ 1149 16735 1149 ]
 ------- Verfploeter setup -------
 ACTIVE_BGP_NODES [#ipv4,mia,ams,poa]
-OUTFILE [poison-16735#ipv4,mia,ams,poa#2022-02-27-14h11m]
-/home/testbed/.cargo/bin/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/testbed/work/catchment_manipulation/tools/hitlist_example.txt  -a /home/testbed/work/catchment_manipulation/tools/GeoLite2-ASN.mmdb -c /home/testbed/work/catchment_manipulation/tools/GeoLite2-Country.mmdb  > /home/testbed/work/catchment_manipulation/dataset/2022-02-27-14h11m/poison-16735#ipv4,mia,ams,poa#2022-02-27-14h11m.csv
+OUTFILE [poison-16735#ipv4,mia,ams,poa#2022-03-03-11h14m]
+/home/usenix/anygility-tangled/toolbox/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/usenix/anygility-tangled/toolbox/hitlist_example.txt  -a /home/usenix/anygility-tangled/toolbox/GeoLite2-ASN.mmdb -c /home/usenix/anygility-tangled/toolbox/GeoLite2-Country.mmdb  > /home/usenix/anygility-tangled/dataset/2022-03-03-11h14m/poison-16735#ipv4,mia,ams,poa#2022-03-03-11h14m.csv
 Announce Poison [1149_262589_1149] [145.100.118.0/23] on node [us-mia-anycast01]
 CMD=exabgpcli neighbor 198.32.252.96  announce route 145.100.118.0/23 next-hop self as-path [ 1149 262589 1149 ]
 ------- Verfploeter setup -------
-ACTIVE_BGP_NODES [#ipv4,poa,ams,mia]
-OUTFILE [poison-262589#ipv4,poa,ams,mia#2022-02-27-14h11m]
-/home/testbed/.cargo/bin/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/testbed/work/catchment_manipulation/tools/hitlist_example.txt  -a /home/testbed/work/catchment_manipulation/tools/GeoLite2-ASN.mmdb -c /home/testbed/work/catchment_manipulation/tools/GeoLite2-Country.mmdb  > /home/testbed/work/catchment_manipulation/dataset/2022-02-27-14h11m/poison-262589#ipv4,poa,ams,mia#2022-02-27-14h11m.csv
+ACTIVE_BGP_NODES [#ipv4,mia,ams,poa]
+OUTFILE [poison-262589#ipv4,mia,ams,poa#2022-03-03-11h14m]
+/home/usenix/anygility-tangled/toolbox/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/usenix/anygility-tangled/toolbox/hitlist_example.txt  -a /home/usenix/anygility-tangled/toolbox/GeoLite2-ASN.mmdb -c /home/usenix/anygility-tangled/toolbox/GeoLite2-Country.mmdb  > /home/usenix/anygility-tangled/dataset/2022-03-03-11h14m/poison-262589#ipv4,mia,ams,poa#2022-03-03-11h14m.csv

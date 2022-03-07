@@ -79,7 +79,6 @@ run_verfploeter(){
     local numlines
     local bgp
 
-    echo "Starting verfploeter..."
     if [ -z "$VP_BIN" ]; then
 	    echo "ERROR:: Need to set VP_BIN (Verfploter binary)"
 	    exit 1
@@ -88,10 +87,12 @@ run_verfploeter(){
     [ ! -d $REPO ] && mkdir $REPO
     
     # Routes
+    echo "Checking routes..."
     (	echo "#policy,$BGP" > $REPO/$vp_out.routing
         $TANGLER_CLI --nodes-with-announces |  sed "s/-anycast[0-9][0-9]//g" >> $REPO/$vp_out.routing
         $TANGLER_CLI -a --csv >> $REPO/$vp_out.routing ) 
 
+    echo "Starting verfploeter..."
     echo "$VP_BIN cli start $vp_src $ANYCAST_ADDRESS  $HITLIST  -a $ASN_DB -c $GEO_DB  > $REPO/$vp_out.csv" | tee -a $LOG
     $VP_BIN cli start $vp_src $ANYCAST_ADDRESS  $HITLIST  -a $ASN_DB -c $GEO_DB  > $REPO/$vp_out.csv
 

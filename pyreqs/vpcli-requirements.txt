@@ -1,0 +1,5 @@
+cursor==1.3.4
+IP2Location==8.6.4
+numpy==1.19.2
+pandarallel==1.5.2
+pandas==1.1.3

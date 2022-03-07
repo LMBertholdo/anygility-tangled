@@ -1,75 +1,50 @@
-Fri Feb 25 11:00:45 UTC 2022
-Sending Datasets to /home/testbed/work/catchment_manipulation/dataset/2022-02-25-11h00m 
+Thu Mar  3 00:39:40 UTC 2022
+Sending Datasets to /home/usenix/anygility-tangled/dataset/2022-03-03-00h39m 
 Checking SSH Tunnel to Master
 Checking Verfploeter connection
 +-------+------------------+---------+
 | Index | Hostname         | Version |
-| 4     | au-syd-anycast01 | 0.1.42  |
-| 12    | dk-cop-anycast01 | 0.1.42  |
-| 16    | nl-ens-anycast02 | 0.1.42  |
+| 1     | nl-ams-anycast01 | 0.1.42  |
+| 10    | nl-ens-anycast02 | 0.1.42  |
+| 2     | us-sea-anycast01 | 0.1.42  |
+| 3     | dk-cop-anycast01 | 0.1.42  |
+| 16    | au-syd-anycast01 | 0.1.42  |
+| 7     | fr-par-anycast01 | 0.1.42  |
+| 13    | br-gru-anycast01 | 0.1.42  |
+| 9     | de-fra-anycast01 | 0.1.42  |
+| 5     | nl-arn-anycast01 | 0.1.42  |
+| 15    | sg-sin-anycast01 | 0.1.42  |
+| 14    | za-jnb-anycast01 | 0.1.42  |
+| 8     | uk-lnd-anycast02 | 0.1.42  |
+| 4     | us-mia-anycast01 | 0.1.42  |
 | 11    | br-poa-anycast02 | 0.1.42  |
-| 8     | us-was-anycast01 | 0.1.42  |
-| 9     | us-sea-anycast01 | 0.1.42  |
-| 1     | fr-par-anycast01 | 0.1.42  |
-| 5     | uk-lnd-anycast02 | 0.1.42  |
-| 6     | us-mia-anycast01 | 0.1.42  |
-| 10    | us-los-anycast01 | 0.1.42  |
-| 14    | nl-arn-anycast01 | 0.1.42  |
-| 2     | br-gru-anycast01 | 0.1.42  |
-| 3     | sg-sin-anycast01 | 0.1.42  |
-| 15    | de-fra-anycast01 | 0.1.42  |
-| 13    | za-jnb-anycast01 | 0.1.42  |
-| 7     | nl-ams-anycast01 | 0.1.42  |
+| 6     | us-was-anycast01 | 0.1.42  |
+| 12    | us-los-anycast01 | 0.1.42  |
 +-------+------------------+---------+
 Connected clients: 16
 Cleaning routing configurations
-Fri Feb 25 11:00:54 UTC 2022
-Sending Datasets to /home/testbed/work/catchment_manipulation/dataset/2022-02-25-11h00m 
-Checking SSH Tunnel to Master
-Checking Verfploeter connection
-+-------+------------------+---------+
-| Index | Hostname         | Version |
-| 4     | au-syd-anycast01 | 0.1.42  |
-| 12    | dk-cop-anycast01 | 0.1.42  |
-| 16    | nl-ens-anycast02 | 0.1.42  |
-| 11    | br-poa-anycast02 | 0.1.42  |
-| 8     | us-was-anycast01 | 0.1.42  |
-| 9     | us-sea-anycast01 | 0.1.42  |
-| 1     | fr-par-anycast01 | 0.1.42  |
-| 5     | uk-lnd-anycast02 | 0.1.42  |
-| 6     | us-mia-anycast01 | 0.1.42  |
-| 10    | us-los-anycast01 | 0.1.42  |
-| 14    | nl-arn-anycast01 | 0.1.42  |
-| 2     | br-gru-anycast01 | 0.1.42  |
-| 3     | sg-sin-anycast01 | 0.1.42  |
-| 15    | de-fra-anycast01 | 0.1.42  |
-| 13    | za-jnb-anycast01 | 0.1.42  |
-| 7     | nl-ams-anycast01 | 0.1.42  |
-+-------+------------------+---------+
-Connected clients: 16
-Cleaning routing configurations
-Announce route [145.100.118.0/23] on node [br-poa-anycast02]
-1 negative Prepend for node br-poa-anycast02 ( -1xPOA )
-/home/testbed/.cargo/bin/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/testbed/work/catchment_manipulation/tools/hitlist_example.txt  -a /home/testbed/work/catchment_manipulation/tools/GeoLite2-ASN.mmdb -c /home/testbed/work/catchment_manipulation/tools/GeoLite2-Country.mmdb  > /home/testbed/work/catchment_manipulation/dataset/2022-02-25-11h00m/negative_-1xPOA#ipv4,nl-ams,br-poa,us-mia#2022-02-25-11h00m.csv
-2 negative Prepend for node br-poa-anycast02 ( -2xPOA )
-/home/testbed/.cargo/bin/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/testbed/work/catchment_manipulation/tools/hitlist_example.txt  -a /home/testbed/work/catchment_manipulation/tools/GeoLite2-ASN.mmdb -c /home/testbed/work/catchment_manipulation/tools/GeoLite2-Country.mmdb  > /home/testbed/work/catchment_manipulation/dataset/2022-02-25-11h00m/negative_-2xPOA#ipv4,nl-ams,us-mia,br-poa#2022-02-25-11h00m.csv
-3 negative Prepend for node br-poa-anycast02 ( -3xPOA )
-/home/testbed/.cargo/bin/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/testbed/work/catchment_manipulation/tools/hitlist_example.txt  -a /home/testbed/work/catchment_manipulation/tools/GeoLite2-ASN.mmdb -c /home/testbed/work/catchment_manipulation/tools/GeoLite2-Country.mmdb  > /home/testbed/work/catchment_manipulation/dataset/2022-02-25-11h00m/negative_-3xPOA#ipv4,us-mia,nl-ams,br-poa#2022-02-25-11h00m.csv
-Announce route [145.100.118.0/23] on node [us-mia-anycast01]
-1 negative Prepend for node us-mia-anycast01 ( -1xMIA )
-/home/testbed/.cargo/bin/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/testbed/work/catchment_manipulation/tools/hitlist_example.txt  -a /home/testbed/work/catchment_manipulation/tools/GeoLite2-ASN.mmdb -c /home/testbed/work/catchment_manipulation/tools/GeoLite2-Country.mmdb  > /home/testbed/work/catchment_manipulation/dataset/2022-02-25-11h00m/negative_-1xMIA#ipv4,nl-ams,us-mia,br-poa#2022-02-25-11h00m.csv
-2 negative Prepend for node us-mia-anycast01 ( -2xMIA )
-/home/testbed/.cargo/bin/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/testbed/work/catchment_manipulation/tools/hitlist_example.txt  -a /home/testbed/work/catchment_manipulation/tools/GeoLite2-ASN.mmdb -c /home/testbed/work/catchment_manipulation/tools/GeoLite2-Country.mmdb  > /home/testbed/work/catchment_manipulation/dataset/2022-02-25-11h00m/negative_-2xMIA#ipv4,nl-ams,us-mia,br-poa#2022-02-25-11h00m.csv
-3 negative Prepend for node us-mia-anycast01 ( -3xMIA )
-/home/testbed/.cargo/bin/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/testbed/work/catchment_manipulation/tools/hitlist_example.txt  -a /home/testbed/work/catchment_manipulation/tools/GeoLite2-ASN.mmdb -c /home/testbed/work/catchment_manipulation/tools/GeoLite2-Country.mmdb  > /home/testbed/work/catchment_manipulation/dataset/2022-02-25-11h00m/negative_-3xMIA#ipv4,nl-ams,us-mia,br-poa#2022-02-25-11h00m.csv
-Announce route [145.100.118.0/23] on node [nl-ams-anycast01]
-1 negative Prepend for node nl-ams-anycast01 ( -1xAMS )
-/home/testbed/.cargo/bin/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/testbed/work/catchment_manipulation/tools/hitlist_example.txt  -a /home/testbed/work/catchment_manipulation/tools/GeoLite2-ASN.mmdb -c /home/testbed/work/catchment_manipulation/tools/GeoLite2-Country.mmdb  > /home/testbed/work/catchment_manipulation/dataset/2022-02-25-11h00m/negative_-1xAMS#ipv4,br-poa,us-mia,nl-ams#2022-02-25-11h00m.csv
-2 negative Prepend for node nl-ams-anycast01 ( -2xAMS )
-/home/testbed/.cargo/bin/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/testbed/work/catchment_manipulation/tools/hitlist_example.txt  -a /home/testbed/work/catchment_manipulation/tools/GeoLite2-ASN.mmdb -c /home/testbed/work/catchment_manipulation/tools/GeoLite2-Country.mmdb  > /home/testbed/work/catchment_manipulation/dataset/2022-02-25-11h00m/negative_-2xAMS#ipv4,nl-ams,us-mia,br-poa#2022-02-25-11h00m.csv
-3 negative Prepend for node nl-ams-anycast01 ( -3xAMS )
-/home/testbed/.cargo/bin/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/testbed/work/catchment_manipulation/tools/hitlist_example.txt  -a /home/testbed/work/catchment_manipulation/tools/GeoLite2-ASN.mmdb -c /home/testbed/work/catchment_manipulation/tools/GeoLite2-Country.mmdb  > /home/testbed/work/catchment_manipulation/dataset/2022-02-25-11h00m/negative_-3xAMS#ipv4,us-mia,nl-ams,br-poa#2022-02-25-11h00m.csv
+Announce route [145.100.118.0/23] on node [uk-lnd-anycast02]
+1 negative Prepend for node uk-lnd-anycast02 ( -1xLHR )
+/home/usenix/anygility-tangled/toolbox/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/usenix/anygility-tangled/toolbox/hitlist_example.txt  -a /home/usenix/anygility-tangled/toolbox/GeoLite2-ASN.mmdb -c /home/usenix/anygility-tangled/toolbox/GeoLite2-Country.mmdb  > /home/usenix/anygility-tangled/dataset/2022-03-03-00h39m/negative_-1xLHR#ipv4,fr-par,uk-lnd,au-syd#2022-03-03-00h39m.csv
+2 negative Prepend for node uk-lnd-anycast02 ( -2xLHR )
+/home/usenix/anygility-tangled/toolbox/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/usenix/anygility-tangled/toolbox/hitlist_example.txt  -a /home/usenix/anygility-tangled/toolbox/GeoLite2-ASN.mmdb -c /home/usenix/anygility-tangled/toolbox/GeoLite2-Country.mmdb  > /home/usenix/anygility-tangled/dataset/2022-03-03-00h39m/negative_-2xLHR#ipv4,fr-par,uk-lnd,au-syd#2022-03-03-00h39m.csv
+3 negative Prepend for node uk-lnd-anycast02 ( -3xLHR )
+/home/usenix/anygility-tangled/toolbox/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/usenix/anygility-tangled/toolbox/hitlist_example.txt  -a /home/usenix/anygility-tangled/toolbox/GeoLite2-ASN.mmdb -c /home/usenix/anygility-tangled/toolbox/GeoLite2-Country.mmdb  > /home/usenix/anygility-tangled/dataset/2022-03-03-00h39m/negative_-3xLHR#ipv4,uk-lnd,fr-par,au-syd#2022-03-03-00h39m.csv
+Announce route [145.100.118.0/23] on node [fr-par-anycast01]
+1 negative Prepend for node fr-par-anycast01 ( -1xCDG )
+/home/usenix/anygility-tangled/toolbox/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/usenix/anygility-tangled/toolbox/hitlist_example.txt  -a /home/usenix/anygility-tangled/toolbox/GeoLite2-ASN.mmdb -c /home/usenix/anygility-tangled/toolbox/GeoLite2-Country.mmdb  > /home/usenix/anygility-tangled/dataset/2022-03-03-00h39m/negative_-1xCDG#ipv4,fr-par,uk-lnd,au-syd#2022-03-03-00h39m.csv
+2 negative Prepend for node fr-par-anycast01 ( -2xCDG )
+/home/usenix/anygility-tangled/toolbox/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/usenix/anygility-tangled/toolbox/hitlist_example.txt  -a /home/usenix/anygility-tangled/toolbox/GeoLite2-ASN.mmdb -c /home/usenix/anygility-tangled/toolbox/GeoLite2-Country.mmdb  > /home/usenix/anygility-tangled/dataset/2022-03-03-00h39m/negative_-2xCDG#ipv4,au-syd,fr-par,uk-lnd#2022-03-03-00h39m.csv
+3 negative Prepend for node fr-par-anycast01 ( -3xCDG )
+/home/usenix/anygility-tangled/toolbox/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/usenix/anygility-tangled/toolbox/hitlist_example.txt  -a /home/usenix/anygility-tangled/toolbox/GeoLite2-ASN.mmdb -c /home/usenix/anygility-tangled/toolbox/GeoLite2-Country.mmdb  > /home/usenix/anygility-tangled/dataset/2022-03-03-00h39m/negative_-3xCDG#ipv4,fr-par,au-syd,uk-lnd#2022-03-03-00h39m.csv
+Announce route [145.100.118.0/23] on node [au-syd-anycast01]
+1 negative Prepend for node au-syd-anycast01 ( -1xSYD )
+/home/usenix/anygility-tangled/toolbox/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/usenix/anygility-tangled/toolbox/hitlist_example.txt  -a /home/usenix/anygility-tangled/toolbox/GeoLite2-ASN.mmdb -c /home/usenix/anygility-tangled/toolbox/GeoLite2-Country.mmdb  > /home/usenix/anygility-tangled/dataset/2022-03-03-00h39m/negative_-1xSYD#ipv4,au-syd,uk-lnd,fr-par#2022-03-03-00h39m.csv
+2 negative Prepend for node au-syd-anycast01 ( -2xSYD )
+/home/usenix/anygility-tangled/toolbox/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/usenix/anygility-tangled/toolbox/hitlist_example.txt  -a /home/usenix/anygility-tangled/toolbox/GeoLite2-ASN.mmdb -c /home/usenix/anygility-tangled/toolbox/GeoLite2-Country.mmdb  > /home/usenix/anygility-tangled/dataset/2022-03-03-00h39m/negative_-2xSYD#ipv4,au-syd,uk-lnd,fr-par#2022-03-03-00h39m.csv
+3 negative Prepend for node au-syd-anycast01 ( -3xSYD )
+/home/usenix/anygility-tangled/toolbox/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/usenix/anygility-tangled/toolbox/hitlist_example.txt  -a /home/usenix/anygility-tangled/toolbox/GeoLite2-ASN.mmdb -c /home/usenix/anygility-tangled/toolbox/GeoLite2-Country.mmdb  > /home/usenix/anygility-tangled/dataset/2022-03-03-00h39m/negative_-3xSYD#ipv4,au-syd,fr-par,uk-lnd#2022-03-03-00h39m.csv
 -------------------------------------------------------------------------
  Negative Prepend Finished!
- Output at /home/testbed/work/catchment_manipulation/dataset/2022-02-25-11h00m
+ Output at /home/usenix/anygility-tangled/dataset/2022-03-03-00h39m
 -------------------------------------------------------------------------

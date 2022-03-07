@@ -1,8 +1,0 @@
-#policy,positive-20473:6001xus-mia
-#timestamp,1646056136
-#hitlist,not_provided
-site,counts,percent
-au-syd-anycast01,7645,88
-uk-lnd-anycast02,978,11
-us-mia-anycast01,17,0
-

@@ -1,131 +1,120 @@
-Thu Feb 24 19:27:25 UTC 2022
-Sending Datasets to /home/testbed/work/catchment_manipulation/dataset/2022-02-24-19h27m 
+Wed Mar  2 22:50:06 UTC 2022
+Sending Datasets to /home/usenix/anygility-tangled/dataset/2022-03-02-22h50m 
 Checking SSH Tunnel to Master
 Checking Verfploeter connection
 +-------+------------------+---------+
 | Index | Hostname         | Version |
-| 4     | au-syd-anycast01 | 0.1.42  |
-| 12    | dk-cop-anycast01 | 0.1.42  |
-| 16    | nl-ens-anycast02 | 0.1.42  |
+| 1     | nl-ams-anycast01 | 0.1.42  |
+| 10    | nl-ens-anycast02 | 0.1.42  |
+| 2     | us-sea-anycast01 | 0.1.42  |
+| 3     | dk-cop-anycast01 | 0.1.42  |
+| 16    | au-syd-anycast01 | 0.1.42  |
+| 7     | fr-par-anycast01 | 0.1.42  |
+| 13    | br-gru-anycast01 | 0.1.42  |
+| 9     | de-fra-anycast01 | 0.1.42  |
+| 5     | nl-arn-anycast01 | 0.1.42  |
+| 15    | sg-sin-anycast01 | 0.1.42  |
+| 14    | za-jnb-anycast01 | 0.1.42  |
+| 8     | uk-lnd-anycast02 | 0.1.42  |
+| 4     | us-mia-anycast01 | 0.1.42  |
 | 11    | br-poa-anycast02 | 0.1.42  |
-| 8     | us-was-anycast01 | 0.1.42  |
-| 9     | us-sea-anycast01 | 0.1.42  |
-| 1     | fr-par-anycast01 | 0.1.42  |
-| 5     | uk-lnd-anycast02 | 0.1.42  |
-| 6     | us-mia-anycast01 | 0.1.42  |
-| 10    | us-los-anycast01 | 0.1.42  |
-| 14    | nl-arn-anycast01 | 0.1.42  |
-| 2     | br-gru-anycast01 | 0.1.42  |
-| 3     | sg-sin-anycast01 | 0.1.42  |
-| 15    | de-fra-anycast01 | 0.1.42  |
-| 13    | za-jnb-anycast01 | 0.1.42  |
-| 7     | nl-ams-anycast01 | 0.1.42  |
+| 6     | us-was-anycast01 | 0.1.42  |
+| 12    | us-los-anycast01 | 0.1.42  |
 +-------+------------------+---------+
 Connected clients: 16
 Cleaning routing configurations
-Anycast baseline measurement started: Thu Feb 24 19:27:54 UTC 2022 
-Activating anycast prefix  
-Checking active nodes on Tangled
+Configuring Baseline
 -------
- We are generating packet in: us-mia-anycast01 
- We set this BGP Policy: baseline 
- Verfploter starting...
-/home/testbed/.cargo/bin/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/testbed/work/catchment_manipulation/tools/hitlist_example.txt  -a /home/testbed/work/catchment_manipulation/tools/GeoLite2-ASN.mmdb -c /home/testbed/work/catchment_manipulation/tools/GeoLite2-Country.mmdb  > /home/testbed/work/catchment_manipulation/dataset/2022-02-24-19h27m/baseline#ipv4,nl-ams,br-poa,us-mia#2022-02-24-19h27m.csv
--------------------------------------------------------------------------
- Baseline Finished!
- Output at /home/testbed/work/catchment_manipulation/dataset/2022-02-24-19h27m/baseline#ipv4,nl-ams,br-poa,us-mia#2022-02-24-19h27m
--------------------------------------------------------------------------
--------
-Add 1 prepend on node br-poa-anycast02
+Add 1 prepend on node uk-lnd-anycast02
 -------
 -------
  We are generating packet in: us-mia-anycast01 
- We set this BGP Policy: 1xPOA 
+ We set this BGP Policy: 1xLHR 
  Verfploter starting...
-/home/testbed/.cargo/bin/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/testbed/work/catchment_manipulation/tools/hitlist_example.txt  -a /home/testbed/work/catchment_manipulation/tools/GeoLite2-ASN.mmdb -c /home/testbed/work/catchment_manipulation/tools/GeoLite2-Country.mmdb  > /home/testbed/work/catchment_manipulation/dataset/2022-02-24-19h27m/1xPOA#ipv4,br-poa,us-mia,nl-ams#2022-02-24-19h27m.csv
-remove announcement from br-poa-anycast02
-add prefix announcement for br-poa-anycast02
+/home/usenix/anygility-tangled/toolbox/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/usenix/anygility-tangled/toolbox/hitlist_example.txt  -a /home/usenix/anygility-tangled/toolbox/GeoLite2-ASN.mmdb -c /home/usenix/anygility-tangled/toolbox/GeoLite2-Country.mmdb  > /home/usenix/anygility-tangled/dataset/2022-03-02-22h50m/1xLHR#ipv4,au-syd,fr-par,uk-lnd#2022-03-02-22h50m.csv
+remove announcement from uk-lnd-anycast02
+add prefix announcement for uk-lnd-anycast02
 -------
-Add 1 prepend on node us-mia-anycast01
+Add 1 prepend on node fr-par-anycast01
 -------
 -------
  We are generating packet in: us-mia-anycast01 
- We set this BGP Policy: 1xMIA 
+ We set this BGP Policy: 1xCDG 
  Verfploter starting...
-/home/testbed/.cargo/bin/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/testbed/work/catchment_manipulation/tools/hitlist_example.txt  -a /home/testbed/work/catchment_manipulation/tools/GeoLite2-ASN.mmdb -c /home/testbed/work/catchment_manipulation/tools/GeoLite2-Country.mmdb  > /home/testbed/work/catchment_manipulation/dataset/2022-02-24-19h27m/1xMIA#ipv4,nl-ams,us-mia,br-poa#2022-02-24-19h27m.csv
-remove announcement from us-mia-anycast01
-add prefix announcement for us-mia-anycast01
+/home/usenix/anygility-tangled/toolbox/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/usenix/anygility-tangled/toolbox/hitlist_example.txt  -a /home/usenix/anygility-tangled/toolbox/GeoLite2-ASN.mmdb -c /home/usenix/anygility-tangled/toolbox/GeoLite2-Country.mmdb  > /home/usenix/anygility-tangled/dataset/2022-03-02-22h50m/1xCDG#ipv4,uk-lnd,au-syd,fr-par#2022-03-02-22h50m.csv
+remove announcement from fr-par-anycast01
+add prefix announcement for fr-par-anycast01
 -------
-Add 1 prepend on node nl-ams-anycast01
+Add 1 prepend on node au-syd-anycast01
 -------
 -------
  We are generating packet in: us-mia-anycast01 
- We set this BGP Policy: 1xAMS 
+ We set this BGP Policy: 1xSYD 
  Verfploter starting...
-/home/testbed/.cargo/bin/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/testbed/work/catchment_manipulation/tools/hitlist_example.txt  -a /home/testbed/work/catchment_manipulation/tools/GeoLite2-ASN.mmdb -c /home/testbed/work/catchment_manipulation/tools/GeoLite2-Country.mmdb  > /home/testbed/work/catchment_manipulation/dataset/2022-02-24-19h27m/1xAMS#ipv4,nl-ams,us-mia,br-poa#2022-02-24-19h27m.csv
-remove announcement from nl-ams-anycast01
-add prefix announcement for nl-ams-anycast01
+/home/usenix/anygility-tangled/toolbox/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/usenix/anygility-tangled/toolbox/hitlist_example.txt  -a /home/usenix/anygility-tangled/toolbox/GeoLite2-ASN.mmdb -c /home/usenix/anygility-tangled/toolbox/GeoLite2-Country.mmdb  > /home/usenix/anygility-tangled/dataset/2022-03-02-22h50m/1xSYD#ipv4,fr-par,uk-lnd,au-syd#2022-03-02-22h50m.csv
+remove announcement from au-syd-anycast01
+add prefix announcement for au-syd-anycast01
 -------
-Add 2 prepend on node br-poa-anycast02
+Add 2 prepend on node uk-lnd-anycast02
 -------
 -------
  We are generating packet in: us-mia-anycast01 
- We set this BGP Policy: 2xPOA 
+ We set this BGP Policy: 2xLHR 
  Verfploter starting...
-/home/testbed/.cargo/bin/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/testbed/work/catchment_manipulation/tools/hitlist_example.txt  -a /home/testbed/work/catchment_manipulation/tools/GeoLite2-ASN.mmdb -c /home/testbed/work/catchment_manipulation/tools/GeoLite2-Country.mmdb  > /home/testbed/work/catchment_manipulation/dataset/2022-02-24-19h27m/2xPOA#ipv4,us-mia,nl-ams,br-poa#2022-02-24-19h27m.csv
-remove announcement from br-poa-anycast02
-add prefix announcement for br-poa-anycast02
+/home/usenix/anygility-tangled/toolbox/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/usenix/anygility-tangled/toolbox/hitlist_example.txt  -a /home/usenix/anygility-tangled/toolbox/GeoLite2-ASN.mmdb -c /home/usenix/anygility-tangled/toolbox/GeoLite2-Country.mmdb  > /home/usenix/anygility-tangled/dataset/2022-03-02-22h50m/2xLHR#ipv4,uk-lnd,au-syd,fr-par#2022-03-02-22h50m.csv
+remove announcement from uk-lnd-anycast02
+add prefix announcement for uk-lnd-anycast02
 -------
-Add 2 prepend on node us-mia-anycast01
+Add 2 prepend on node fr-par-anycast01
 -------
 -------
  We are generating packet in: us-mia-anycast01 
- We set this BGP Policy: 2xMIA 
+ We set this BGP Policy: 2xCDG 
  Verfploter starting...
-/home/testbed/.cargo/bin/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/testbed/work/catchment_manipulation/tools/hitlist_example.txt  -a /home/testbed/work/catchment_manipulation/tools/GeoLite2-ASN.mmdb -c /home/testbed/work/catchment_manipulation/tools/GeoLite2-Country.mmdb  > /home/testbed/work/catchment_manipulation/dataset/2022-02-24-19h27m/2xMIA#ipv4,us-mia,br-poa,nl-ams#2022-02-24-19h27m.csv
-remove announcement from us-mia-anycast01
-add prefix announcement for us-mia-anycast01
+/home/usenix/anygility-tangled/toolbox/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/usenix/anygility-tangled/toolbox/hitlist_example.txt  -a /home/usenix/anygility-tangled/toolbox/GeoLite2-ASN.mmdb -c /home/usenix/anygility-tangled/toolbox/GeoLite2-Country.mmdb  > /home/usenix/anygility-tangled/dataset/2022-03-02-22h50m/2xCDG#ipv4,au-syd,uk-lnd,fr-par#2022-03-02-22h50m.csv
+remove announcement from fr-par-anycast01
+add prefix announcement for fr-par-anycast01
 -------
-Add 2 prepend on node nl-ams-anycast01
+Add 2 prepend on node au-syd-anycast01
 -------
 -------
  We are generating packet in: us-mia-anycast01 
- We set this BGP Policy: 2xAMS 
+ We set this BGP Policy: 2xSYD 
  Verfploter starting...
-/home/testbed/.cargo/bin/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/testbed/work/catchment_manipulation/tools/hitlist_example.txt  -a /home/testbed/work/catchment_manipulation/tools/GeoLite2-ASN.mmdb -c /home/testbed/work/catchment_manipulation/tools/GeoLite2-Country.mmdb  > /home/testbed/work/catchment_manipulation/dataset/2022-02-24-19h27m/2xAMS#ipv4,br-poa,nl-ams,us-mia#2022-02-24-19h27m.csv
-remove announcement from nl-ams-anycast01
-add prefix announcement for nl-ams-anycast01
+/home/usenix/anygility-tangled/toolbox/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/usenix/anygility-tangled/toolbox/hitlist_example.txt  -a /home/usenix/anygility-tangled/toolbox/GeoLite2-ASN.mmdb -c /home/usenix/anygility-tangled/toolbox/GeoLite2-Country.mmdb  > /home/usenix/anygility-tangled/dataset/2022-03-02-22h50m/2xSYD#ipv4,au-syd,uk-lnd,fr-par#2022-03-02-22h50m.csv
+remove announcement from au-syd-anycast01
+add prefix announcement for au-syd-anycast01
 -------
-Add 3 prepend on node br-poa-anycast02
+Add 3 prepend on node uk-lnd-anycast02
 -------
 -------
  We are generating packet in: us-mia-anycast01 
- We set this BGP Policy: 3xPOA 
+ We set this BGP Policy: 3xLHR 
  Verfploter starting...
-/home/testbed/.cargo/bin/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/testbed/work/catchment_manipulation/tools/hitlist_example.txt  -a /home/testbed/work/catchment_manipulation/tools/GeoLite2-ASN.mmdb -c /home/testbed/work/catchment_manipulation/tools/GeoLite2-Country.mmdb  > /home/testbed/work/catchment_manipulation/dataset/2022-02-24-19h27m/3xPOA#ipv4,nl-ams,br-poa,us-mia#2022-02-24-19h27m.csv
-remove announcement from br-poa-anycast02
-add prefix announcement for br-poa-anycast02
+/home/usenix/anygility-tangled/toolbox/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/usenix/anygility-tangled/toolbox/hitlist_example.txt  -a /home/usenix/anygility-tangled/toolbox/GeoLite2-ASN.mmdb -c /home/usenix/anygility-tangled/toolbox/GeoLite2-Country.mmdb  > /home/usenix/anygility-tangled/dataset/2022-03-02-22h50m/3xLHR#ipv4,au-syd,fr-par,uk-lnd#2022-03-02-22h50m.csv
+remove announcement from uk-lnd-anycast02
+add prefix announcement for uk-lnd-anycast02
 -------
-Add 3 prepend on node us-mia-anycast01
+Add 3 prepend on node fr-par-anycast01
 -------
 -------
  We are generating packet in: us-mia-anycast01 
- We set this BGP Policy: 3xMIA 
+ We set this BGP Policy: 3xCDG 
  Verfploter starting...
-/home/testbed/.cargo/bin/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/testbed/work/catchment_manipulation/tools/hitlist_example.txt  -a /home/testbed/work/catchment_manipulation/tools/GeoLite2-ASN.mmdb -c /home/testbed/work/catchment_manipulation/tools/GeoLite2-Country.mmdb  > /home/testbed/work/catchment_manipulation/dataset/2022-02-24-19h27m/3xMIA#ipv4,us-mia,nl-ams,br-poa#2022-02-24-19h27m.csv
-remove announcement from us-mia-anycast01
-add prefix announcement for us-mia-anycast01
+/home/usenix/anygility-tangled/toolbox/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/usenix/anygility-tangled/toolbox/hitlist_example.txt  -a /home/usenix/anygility-tangled/toolbox/GeoLite2-ASN.mmdb -c /home/usenix/anygility-tangled/toolbox/GeoLite2-Country.mmdb  > /home/usenix/anygility-tangled/dataset/2022-03-02-22h50m/3xCDG#ipv4,fr-par,au-syd,uk-lnd#2022-03-02-22h50m.csv
+remove announcement from fr-par-anycast01
+add prefix announcement for fr-par-anycast01
 -------
-Add 3 prepend on node nl-ams-anycast01
+Add 3 prepend on node au-syd-anycast01
 -------
 -------
  We are generating packet in: us-mia-anycast01 
- We set this BGP Policy: 3xAMS 
+ We set this BGP Policy: 3xSYD 
  Verfploter starting...
-/home/testbed/.cargo/bin/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/testbed/work/catchment_manipulation/tools/hitlist_example.txt  -a /home/testbed/work/catchment_manipulation/tools/GeoLite2-ASN.mmdb -c /home/testbed/work/catchment_manipulation/tools/GeoLite2-Country.mmdb  > /home/testbed/work/catchment_manipulation/dataset/2022-02-24-19h27m/3xAMS#ipv4,nl-ams,br-poa,us-mia#2022-02-24-19h27m.csv
-remove announcement from nl-ams-anycast01
-add prefix announcement for nl-ams-anycast01
+/home/usenix/anygility-tangled/toolbox/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/usenix/anygility-tangled/toolbox/hitlist_example.txt  -a /home/usenix/anygility-tangled/toolbox/GeoLite2-ASN.mmdb -c /home/usenix/anygility-tangled/toolbox/GeoLite2-Country.mmdb  > /home/usenix/anygility-tangled/dataset/2022-03-02-22h50m/3xSYD#ipv4,fr-par,uk-lnd,au-syd#2022-03-02-22h50m.csv
+remove announcement from au-syd-anycast01
+add prefix announcement for au-syd-anycast01
 -------------------------------------------------------------------------
  Prepend Finished!
- Output at /home/testbed/work/catchment_manipulation/dataset/2022-02-24-19h27m/3xAMS#ipv4,nl-ams,br-poa,us-mia#2022-02-24-19h27m
+ Output at /home/usenix/anygility-tangled/dataset/2022-03-02-22h50m/3xSYD#ipv4,fr-par,uk-lnd,au-syd#2022-03-02-22h50m
 -------------------------------------------------------------------------

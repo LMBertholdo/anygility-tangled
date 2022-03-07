@@ -1,1 +1,0 @@
-/home/testbed/work/catchment_manipulation/tools/vp-cli.py -s us-mia-anycast01  -b \"positive-20473:6001xuk-lnd\" -g /home/testbed/work/catchment_manipulation/tools/IP2LOCATION-LITE-DB9.BIN  -f /home/testbed/work/catchment_manipulation/dataset/2022-02-28-11h44m/positive-20473:6001xuk-lnd#ipv4,au-syd,us-mia,uk-lnd,fr-par#2022-02-28-11h44m.csv.gz -n

@@ -1,0 +1,99 @@
+Anygility for Tangled
+
+This software is intended to create and use playbooks as described on the paper
+"Anycast Agility: Network Playbooks to Fight DDoS".
+
+To software use and execution go to README.TXT file
+
+
+########################################################
+# Anygility install on Tangled testbed
+########################################################
+#
+# download last version 
+#
+#wget https://github.com/LMBertholdo/anygility-tangled/releases/download/
+
+#
+# Configure PATHs on 00-globalvars.sh
+#
+vi 00-globalvars.sh
+
+#
+# Copy external binaries and databases to $HOME/toolbox folder
+# You need to download from Maxmind, ip2location, verfploeter and isi.edu sites
+#
+GeoLite2-ASN.mmdb
+GeoLite2-Country.mmdb
+ip2location.bin
+verfploeter
+hitlist_example.txt
+
+#
+# [Optional] add tools and toolbox to $PATH
+#
+echo 'export $PATH=$HOME/anygility-tangled/tools:$HOME/anygility-tangled/toolbox:$PATH' >> .bashrc
+
+#
+# [Optional] Configure a virtual environment for anygility python (pyenv-virtualenv)
+#
+apt get install pyenv
+pyenv install 3.8.6
+git clone https://github.com/pyenv/pyenv-virtualenv.git $PYENV_ROOT/plugins/pyenv-virtualenv
+# check your paths in .bashrc
+export PATH="$PYENV_ROOT/shims:$PYENV_ROOT/bin:$PATH"
+# add to .bashrc
+echo 'eval "$(pyenv virtualenv-init -)"' >> ~/.bashrc
+# create a new env as default
+pyenv virtualenv 3.8.6 anygility
+pyenv global anygility
+# Check version 3.8.6
+python -V
+
+#
+# install python requirements
+#
+pip install -r anygility-tangled/pyreqs/bgptuner-requirements.txt
+pip install -r anygility-tangled/pyreqs/makeplaybook-requirements.txt
+pip install -r anygility-tangled/pyreqs/runplaybook-requirements.txt
+pip install -r anygility-tangled/pyreqs/tanglercli-requirements.txt
+pip install -r anygility-tangled/pyreqs/vpcli-requirements.txt
+
+
+# 
+# running measurement scripts
+# after running each script "annotate the directory name" or rename it 
+# directory name is something like "dataset/2022-03-02-20h28m"
+# the "last" link is updated at each new measurement.
+# to refer when calling make-playbook
+# execute how many of them you want
+#
+cd anygility
+./01-baseline.sh
+./02-positive_prepend.sh
+
+#
+# create the playbook (using folder name you saved before)
+#
+make-playbook --dir dataset/baseline --dir dataset/positive_prepend 
+
+#
+# Running bgp-tuner
+#
+# you can run on the testbed - if you prefer - or in your own linux/macos machine 
+cd ~/anygility-tangled/tools/bgp-tuner
+./bgp-tuner.py
+
+# if you want to run directly on testbed, you need first map ports using ssh
+# to map testbed localhost:12345 to yourmachine:12345
+# execute in your machine this command:
+ssh -L 12345:localhost:12345 usenix@tangled
+
+# Now Open your browser and access localhost:12345
+
+
+
+
+
+
+

@@ -1,0 +1,7 @@
+#policy,poison-7018
+#timestamp,1646311783
+#hitlist,not_provided
+site,counts,percent
+nl-ams-anycast01,8592,98
+br-poa-anycast02,111,1
+

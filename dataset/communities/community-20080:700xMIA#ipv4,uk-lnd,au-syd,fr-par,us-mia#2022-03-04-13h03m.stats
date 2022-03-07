@@ -1,0 +1,9 @@
+#policy,community-20080:700xMIA
+#timestamp,1646405562
+#hitlist,not_provided
+site,counts,percent
+au-syd-anycast01,7296,88
+uk-lnd-anycast02,822,9
+us-mia-anycast01,83,1
+fr-par-anycast01,63,0
+

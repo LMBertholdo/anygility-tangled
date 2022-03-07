@@ -1,0 +1,1 @@
+/home/usenix/anygility-tangled/tools/vp-cli.py -s us-mia-anycast01  -b \"-3xSYD\"  -f /home/usenix/anygility-tangled/dataset/2022-03-03-00h39m/negative_-3xSYD#ipv4,au-syd,fr-par,uk-lnd#2022-03-03-00h39m.csv.gz

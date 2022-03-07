@@ -48,7 +48,7 @@ from pandarallel import pandarallel
 ###############################################################################
 ### Program settings
 verbose = False
-version = 1.2
+version = "1.2.3"
 program_name = os.path.basename(__file__)
 ###############################################################################
 ### Subrotines
@@ -382,8 +382,10 @@ logging.debug("init")
 df = init_load(args)
 
 if (args.quiet):
+    logging.debug("pandarallel verbose=0")
     pandarallel.initialize(verbose=0)
 else:
+    logging.debug("pandarallel verbose=1")
     pandarallel.initialize(progress_bar=True, verbose=1)
 
 # add weight 
@@ -465,7 +467,10 @@ else:
 
     if (args.csv):
         logging.info("Generating CSV stats...")
-        print ("#policy,{}".format(args.bgp.replace('"','')))
+        if (args.bgp): 
+            print ("#policy,{}".format(args.bgp.replace('"','')))
+        else:
+            print ("#policy,UNDEFINED")
         print ("#timestamp,{}".format(int(time.time())))
         if (args.hitlist):
             print (f"#hitlist,{args.hitlist}")

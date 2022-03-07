@@ -3,6 +3,8 @@ Anygility for Tangled
 This software is intended to create and use playbooks as described on the paper
 "Anycast Agility: Network Playbooks to Fight DDoS".
 
+Software installation instructions on Tangled testbed in INSTALL.TXT
+
 This set of tools provided here is part of the Tangled anycast testbed
 (https://anycast-testbed.nl). Even though most of the tools are tailored to our anycast network,
 the tools could be easily customized to any anycast network. Check the script tangler-cli.py to
@@ -18,8 +20,22 @@ src
 ├── 03-negative_prepend.sh
 ├── 04-communities.sh
 ├── 05-poison.sh
+├── INSTALL.TXT
+├── README.TXT
 ├── dataset
-├── readme.txt
+├── pyreqs
+│   ├── bgptuner-requirements.txt
+│   ├── makeplaybook-requirements.txt
+│   ├── runplaybook-requirements.txt
+│   ├── tanglercli-requirements.txt
+│   └── vpcli-requirements.txt
+├── toolbox
+│   ├── GeoLite2-ASN.mmdb
+│   ├── GeoLite2-Country.mmdb
+│   ├── attack-load.txt
+│   ├── hitlist_example.txt
+│   ├── ip2location.bin
+│   └── verfploeter
 └── tools
     ├── bgp-tuner
     │   ├── assets
@@ -38,29 +54,33 @@ src
     ├── tangler-cli.py
     └── vp-cli.py
 
-Dependencies:
-1) Measurement scripts - starting by numbers on SRC directory need an anycast
+=================== DEPENDENCIES ===================
+1) Measurement scripts - starting by numbers on SRC directory. Need an anycast
    network access (here we used Tangled). This anycast network expects exabgp
-   BGP sections established (https://github.com/Exa-Networ established.
-   Verfploter software also needs to be installed, and an IP Hitlist is provided.
-   each software path needs to be configured on 00-globalvar.sh.
-2) Tangled-cli: need access to Tangled testbed to run
-   (https://anycast-testbed.nl)  
+   BGP sections established).
+   Verfploter software also needs to be installed. An IP Hitlist need to be  provided.
+   Each software path needs to be configured on 00-globalvar.sh.
+2) Tangled-cli: Controls routing on Tangled testbed (https://anycast-testbed.nl).
 3) vp-cli.py: need verfploeter raw files to build several metadata (ex.stats)
 4) make-playbook.py: need metatada produced by vp-cli to build anycast playbook
 5) run-playbook.py: need access to anycast testbed, anycast playbook, and routing files
-6) bgp-tuner has its own requirements (install requirements.txt below 
-   bgp-tuner directory). As a graphical interface, it needs to be customized with 
-   each set of anycast sites. It is customized for the playbooks inside 
-   bgp-tuner/dataset folder.
+6) bgp-tuner has its own requirements (install requirement from pyreqs directory).
+   The graphical interface is customized for a set of anycast sites. 
+   It is ready to use for the playbooks inside bgp-tuner/dataset folder.
+7) Other dependencies software as geolocation files and hitlist need to be downloaded.
+   We provided some examples on toolboox directory.
 
+=================== PYTHON REQUIREMENT  ===================
+You cant find all python requirement files in pyreqs directory. You need it to 
+run this software. Follow an example of use:
+
+pip install -r anygility-tangled/pyreqs/bgptuner-requirements.txt
+
+=================== EXAMPLE OF SOFTWARE USE ===================
 How to run (considering access to tangled testbed):
 configure your paths at ./00-globalvar.sh
 run ./01-baseline.sh
-run ./make-playbook --dir dataset/last --out dataset/playbook.csv
-
-
-=================== EXAMPLE OF SOFTWARE USE ===================
+run ./make-playbook --dir dataset/last --out dataset/playbook.csv --fsdb dataset/playbook.fsdb
 
 The baseline dataset provides a baseline measurement using just 3 nodes (br-poa, us-mia, and nl-ams).
 the measurement process just used 0.01% of the full histlist as a way to try this tools sets and get
@@ -111,7 +131,7 @@ br-poa-anycast02,145.100.118.0/23,64552,145.100.119.1,
 nl-ams-anycast01,145.100.118.0/23,64515,169.254.169.254,
 us-mia-anycast01,145.100.118.0/23,20080,198.32.252.96,
 
-This information is saved on *.routing file for each measurement.
+Each running scripts also save This information on *.routing file.
 
 ➜  dataset git:(master) ✗ cat baseline/baseline\#ipv4,us-mia,br-poa,nl-ams\#2022-02-28-15h02m.routing
 #policy,baseline
@@ -124,8 +144,7 @@ nl-ams-anycast01,145.100.118.0/23,64515,169.254.169.254,
 us-mia-anycast01,145.100.118.0/23,20080,198.32.252.96,
 
 
-
-=== MAKE-PLAYBOOK === 
+=== Creating a playbook with MAKE-PLAYBOOK === 
 
 ➜  src git:(master) ✗ tools/make-playbook.py --dir dataset/baseline --dir dataset/bgp-community --dir dataset/negative-prepend --dir dataset/poison --dir dataset/prepend
 Building Playbook from dataset/baseline
@@ -147,10 +166,27 @@ positive-20473:6000xau-syd   0.0  24.0  0.0  50.0  24.0   0.0
 3xMIA                       98.0   0.0  0.0   0.0   0.0   0.0
 3xPOA                       98.0   1.0  0.0   0.0   0.0   0.0
 
+NOTE: If you want to generate a playbook to run playbook_tuner you need to generate a playbook in FSDB format and need to include at leastthe baseline policy.
+Example:
 
-=== RUN-PLAYBOOK ===
+$ make-playbook.py --dir dataset/baseline/ --fsdb /tmp/f.fsdb
+Building Playbook from dataset/baseline/
+=== Playbook ===
+site       bgp  CDG  LHR  SYD
+0     baseline    5    5   89
+================
+Playbook FSDB saved to [/tmp/f.fsdb]
 
-run-playbook.py read one routing playbook file and setup BGP configuration accordingly.
+$ cat /tmp/f.fsdb
+3
+CDG	LHR	SYD
+50000.0	50000.0	50000.0
+Baseline	5	5	89
+
+
+=== Setting up a playbook routing policy with RUN-PLAYBOOK ===
+
+run-playbook.py read one routing file and setup BGP configuration accordingly.
 ➜  dataset git:(master) ✗run-playbook.py --playbook baseline/baseline\#ipv4,us-mia,br-poa,nl-ams\#2022-02-28-15h02m.routing
 
 The make-playbook.py tool uses all information provided before to build the playbook. Playbook can be generated containing
@@ -170,4 +206,4 @@ neighbor 169.254.169.254 prefix 145.100.118.0/23
 neighbor 198.32.252.96 prefix 145.100.118.0/23
  Found [3] nodes
 
-Any doubt about this software contact Leandro Bertholdo <leandro.bertholdo@gmail.com> or Joao Ceron <ceron@botlog.org>
+Any doubt about this software contact Leandro Bertholdo <leandro.bertholdo@gmail.com>>

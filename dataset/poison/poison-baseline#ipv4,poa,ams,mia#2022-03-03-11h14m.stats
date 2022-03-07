@@ -1,0 +1,8 @@
+#policy,poison-baseline
+#timestamp,1646306250
+#hitlist,not_provided
+site,counts,percent
+nl-ams-anycast01,8436,94
+us-mia-anycast01,400,4
+br-poa-anycast02,113,1
+

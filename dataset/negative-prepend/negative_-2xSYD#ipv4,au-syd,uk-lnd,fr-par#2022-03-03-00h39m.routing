@@ -1,0 +1,6 @@
+#policy,-2xSYD
+#ipv4,fr-par,uk-lnd,au-syd
+site,prefix,peer_as,neighbor,attributes
+au-syd-anycast01,145.100.118.0/23,64515,169.254.169.254,
+fr-par-anycast01,145.100.118.0/23,64515,169.254.169.254,as-path [ 1149 1149 1149 ]
+uk-lnd-anycast02,145.100.118.0/23,64515,169.254.169.254,as-path [ 1149 1149 1149 ]

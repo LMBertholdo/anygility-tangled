@@ -1,0 +1,243 @@
+Fri Mar  4 13:03:36 UTC 2022
+Communities measurement started: Fri Mar  4 13:03:36 UTC 2022 
+Activating anycast prefix  
+Checking active nodes on Tangled
+Active nodes
+#ipv4,uk-lnd,fr-par,us-mia,au-syd
+-------
+ We are generating packet in: us-mia-anycast01 
+ We set this BGP Policy: community-baseline 
+ Verfploter starting...
+/home/usenix/anygility-tangled/toolbox/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/usenix/anygility-tangled/toolbox/hitlist_example.txt  -a /home/usenix/anygility-tangled/toolbox/GeoLite2-ASN.mmdb -c /home/usenix/anygility-tangled/toolbox/GeoLite2-Country.mmdb  > /home/usenix/anygility-tangled/dataset/2022-03-04-13h03m/community-baseline#ipv4,uk-lnd,fr-par,us-mia,au-syd#2022-03-04-13h03m.csv
+anycast service is ready for communities experiment: Fri Mar  4 13:11:07 UTC 2022 
+Starting VULTR communites : Fri Mar  4 13:11:07 UTC 2022 
+add community 20473:6601 on node au-syd-anycast01
+site,prefix,peer_as,neighbor,attributes
+au-syd-anycast01,145.100.118.0/23,64515,169.254.169.254,community 20473:6601
+fr-par-anycast01,145.100.118.0/23,64515,169.254.169.254,
+uk-lnd-anycast02,145.100.118.0/23,64515,169.254.169.254,
+us-mia-anycast01,145.100.118.0/23,20080,198.32.252.96,
+sleep to waiting for the convergency
+BGP=community-20473:6601xSYD
+OUTFILE=community-20473:6601xSYD#ipv4,uk-lnd,fr-par,us-mia,au-syd#2022-03-04-13h03m
+/home/usenix/anygility-tangled/toolbox/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/usenix/anygility-tangled/toolbox/hitlist_example.txt  -a /home/usenix/anygility-tangled/toolbox/GeoLite2-ASN.mmdb -c /home/usenix/anygility-tangled/toolbox/GeoLite2-Country.mmdb  > /home/usenix/anygility-tangled/dataset/2022-03-04-13h03m/community-20473:6601xSYD#ipv4,uk-lnd,fr-par,us-mia,au-syd#2022-03-04-13h03m.csv
+remove community from the node au-syd-anycast01
+remove announcement from au-syd-anycast01
+putting route back
+add prefix announcement for au-syd-anycast01
+add community 20473:6601 on node uk-lnd-anycast02
+site,prefix,peer_as,neighbor,attributes
+au-syd-anycast01,145.100.118.0/23,64515,169.254.169.254,
+fr-par-anycast01,145.100.118.0/23,64515,169.254.169.254,
+uk-lnd-anycast02,145.100.118.0/23,64515,169.254.169.254,community 20473:6601
+us-mia-anycast01,145.100.118.0/23,20080,198.32.252.96,
+sleep to waiting for the convergency
+BGP=community-20473:6601xLHR
+OUTFILE=community-20473:6601xLHR#ipv4,uk-lnd,au-syd,fr-par,us-mia#2022-03-04-13h03m
+/home/usenix/anygility-tangled/toolbox/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/usenix/anygility-tangled/toolbox/hitlist_example.txt  -a /home/usenix/anygility-tangled/toolbox/GeoLite2-ASN.mmdb -c /home/usenix/anygility-tangled/toolbox/GeoLite2-Country.mmdb  > /home/usenix/anygility-tangled/dataset/2022-03-04-13h03m/community-20473:6601xLHR#ipv4,uk-lnd,au-syd,fr-par,us-mia#2022-03-04-13h03m.csv
+------------------------------------------------------------------
+### ERROR:: output presented a LOW NUMBER OF LINES [585] ###
+------------------------------------------------------------------
+/home/usenix/anygility-tangled/toolbox/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/usenix/anygility-tangled/toolbox/hitlist_example.txt  -a /home/usenix/anygility-tangled/toolbox/GeoLite2-ASN.mmdb -c /home/usenix/anygility-tangled/toolbox/GeoLite2-Country.mmdb  > /home/usenix/anygility-tangled/dataset/2022-03-04-13h03m/community-20473:6601xLHR#ipv4,uk-lnd,au-syd,fr-par,us-mia#2022-03-04-13h03m.csv
+remove community from the node uk-lnd-anycast02
+remove announcement from uk-lnd-anycast02
+putting route back
+add prefix announcement for uk-lnd-anycast02
+add community 20473:6601 on node fr-par-anycast01
+site,prefix,peer_as,neighbor,attributes
+au-syd-anycast01,145.100.118.0/23,64515,169.254.169.254,
+fr-par-anycast01,145.100.118.0/23,64515,169.254.169.254,community 20473:6601
+uk-lnd-anycast02,145.100.118.0/23,64515,169.254.169.254,
+us-mia-anycast01,145.100.118.0/23,20080,198.32.252.96,
+sleep to waiting for the convergency
+BGP=community-20473:6601xCDG
+OUTFILE=community-20473:6601xCDG#ipv4,au-syd,uk-lnd,fr-par,us-mia#2022-03-04-13h03m
+/home/usenix/anygility-tangled/toolbox/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/usenix/anygility-tangled/toolbox/hitlist_example.txt  -a /home/usenix/anygility-tangled/toolbox/GeoLite2-ASN.mmdb -c /home/usenix/anygility-tangled/toolbox/GeoLite2-Country.mmdb  > /home/usenix/anygility-tangled/dataset/2022-03-04-13h03m/community-20473:6601xCDG#ipv4,au-syd,uk-lnd,fr-par,us-mia#2022-03-04-13h03m.csv
+remove community from the node fr-par-anycast01
+remove announcement from fr-par-anycast01
+putting route back
+add prefix announcement for fr-par-anycast01
+add community 20473:6001 on node au-syd-anycast01
+site,prefix,peer_as,neighbor,attributes
+au-syd-anycast01,145.100.118.0/23,64515,169.254.169.254,community 20473:6001
+fr-par-anycast01,145.100.118.0/23,64515,169.254.169.254,
+uk-lnd-anycast02,145.100.118.0/23,64515,169.254.169.254,
+us-mia-anycast01,145.100.118.0/23,20080,198.32.252.96,
+sleep to waiting for the convergency
+BGP=community-20473:6001xSYD
+OUTFILE=community-20473:6001xSYD#ipv4,us-mia,fr-par,au-syd,uk-lnd#2022-03-04-13h03m
+/home/usenix/anygility-tangled/toolbox/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/usenix/anygility-tangled/toolbox/hitlist_example.txt  -a /home/usenix/anygility-tangled/toolbox/GeoLite2-ASN.mmdb -c /home/usenix/anygility-tangled/toolbox/GeoLite2-Country.mmdb  > /home/usenix/anygility-tangled/dataset/2022-03-04-13h03m/community-20473:6001xSYD#ipv4,us-mia,fr-par,au-syd,uk-lnd#2022-03-04-13h03m.csv
+remove community from the node au-syd-anycast01
+remove announcement from au-syd-anycast01
+putting route back
+add prefix announcement for au-syd-anycast01
+add community 20473:6001 on node uk-lnd-anycast02
+site,prefix,peer_as,neighbor,attributes
+au-syd-anycast01,145.100.118.0/23,64515,169.254.169.254,
+fr-par-anycast01,145.100.118.0/23,64515,169.254.169.254,
+uk-lnd-anycast02,145.100.118.0/23,64515,169.254.169.254,community 20473:6001
+us-mia-anycast01,145.100.118.0/23,20080,198.32.252.96,
+sleep to waiting for the convergency
+BGP=community-20473:6001xLHR
+OUTFILE=community-20473:6001xLHR#ipv4,us-mia,uk-lnd,fr-par,au-syd#2022-03-04-13h03m
+/home/usenix/anygility-tangled/toolbox/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/usenix/anygility-tangled/toolbox/hitlist_example.txt  -a /home/usenix/anygility-tangled/toolbox/GeoLite2-ASN.mmdb -c /home/usenix/anygility-tangled/toolbox/GeoLite2-Country.mmdb  > /home/usenix/anygility-tangled/dataset/2022-03-04-13h03m/community-20473:6001xLHR#ipv4,us-mia,uk-lnd,fr-par,au-syd#2022-03-04-13h03m.csv
+remove community from the node uk-lnd-anycast02
+remove announcement from uk-lnd-anycast02
+putting route back
+add prefix announcement for uk-lnd-anycast02
+add community 20473:6001 on node fr-par-anycast01
+site,prefix,peer_as,neighbor,attributes
+au-syd-anycast01,145.100.118.0/23,64515,169.254.169.254,
+fr-par-anycast01,145.100.118.0/23,64515,169.254.169.254,community 20473:6001
+uk-lnd-anycast02,145.100.118.0/23,64515,169.254.169.254,
+us-mia-anycast01,145.100.118.0/23,20080,198.32.252.96,
+sleep to waiting for the convergency
+BGP=community-20473:6001xCDG
+OUTFILE=community-20473:6001xCDG#ipv4,fr-par,au-syd,us-mia,uk-lnd#2022-03-04-13h03m
+/home/usenix/anygility-tangled/toolbox/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/usenix/anygility-tangled/toolbox/hitlist_example.txt  -a /home/usenix/anygility-tangled/toolbox/GeoLite2-ASN.mmdb -c /home/usenix/anygility-tangled/toolbox/GeoLite2-Country.mmdb  > /home/usenix/anygility-tangled/dataset/2022-03-04-13h03m/community-20473:6001xCDG#ipv4,fr-par,au-syd,us-mia,uk-lnd#2022-03-04-13h03m.csv
+remove community from the node fr-par-anycast01
+remove announcement from fr-par-anycast01
+putting route back
+add prefix announcement for fr-par-anycast01
+add community 20473:64609 on node au-syd-anycast01
+site,prefix,peer_as,neighbor,attributes
+au-syd-anycast01,145.100.118.0/23,64515,169.254.169.254,community 20473:64609
+fr-par-anycast01,145.100.118.0/23,64515,169.254.169.254,
+uk-lnd-anycast02,145.100.118.0/23,64515,169.254.169.254,
+us-mia-anycast01,145.100.118.0/23,20080,198.32.252.96,
+sleep to waiting for the convergency
+BGP=community-20473:64609xSYD
+OUTFILE=community-20473:64609xSYD#ipv4,uk-lnd,us-mia,fr-par,au-syd#2022-03-04-13h03m
+/home/usenix/anygility-tangled/toolbox/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/usenix/anygility-tangled/toolbox/hitlist_example.txt  -a /home/usenix/anygility-tangled/toolbox/GeoLite2-ASN.mmdb -c /home/usenix/anygility-tangled/toolbox/GeoLite2-Country.mmdb  > /home/usenix/anygility-tangled/dataset/2022-03-04-13h03m/community-20473:64609xSYD#ipv4,uk-lnd,us-mia,fr-par,au-syd#2022-03-04-13h03m.csv
+remove community from the node au-syd-anycast01
+remove announcement from au-syd-anycast01
+putting route back
+add prefix announcement for au-syd-anycast01
+add community 20473:64609 on node uk-lnd-anycast02
+site,prefix,peer_as,neighbor,attributes
+au-syd-anycast01,145.100.118.0/23,64515,169.254.169.254,
+fr-par-anycast01,145.100.118.0/23,64515,169.254.169.254,
+uk-lnd-anycast02,145.100.118.0/23,64515,169.254.169.254,community 20473:64609
+us-mia-anycast01,145.100.118.0/23,20080,198.32.252.96,
+sleep to waiting for the convergency
+BGP=community-20473:64609xLHR
+OUTFILE=community-20473:64609xLHR#ipv4,us-mia,uk-lnd,fr-par,au-syd#2022-03-04-13h03m
+/home/usenix/anygility-tangled/toolbox/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/usenix/anygility-tangled/toolbox/hitlist_example.txt  -a /home/usenix/anygility-tangled/toolbox/GeoLite2-ASN.mmdb -c /home/usenix/anygility-tangled/toolbox/GeoLite2-Country.mmdb  > /home/usenix/anygility-tangled/dataset/2022-03-04-13h03m/community-20473:64609xLHR#ipv4,us-mia,uk-lnd,fr-par,au-syd#2022-03-04-13h03m.csv
+remove community from the node uk-lnd-anycast02
+remove announcement from uk-lnd-anycast02
+putting route back
+add prefix announcement for uk-lnd-anycast02
+add community 20473:64609 on node fr-par-anycast01
+site,prefix,peer_as,neighbor,attributes
+au-syd-anycast01,145.100.118.0/23,64515,169.254.169.254,
+fr-par-anycast01,145.100.118.0/23,64515,169.254.169.254,community 20473:64609
+uk-lnd-anycast02,145.100.118.0/23,64515,169.254.169.254,
+us-mia-anycast01,145.100.118.0/23,20080,198.32.252.96,
+sleep to waiting for the convergency
+BGP=community-20473:64609xCDG
+OUTFILE=community-20473:64609xCDG#ipv4,us-mia,uk-lnd,au-syd,fr-par#2022-03-04-13h03m
+/home/usenix/anygility-tangled/toolbox/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/usenix/anygility-tangled/toolbox/hitlist_example.txt  -a /home/usenix/anygility-tangled/toolbox/GeoLite2-ASN.mmdb -c /home/usenix/anygility-tangled/toolbox/GeoLite2-Country.mmdb  > /home/usenix/anygility-tangled/dataset/2022-03-04-13h03m/community-20473:64609xCDG#ipv4,us-mia,uk-lnd,au-syd,fr-par#2022-03-04-13h03m.csv
+remove community from the node fr-par-anycast01
+remove announcement from fr-par-anycast01
+putting route back
+add prefix announcement for fr-par-anycast01
+add community 20473:6001 20473:6003 on node au-syd-anycast01
+site,prefix,peer_as,neighbor,attributes
+au-syd-anycast01,145.100.118.0/23,64515,169.254.169.254,community [ 20473:6001 20473:6003 ]
+fr-par-anycast01,145.100.118.0/23,64515,169.254.169.254,
+uk-lnd-anycast02,145.100.118.0/23,64515,169.254.169.254,
+us-mia-anycast01,145.100.118.0/23,20080,198.32.252.96,
+sleep to waiting for the convergency
+BGP=community-20473:6001_20473:6003xSYD
+OUTFILE=community-20473:6001_20473:6003xSYD#ipv4,au-syd,uk-lnd,us-mia,fr-par#2022-03-04-13h03m
+/home/usenix/anygility-tangled/toolbox/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/usenix/anygility-tangled/toolbox/hitlist_example.txt  -a /home/usenix/anygility-tangled/toolbox/GeoLite2-ASN.mmdb -c /home/usenix/anygility-tangled/toolbox/GeoLite2-Country.mmdb  > /home/usenix/anygility-tangled/dataset/2022-03-04-13h03m/community-20473:6001_20473:6003xSYD#ipv4,au-syd,uk-lnd,us-mia,fr-par#2022-03-04-13h03m.csv
+remove community from the node au-syd-anycast01
+remove announcement from au-syd-anycast01
+putting route back
+add prefix announcement for au-syd-anycast01
+add community 20473:6001 20473:6003 on node uk-lnd-anycast02
+site,prefix,peer_as,neighbor,attributes
+au-syd-anycast01,145.100.118.0/23,64515,169.254.169.254,
+fr-par-anycast01,145.100.118.0/23,64515,169.254.169.254,
+uk-lnd-anycast02,145.100.118.0/23,64515,169.254.169.254,community [ 20473:6001 20473:6003 ]
+us-mia-anycast01,145.100.118.0/23,20080,198.32.252.96,
+sleep to waiting for the convergency
+BGP=community-20473:6001_20473:6003xLHR
+OUTFILE=community-20473:6001_20473:6003xLHR#ipv4,au-syd,uk-lnd,us-mia,fr-par#2022-03-04-13h03m
+/home/usenix/anygility-tangled/toolbox/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/usenix/anygility-tangled/toolbox/hitlist_example.txt  -a /home/usenix/anygility-tangled/toolbox/GeoLite2-ASN.mmdb -c /home/usenix/anygility-tangled/toolbox/GeoLite2-Country.mmdb  > /home/usenix/anygility-tangled/dataset/2022-03-04-13h03m/community-20473:6001_20473:6003xLHR#ipv4,au-syd,uk-lnd,us-mia,fr-par#2022-03-04-13h03m.csv
+remove community from the node uk-lnd-anycast02
+remove announcement from uk-lnd-anycast02
+putting route back
+add prefix announcement for uk-lnd-anycast02
+add community 20473:6001 20473:6003 on node fr-par-anycast01
+site,prefix,peer_as,neighbor,attributes
+au-syd-anycast01,145.100.118.0/23,64515,169.254.169.254,
+fr-par-anycast01,145.100.118.0/23,64515,169.254.169.254,community [ 20473:6001 20473:6003 ]
+uk-lnd-anycast02,145.100.118.0/23,64515,169.254.169.254,
+us-mia-anycast01,145.100.118.0/23,20080,198.32.252.96,
+sleep to waiting for the convergency
+BGP=community-20473:6001_20473:6003xCDG
+OUTFILE=community-20473:6001_20473:6003xCDG#ipv4,fr-par,uk-lnd,au-syd,us-mia#2022-03-04-13h03m
+/home/usenix/anygility-tangled/toolbox/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/usenix/anygility-tangled/toolbox/hitlist_example.txt  -a /home/usenix/anygility-tangled/toolbox/GeoLite2-ASN.mmdb -c /home/usenix/anygility-tangled/toolbox/GeoLite2-Country.mmdb  > /home/usenix/anygility-tangled/dataset/2022-03-04-13h03m/community-20473:6001_20473:6003xCDG#ipv4,fr-par,uk-lnd,au-syd,us-mia#2022-03-04-13h03m.csv
+remove community from the node fr-par-anycast01
+remove announcement from fr-par-anycast01
+putting route back
+add prefix announcement for fr-par-anycast01
+anycast communities VULTR finished: Fri Mar  4 14:43:34 UTC 2022 
+Starting AMPATH communities: Fri Mar  4 14:43:34 UTC 2022 
+add community 20080:700 on node us-mia-anycast01
+site,prefix,peer_as,neighbor,attributes
+au-syd-anycast01,145.100.118.0/23,64515,169.254.169.254,
+fr-par-anycast01,145.100.118.0/23,64515,169.254.169.254,
+uk-lnd-anycast02,145.100.118.0/23,64515,169.254.169.254,
+us-mia-anycast01,145.100.118.0/23,20080,198.32.252.96,community 20080:700
+/home/usenix/anygility-tangled/toolbox/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/usenix/anygility-tangled/toolbox/hitlist_example.txt  -a /home/usenix/anygility-tangled/toolbox/GeoLite2-ASN.mmdb -c /home/usenix/anygility-tangled/toolbox/GeoLite2-Country.mmdb  > /home/usenix/anygility-tangled/dataset/2022-03-04-13h03m/community-20080:700xMIA#ipv4,uk-lnd,au-syd,fr-par,us-mia#2022-03-04-13h03m.csv
+remove announcement from us-mia-anycast01
+add prefix announcement for us-mia-anycast01
+add community 20080:701 on node us-mia-anycast01
+site,prefix,peer_as,neighbor,attributes
+au-syd-anycast01,145.100.118.0/23,64515,169.254.169.254,
+fr-par-anycast01,145.100.118.0/23,64515,169.254.169.254,
+uk-lnd-anycast02,145.100.118.0/23,64515,169.254.169.254,
+us-mia-anycast01,145.100.118.0/23,20080,198.32.252.96,community 20080:701
+/home/usenix/anygility-tangled/toolbox/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/usenix/anygility-tangled/toolbox/hitlist_example.txt  -a /home/usenix/anygility-tangled/toolbox/GeoLite2-ASN.mmdb -c /home/usenix/anygility-tangled/toolbox/GeoLite2-Country.mmdb  > /home/usenix/anygility-tangled/dataset/2022-03-04-13h03m/community-20080:701xMIA#ipv4,au-syd,fr-par,us-mia,uk-lnd#2022-03-04-13h03m.csv
+remove announcement from us-mia-anycast01
+add prefix announcement for us-mia-anycast01
+add community 20080:702 on node us-mia-anycast01
+site,prefix,peer_as,neighbor,attributes
+au-syd-anycast01,145.100.118.0/23,64515,169.254.169.254,
+fr-par-anycast01,145.100.118.0/23,64515,169.254.169.254,
+uk-lnd-anycast02,145.100.118.0/23,64515,169.254.169.254,
+us-mia-anycast01,145.100.118.0/23,20080,198.32.252.96,community 20080:702
+/home/usenix/anygility-tangled/toolbox/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/usenix/anygility-tangled/toolbox/hitlist_example.txt  -a /home/usenix/anygility-tangled/toolbox/GeoLite2-ASN.mmdb -c /home/usenix/anygility-tangled/toolbox/GeoLite2-Country.mmdb  > /home/usenix/anygility-tangled/dataset/2022-03-04-13h03m/community-20080:702xMIA#ipv4,fr-par,au-syd,uk-lnd,us-mia#2022-03-04-13h03m.csv
+remove announcement from us-mia-anycast01
+add prefix announcement for us-mia-anycast01
+add community 20080:110 on node us-mia-anycast01
+site,prefix,peer_as,neighbor,attributes
+au-syd-anycast01,145.100.118.0/23,64515,169.254.169.254,
+fr-par-anycast01,145.100.118.0/23,64515,169.254.169.254,
+uk-lnd-anycast02,145.100.118.0/23,64515,169.254.169.254,
+us-mia-anycast01,145.100.118.0/23,20080,198.32.252.96,community 20080:110
+/home/usenix/anygility-tangled/toolbox/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/usenix/anygility-tangled/toolbox/hitlist_example.txt  -a /home/usenix/anygility-tangled/toolbox/GeoLite2-ASN.mmdb -c /home/usenix/anygility-tangled/toolbox/GeoLite2-Country.mmdb  > /home/usenix/anygility-tangled/dataset/2022-03-04-13h03m/community-20080:110xMIA#ipv4,uk-lnd,us-mia,fr-par,au-syd#2022-03-04-13h03m.csv
+remove announcement from us-mia-anycast01
+add prefix announcement for us-mia-anycast01
+add community 20080:802 on node us-mia-anycast01
+site,prefix,peer_as,neighbor,attributes
+au-syd-anycast01,145.100.118.0/23,64515,169.254.169.254,
+fr-par-anycast01,145.100.118.0/23,64515,169.254.169.254,
+uk-lnd-anycast02,145.100.118.0/23,64515,169.254.169.254,
+us-mia-anycast01,145.100.118.0/23,20080,198.32.252.96,community 20080:802
+/home/usenix/anygility-tangled/toolbox/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/usenix/anygility-tangled/toolbox/hitlist_example.txt  -a /home/usenix/anygility-tangled/toolbox/GeoLite2-ASN.mmdb -c /home/usenix/anygility-tangled/toolbox/GeoLite2-Country.mmdb  > /home/usenix/anygility-tangled/dataset/2022-03-04-13h03m/community-20080:802xMIA#ipv4,au-syd,us-mia,fr-par,uk-lnd#2022-03-04-13h03m.csv
+remove announcement from us-mia-anycast01
+add prefix announcement for us-mia-anycast01
+add community 20080:110 20080:700 20080:803 on node us-mia-anycast01
+site,prefix,peer_as,neighbor,attributes
+au-syd-anycast01,145.100.118.0/23,64515,169.254.169.254,
+fr-par-anycast01,145.100.118.0/23,64515,169.254.169.254,
+uk-lnd-anycast02,145.100.118.0/23,64515,169.254.169.254,
+us-mia-anycast01,145.100.118.0/23,20080,198.32.252.96,community [ 20080:110 20080:700 20080:803 ]
+/home/usenix/anygility-tangled/toolbox/verfploeter cli start us-mia-anycast01 145.100.118.1  /home/usenix/anygility-tangled/toolbox/hitlist_example.txt  -a /home/usenix/anygility-tangled/toolbox/GeoLite2-ASN.mmdb -c /home/usenix/anygility-tangled/toolbox/GeoLite2-Country.mmdb  > /home/usenix/anygility-tangled/dataset/2022-03-04-13h03m/community-20080:110_20080:700_20080:803xMIA#ipv4,us-mia,au-syd,uk-lnd,fr-par#2022-03-04-13h03m.csv
+remove announcement from us-mia-anycast01
+add prefix announcement for us-mia-anycast01
+Finished  AMPATH communities: Fri Mar  4 15:34:01 UTC 2022 
+Ended Communities experiment: Fri Mar  4 15:34:01 UTC 2022 
