@@ -33,13 +33,14 @@ SAND/PAADDOS anycast management Interface (GUI)
 	```
 
     To run the GUI interface first install the python requirements needed and 
-    run SAND-BGP-POLICY-PLAYGROUND.py
+    run bgp-tuner.py
 
     Then access the interface just open your browser on http://127.0.0.1:12345/ 
     as indicated by the program output.
 
 ## USAGE:
-    pip install -r requirements.txt 
-    ./SAND-BGP-POLICY-PLAYGROUND.py
+    pip install -r pyreqe/bgtuner-requirements.txt 
+    cd tools/bgp-tuner
+    ./bgp-tuner.py
     
 ## CONTACT: leandro.bertholdo@gmail.com and ceron@botlog.org
