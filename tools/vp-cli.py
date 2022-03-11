@@ -48,7 +48,7 @@ from pandarallel import pandarallel
 ###############################################################################
 ### Program settings
 verbose = False
-version = "1.2.3"
+version = "1.2.6"
 program_name = os.path.basename(__file__)
 ###############################################################################
 ### Subrotines
@@ -126,8 +126,41 @@ def check_metadata_from_df(ret,df,args):
     ret.put(df)
 
 #------------------------------------------------------------------------------
+# ## quietly remove inconsistency and add metadata field
+def check_metadata_quiet(df):
+  
+    # remove inconsistency
+    if (args.debug):
+        logging.debug("check_metadata_quiet:: Before removing inconsistency: \"%d\"", len(df))
+
+    # set timestamp as the first transmited packet for the whole measurement
+    df['timestamp'] = pd.to_datetime(df['transmit_time'],unit='ns', utc=True)
+    df['id'] = df['transmit_time'].min()
+
+    df = df[df['destination_address'] == df['meta_source_address']]
+    df = df[df['source_address'] == df['meta_destination_address']]
+    df['src_net'] =  df.source_address.str.extract('(\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.)\\d{1,3}')+"0"
+    df = df.fillna(0)
+    df.drop_duplicates(subset="src_net",keep='first', inplace=True)
+
+    # rename columns
+    df.rename( columns={'send_receive_time_diff':'rtt',
+                        'source_address_country': 'country',
+                        'source_address_asn': 'asn',
+                        'client_id': 'catchment',
+                       }
+              ,inplace=True)
+    df = df.drop(columns=['source_address','destination_address','meta_source_address',\
+                'meta_destination_address','task_id','transmit_time','receive_time'])
+
+    if (args.debug):
+        logging.debug("check_metadata_quiet:: After removing inconsistency: \"%d\"", len(df))
+    
+    return (df)
+
+#------------------------------------------------------------------------------
 # print loading animation
-def animated_loading(flag):
+def animated_loading(flag,quiet):
 
     if (flag == 0 ):
         msg = "loading dataframe     "
@@ -157,9 +190,10 @@ def animated_loading(flag):
 #------------------------------------------------------------------------------
 # load the dataframe 
 def load_df (ret,file):
-    logging.debug("loading the dataframe") 
+    logging.info("load_df:: loading the dataframe") 
     # df = pd.read_csv(file, sep=",", index_col=False, low_memory=False, skiprows=0, nrows=100)
     df = pd.read_csv(file, sep=",", index_col=False, low_memory=False, skiprows=0)
+    logging.info("load_df:: dataframe loaded!") 
     ret.put(df)
 #------------------------------------------------------------------------------
 # add geo info in the dataframe
@@ -271,37 +305,45 @@ def init_load(args):
 
     file = args.file
     ## load dataframe
-    logging.info("reading the dataframe - file {}".format(file)) 
+    logging.info("init_load:: reading the dataframe - file {}".format(file)) 
     #logging.debug("reading the dataframe - file {}".format(file)) 
-    ret = queue.Queue()
-    the_process = threading.Thread(name='process', target=load_df, args=(ret,file))
-    the_process.start()
-    while the_process.is_alive():
-    	animated_loading(0) if not (args.quiet) else 0
-    the_process.join()
-    df = ret.get()
+
+    if (args.quiet):
+        df = pd.read_csv(file, sep=",", index_col=False, low_memory=False, skiprows=0)
+    else:
+        ret = queue.Queue()
+        the_process = threading.Thread(name='process', target=load_df, args=(ret,file))
+        the_process.start()
+        while the_process.is_alive():
+        	animated_loading(0, args.quiet)  
+        the_process.join()
+        df = ret.get()
     
     # not enought lines
     if (df.size<3):
-        sys.exit("{} has not enought lines to be processed".format(args.file))
+        sys.exit("{} has not enough lines to be processed".format(args.file))
         
     if not 'transmit_time' in df.columns:
         return (df)
 
-    ## check for metadata and pre-processing tasks
-    logging.info("checking dataframe metadata")
-    ret = queue.Queue()
-    the_process = threading.Thread(name='process', target=check_metadata_from_df, args=(ret,df,args))
-    the_process.start()
-    while the_process.is_alive():
-    	animated_loading(1) if not (args.quiet) else 0
-    animated_loading(4) if not (args.quiet) else 0
-    #print ('\r')
 
-    the_process.join()
-    df = ret.get()
+    if (args.quiet):
+        df=check_metadata_quiet(df)
+    else:
+        ## check for metadata and pre-processing tasks
+        logging.info("init_load:: checking dataframe metadata")
+        ret = queue.Queue()
+        the_process = threading.Thread(name='process', target=check_metadata_from_df, args=(ret,df,args))
+        the_process.start()
+        while the_process.is_alive():
+        	animated_loading(1, args.quiet) 
+        animated_loading(4, args.quiet) 
+        #print ('\r')
+        the_process.join()
+        df = ret.get()
+
     
-    logging.info("Returning from init_load()")
+    logging.info("init_load:: Returning from init_load()")
     return (df)
 
 
@@ -325,7 +367,7 @@ def evaluate_args():
 
     if (args.debug):
         set_log_level('DEBUG')
-        args.quiet=True
+        #args.quiet=True
         logging.debug(args)
 
     if (args.version):
@@ -335,7 +377,7 @@ def evaluate_args():
     if (args.verbose):
         verbose=True
         set_log_level('INFO')
-        args.quiet=True
+        #args.quiet=True
  
     if (args.csv):
         args.quiet=True
@@ -373,20 +415,16 @@ def evaluate_args():
 ###############################################################################
 ### Main Process
 
+# read args
 args = evaluate_args()
 df_array = []
 
-logging.debug("init")
+# initialize pandarallel
+pandarallel.initialize(verbose=0, progress_bar=False)
 
 # load DF
+logging.debug("init and load")
 df = init_load(args)
-
-if (args.quiet):
-    logging.debug("pandarallel verbose=0")
-    pandarallel.initialize(verbose=0)
-else:
-    logging.debug("pandarallel verbose=1")
-    pandarallel.initialize(progress_bar=True, verbose=1)
 
 # add weight 
 if (args.weight):
