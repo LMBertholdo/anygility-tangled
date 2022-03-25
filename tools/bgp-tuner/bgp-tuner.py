@@ -75,7 +75,8 @@ import dash
 
 from dash import dcc
 from dash import html
-import dash_html_components as html
+#import dash_html_components as html
+
 
 import dash_colorscales
 import dash_bootstrap_components as dbc
@@ -104,7 +105,7 @@ data[data.bgp.str.contains("0x")]
 #prepend_df.head(100)
 
 
-prepend_df[prepend_df.bgp.str.contains("0xCDG")]
+#prepend_df[prepend_df.bgp.str.contains("0xCDG")]
 
 
 # ###  B) Prepend DF percent
@@ -138,8 +139,8 @@ cols = [cols[-1]] + cols[:-1]
 df_prepend_diff = df_prepend_diff[cols]
 df_prepend_diff
 
-#def build_graph_for_bgp_policy(data,policy="baseline"):    ## AQUI
-def build_graph_for_bgp_policy(data,policy):   
+def build_graph_for_bgp_policy(data,policy="baseline"):    ## AQUI
+#def build_graph_for_bgp_policy(data,policy):   
 
 
     ## filter dataframe
@@ -186,8 +187,8 @@ def build_graph_for_bgp_policy(data,policy):
 
 
 #policy = "-5xIAD"   
-policy = "-1xIAD" 
-#policy = "baseline"
+#policy = "-1xIAD" 
+policy = "baseline"
 fig_server_load = build_graph_for_bgp_policy(data_prepend,policy)
 #plotly.offline.iplot(fig_server_load)  ### AQUI ###
 
@@ -232,7 +233,7 @@ def build_sliders(data,site):
     
     return html.Div([slider])
 
-slider =  build_sliders(df_prepend_diff,"IAD")   ### AQUI ###
+#slider =  build_sliders(df_prepend_diff,"IAD")   ### AQUI ###
 
 data[data.bgp.str.contains("0x")]
 
@@ -248,8 +249,8 @@ def eua_sum(line):
 data['eua'] = data.apply(eua_sum,axis=1)
 
 policy_max_europe = data.iloc[data.europe.idxmax()]['bgp']
-#policy_max_eua = data.iloc[data.eua.idxmax()]['bgp']           # AQUI #
-policy_max_eua = '-1xIAD'                                  ###### AQUI ######
+policy_max_eua = data.iloc[data.eua.idxmax()]['bgp']           # AQUI #
+#policy_max_eua = '-1xIAD'                                  ###### AQUI ######
 policy_max_br = data.iloc[data.POA.idxmax()]['bgp']
 policy_max_asia = data.iloc[data.SYD.idxmax()]['bgp']
 
@@ -464,8 +465,8 @@ BODY = dbc.Container(
 # df_prepend_diff = df_prepend_diff[['bgp', 'IAD', 'LHR', 'MIA', 'POA', 'SYD']]
 # df_prepend_diff[df_prepend_diff.bgp.str.contains(string_regex)].iloc[0,1:]
 
-df_aux = df_prepend_diff[['bgp', 'IAD', 'LHR', 'MIA', 'POA', 'SYD']]
-df_aux[df_aux.bgp.str.contains("0xCDG")].iloc[0,1:].tolist()
+#df_aux = df_prepend_diff[['bgp', 'IAD', 'LHR', 'MIA', 'POA', 'SYD']]
+#df_aux[df_aux.bgp.str.contains("0xCDG")].iloc[0,1:].tolist()
 
 
 
@@ -476,6 +477,7 @@ app.layout = html.Div(children=[NAVBAR, BODY])
 #### callback for slider CDG 
 @app.callback(
     [
+     Output("slider-CDG", "value"),
      Output("slider-IAD", "value"),
      Output("slider-LHR", "value"),
      Output("slider-MIA", "value"),
@@ -486,12 +488,57 @@ app.layout = html.Div(children=[NAVBAR, BODY])
      Output("policy-description", "children"),
      Output("modal-content", "children"),
     ],
-    [Input('slider-CDG', 'value')],
+    [
+     Input('slider-CDG', 'value'),
+     Input('slider-IAD', 'value'),
+     Input("slider-LHR", "value"),
+     Input("slider-MIA", "value"),
+     Input("slider-POA", "value"),
+     Input("slider-SYD", "value"),
+     Input('dropdown', 'value'),
+    ],
 )
-def callback_function(value): 
-    source_node = "CDG"
+def callback_function(value_CDG,value_IAD,value_LHR,value_MIA,value_POA,value_SYD, dropdown_value): 
+    #source_node = "CDG"
     results = []
-    nodes = ['IAD', 'LHR', 'MIA', 'POA', 'SYD']
+    #nodes = ['IAD', 'LHR', 'MIA', 'POA', 'SYD']
+    ctx = dash.callback_context
+    trigger = ctx.triggered[0]['prop_id'].split('.')[0]
+
+
+    print("Context: {}".format(ctx.triggered))
+    print("Triggred: {}".format(ctx.triggered[0]['prop_id'].split('.')[0]))
+    if (trigger == 'slider-CDG'):
+        print("Triggered by CDG")
+        value = value_CDG
+        source_node = "CDG"
+    elif (trigger == 'slider-IAD'):
+        print("Triggered by IAD")
+        value = value_IAD
+        source_node = "IAD"
+    elif (trigger == 'slider-LHR'):
+        print("Triggered by LHR")
+        value = value_LHR
+        source_node = "LHR"
+    elif (trigger == 'slider-MIA'):
+        print("Triggered by MIA")
+        value = value_MIA
+        source_node = "MIA"
+    elif (trigger == 'slider-POA'):
+        print("Triggered by POA")
+        value = value_POA
+        source_node = "POA"
+    elif (trigger == 'slider-SYD'):
+        print("Triggered by SYD")
+        value = value_SYD
+        source_node = "SYD"
+    else:
+        value = value_CDG
+    
+    nodes = ['CDG', 'IAD', 'LHR', 'MIA', 'POA', 'SYD']
+    #nodes.remove(source_node)
+
+    #print(my_input.value)
 #     print ("search for {}".format(value))
     
     # means that is not a bgp prepend but node withdraw
@@ -501,17 +548,21 @@ def callback_function(value):
         print ("remove node {}".format(source_node))
         string_regex = "0x{}".format(source_node)
         policy = string_regex
-        df_aux = df_prepend_diff[['bgp', 'IAD', 'LHR', 'MIA', 'POA', 'SYD']]
+        lista = ['bgp', 'CDG', 'IAD', 'LHR', 'MIA', 'POA', 'SYD']
+        #lista.remove(source_node)
+        df_aux = df_prepend_diff[lista]
+        #df_aux = df_prepend_diff[['bgp', 'IAD', 'LHR', 'MIA', 'POA', 'SYD']]
         results = df_aux[df_aux.bgp.str.contains(string_regex)].iloc[0,1:].tolist()
         
     else:
         # force max value (50) to be rewrited to the max available value
         if (value==max_slider_value):
-            value = df_prepend_diff.iloc[df_prepend_diff.CDG.idxmax()]['CDG'].tolist()
-
+            value = df_prepend_diff.iloc[df_prepend_diff[source_node].idxmax()][source_node].tolist()
+            print("Valor ", value)
         for node in nodes:
             try:
                 new_value = df_prepend_diff.loc[df_prepend_diff[source_node]==value,[node]].values[0][0]
+                print('new_value',new_value)
             except:
                 print ("this value has not found on diff, so this is the maximum")
                 new_value = 0
@@ -522,7 +573,9 @@ def callback_function(value):
         except:
             policy = 0
 
-    
+    if (trigger == 'dropdown'):
+        new_value = (df_prepend_diff.loc[df_prepend_diff.bgp==policy,'CDG'].values[0])
+
     # new figure 
     if (policy):
         fig = build_graph_for_bgp_policy(data_prepend,policy)
@@ -535,11 +588,13 @@ def callback_function(value):
     results.append(label_header) 
     results.append("Policy: "+label_info) 
     results.append(label_info) 
+
+    print("Resultado",results)
     return (results)
 
 
 #### callback for dropdown
-@app.callback(
+""" @app.callback(
     [
      Output("slider-CDG", "value"),
     ],
@@ -550,7 +605,7 @@ def callback_function(policy):
         new_value = (df_prepend_diff.loc[df_prepend_diff.bgp==policy,'CDG'].values[0])
     except:
         new_value = "baseline"
-    return ([new_value])
+    return ([new_value]) """
 
 #### callback for button
 @app.callback(

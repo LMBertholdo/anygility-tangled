@@ -72,9 +72,7 @@ src
 
 =================== PYTHON REQUIREMENT  ===================
 You cant find all python requirement files in pyreqs directory. You need it to 
-run this software. Follow an example of use:
-
-pip install -r anygility-tangled/pyreqs/bgptuner-requirements.txt
+run this software. Follow instructions in INSTALL.TXT
 
 =================== EXAMPLE OF SOFTWARE USE ===================
 How to run (considering access to tangled testbed):

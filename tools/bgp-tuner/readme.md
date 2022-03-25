@@ -18,7 +18,7 @@ SAND/PAADDOS anycast management Interface (GUI)
 
 ## LIMITATIONS:
     This version is prepared for anycast sites: CDG, IAD, LHR, MIA, POA, SYD.
-    In this python web version using dash, just the first slider (CDG) is "movable".
+    Drop down menu is not fully operational.
     
 ## REQUIREMENTS:
     To run this notebook, it's necessary to previously build the BGP anycast playbook.
@@ -32,7 +32,8 @@ SAND/PAADDOS anycast management Interface (GUI)
 	prepend-only-dataframe_percent.csv
 	```
 
-    To run the GUI interface first install the python requirements needed and 
+    To run the GUI interface first install the python requirements (look at INSTALL.TXT) 
+    on anygility package base directory and 
     run bgp-tuner.py
 
     Then access the interface just open your browser on http://127.0.0.1:12345/ 
