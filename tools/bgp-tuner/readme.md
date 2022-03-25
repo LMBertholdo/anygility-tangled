@@ -40,8 +40,8 @@ SAND/PAADDOS anycast management Interface (GUI)
     as indicated by the program output.
 
 ## USAGE:
-    pip install -r pyreqs/bgptuner-requirements.txt 
-    cd tools/bgp-tuner
+    pip install -r ./../../pyreqs/bgptuner-requirements.txt 
+    cd bgp-tuner
     ./bgp-tuner.py
     
 ## CONTACT: leandro.bertholdo@gmail.com and ceron@botlog.org
