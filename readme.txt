@@ -3,7 +3,7 @@ Anygility for Tangled
 This software is intended to create and use playbooks as described on the paper
 "Anycast Agility: Network Playbooks to Fight DDoS".
 
-Software installation instructions on  INSTALL.TXT
+Software installation instructions on Tangled testbed in INSTALL.TXT
 
 This set of tools provided here is part of the Tangled anycast testbed
 (https://anycast-testbed.nl). Even though most of the tools are tailored to our anycast network,

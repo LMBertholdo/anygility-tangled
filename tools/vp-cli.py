@@ -48,7 +48,7 @@ from pandarallel import pandarallel
 ###############################################################################
 ### Program settings
 verbose = False
-version = "1.2.6"
+version = "1.2.8"
 program_name = os.path.basename(__file__)
 ###############################################################################
 ### Subrotines
@@ -286,7 +286,7 @@ def bar(row):
         bar += chr(ord('█') + (8 - remainder))
     # If the bar is empty, add a left one-eighth block
     bar = bar or  '▏'
-    print ("{} | {} - {}%  {}".format( label.rjust(longest_label_length), count.rjust(longest_count_length),percent.rjust(3), bar ))
+    print ("{:20} | {} - {}%  {}".format( label.rjust(longest_label_length), count.rjust(longest_count_length),percent.rjust(3), bar ))
     return ()
 
 ##------------------------------------------------------------------------------
@@ -511,7 +511,7 @@ else:
             print ("#policy,UNDEFINED")
         print ("#timestamp,{}".format(int(time.time())))
         if (args.hitlist):
-            print (f"#hitlist,{args.hitlist}")
+            print (f"#hitlist,{os.path.basename(args.hitlist[0])}")
         else:
             print ("#hitlist,not_provided")
         if (args.weight):

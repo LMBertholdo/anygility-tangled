@@ -15,6 +15,7 @@ source 00-functions.sh
 ###############################################################################
 # short hitlist for testing purposes
 #HITLIST="$EXECDIR/toolbox/hitlist_example.txt"
+#SLEEP=30
 
 # Origin of icmp packets
 PINGER="us-mia-anycast01"
@@ -22,11 +23,12 @@ PINGER="us-mia-anycast01"
 # nodes on this experiment
 unset NODES
 declare -a NODES
+NODES+=("br-poa-anycast02")
 NODES+=("uk-lnd-anycast02")
-NODES+=("fr-par-anycast01")
+NODES+=("us-mia-anycast01")
 NODES+=("au-syd-anycast01")
+NODES+=("fr-par-anycast01")
 
-#SLEEP=60 #fast mode
 
 ###############################################################################
 ### MAIN
@@ -57,7 +59,7 @@ show_nodes
 # 3 - NEGATIVE PREPEND
 #----------------------------------------------------------
 
-MAX_NEGATIVE_PREPENDS=3
+MAX_NEGATIVE_PREPENDS=5
 
 for WORKING_NODE in "${NODES[@]}"
 do
@@ -66,19 +68,21 @@ do
 	echo "WORKING_NODE ===> $WORKING_NODE"
 	echo "(re) Configuring Baseline"
 	echo "-------"
-	# Announce on working_node 
-	advertise_on_node $WORKING_NODE $ANYCAST_PREFIX
 
         # IATA=$(echo $WORKING_NODE | tr "[:lower:]" "[:upper:]" | cut -d"-" -f2 )
 	for num_prepend in `seq $MAX_NEGATIVE_PREPENDS`
 	do 
         	#BGP="-$num_prepend"x"$IATA"
-		BGP="-$num_prepend"x"${IATA[$WORKING_NODE]}"
+		#BGP="-$num_prepend"x"${IATA[$WORKING_NODE]}"
+		BGP="prepend-negative-$num_prepend"x"-$WORKING_NODE"
 		echo "-------"
-		echo "$num_prepend negative Prepend for node $WORKING_NODE ( ${BGP} )" | tee -a $LOG
+		echo "$num_prepend negative Prepend for node $WORKING_NODE ( ${NODE} )" | tee -a $LOG
                 echo "-------"
 
-	        # Prepend other sites
+		# Announce on working_node 
+		advertise_on_node $WORKING_NODE $ANYCAST_PREFIX
+	        
+		# Prepend other sites
 	        for node in "${NODES[@]}"
                 do
                     if [ $WORKING_NODE == $node ]; then
@@ -101,11 +105,12 @@ do
 
 		# run Verfploeter
 	        ACTIVE_BGP_NODES=$($TANGLER_CLI --nodes-with-announces |  sed "s/-anycast[0-9][0-9]//g")
-		OUTFILE="negative_${BGP}${ACTIVE_BGP_NODES}#${DATE_VAR}"
+		OUTFILE="${BGP}${ACTIVE_BGP_NODES}#${DATE_VAR}"
 		run_verfploeter_looped  $OUTFILE  $PINGER
 
-		# Remove routes
+		# Remove all routes
 		#parallel_withdraw_all_nodes
+		$TANGLER_CLI -4 -6 -w
 	done
 done
 

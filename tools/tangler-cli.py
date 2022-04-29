@@ -32,7 +32,7 @@
 # 14Feb22 v0.34 - added peer/as info to csv output (multipeering site)
 # 24Feb22 V0.35 - Improved error handling 
 ###############################################################################
-version = 0.35
+version = 0.37
 verbose = False
 ###############################################################################
 ### Python modules
@@ -312,254 +312,255 @@ def evaluate_args():
 ### Main Process
 
 if __name__ == '__main__':
-    signal.signal(signal.SIGINT, signal_handler)
-    available_nodes = list(nodes.keys())
-    args = evaluate_args()
-    logging.debug(args)
-
-    logging.info("Started on [ %s ]", nodes)
-
-    if (args.status):
-        # check status
-        logging.info(f"=== STATUS ===")
-        for node in args.target:
-            logging.info ("working on Status of [ %s ]", format(node))
-            cmd = "exabgpcli show neighbor summary"
- 
-            logging.info("### Go Run cmd[%s]", cmd)
-            _output = run_cmd(node,cmd)
-            logging.info(f"Now parse output [{_output}]")
-            if (not _output):
-                logging.info(f"No neighbor summary output [{node}]")
-                continue;
-            output = parse_peers(_output)
-            logging.info("parsed --> %s",output)
-
-            for neighbor in output:
-                #print ("\t{} - {} - {} ".format(node, neighbor['ip'], neighbor['status']))
-                print ("{},{},{}".format(node, neighbor['ip'], neighbor['status']))
+    try:
+        signal.signal(signal.SIGINT, signal_handler)
+        available_nodes = list(nodes.keys())
+        args = evaluate_args()
+        logging.debug(args)
     
-    elif (args.withdraw):
-        logging.info(f"=== WITHDRAW ===")
-        logging.info("withdraw [%s] from [%s]", args.route, args.target)
-        for node in args.target:
-            cmd = "exabgpcli show adj-rib out extensive"
-
-            logging.info("### Go Run cmd[%s]", cmd)
-            _output = run_cmd(node,cmd)
-            logging.info(f"Now parse output [{_output}]")
-            if (not _output):
-                logging.info(f"No adj-rib out [{node}]")
-                continue;
-            output = parse_withdraw_routes(_output)
-            logging.info("parsed --> %s",output)
-           
-            if not output:
-                logging.info(f"there is nothing announced in {node} to withdraw")
-            else:
-                # announce found
-                for announces in output:
-                    cmd = "exabgpcli neighbor {} {} ".format(announces['ip'],announces['cmd'])
-                    logging.info(f"withdraw: {output}")
-                    if (args.v4):
-                        if (':' not in announces['ip']):
+        logging.info("Started on [ %s ]", nodes)
+    
+        if (args.status):
+            # check status
+            logging.info(f"=== STATUS ===")
+            for node in args.target:
+                logging.info ("working on Status of [ %s ]", format(node))
+                cmd = "exabgpcli show neighbor summary"
+     
+                logging.info("### Go Run cmd[%s]", cmd)
+                _output = run_cmd(node,cmd)
+                logging.info(f"Now parse output [{_output}]")
+                if (not _output):
+                    logging.info(f"No neighbor summary output [{node}]")
+                    continue;
+                output = parse_peers(_output)
+                logging.info("parsed --> %s",output)
+    
+                for neighbor in output:
+                    #print ("\t{} - {} - {} ".format(node, neighbor['ip'], neighbor['status']))
+                    print ("{},{},{}".format(node, neighbor['ip'], neighbor['status']))
+        
+        elif (args.withdraw):
+            logging.info(f"=== WITHDRAW ===")
+            logging.info("withdraw [%s] from [%s]", args.route, args.target)
+            for node in args.target:
+                cmd = "exabgpcli show adj-rib out extensive"
+    
+                logging.info("### Go Run cmd[%s]", cmd)
+                _output = run_cmd(node,cmd)
+                logging.info(f"Now parse output [{_output}]")
+                if (not _output):
+                    logging.info(f"No adj-rib out [{node}]")
+                    continue;
+                output = parse_withdraw_routes(_output)
+                logging.info("parsed --> %s",output)
+               
+                if not output:
+                    logging.info(f"there is nothing announced in {node} to withdraw")
+                else:
+                    # announce found
+                    for announces in output:
+                        cmd = "exabgpcli neighbor {} {} ".format(announces['ip'],announces['cmd'])
+                        logging.info(f"withdraw: {output}")
+                        if (args.v4):
+                            if (':' not in announces['ip']):
+                                output = run_cmd(node,cmd)
+                                logging.debug(output)
+                                print (f"{cmd} IPv4 withdraw... done!")
+    
+                        elif (args.v6):
+                            if (':' in announces['ip']):
+                                output = run_cmd(node,cmd)
+                                logging.debug(output)
+                                print (f"{cmd} IPv6 withdraw... done!")
+    
+                        # run for both
+                        else:
                             output = run_cmd(node,cmd)
                             logging.debug(output)
-                            print (f"{cmd} IPv4 withdraw... done!")
-
-                    elif (args.v6):
-                        if (':' in announces['ip']):
-                            output = run_cmd(node,cmd)
-                            logging.debug(output)
-                            print (f"{cmd} IPv6 withdraw... done!")
-
-                    # run for both
-                    else:
-                        output = run_cmd(node,cmd)
-                        logging.debug(output)
-                        print (f"{cmd} IPv4/6 withdraw... done!")
-    
-    # check all the announces for specific nodes
-    elif (args.announces):
-        logging.info(f"=== ANNOUNCES ===")
-        if (args.csv):
-            print ('site,prefix,peer_as,neighbor,attributes')
-        for node in args.target:
-            logging.info ("working on Announces of [ %s ]", format(node))
-            cmd = " exabgpcli show adj-rib out extensive"
-            output = run_cmd(node,cmd)
-            if (not output):
-                logging.info(f"[{node}] No announcement - no rib out")
-                #print (f"== {node} No announcement") if not (args.csv) else False
-                continue;
-    
-            if (not args.v4 and not args.v6):
-                print ("== {}".format(node)) if not (args.csv) else False
-            if (args.v4):
-                if any("in-open ipv4" in s for s in output):
-                    print ("== {}".format(node)) if not (args.csv) else False
-            if (args.v6):
-                if any("in-open ipv6" in s for s in output):
-                    print ("== {}".format(node)) if not (args.csv) else False
-             
-            for line in (output):
-                if  (args.v4):
-                    if (" in-open ipv4" in line):
-                        route_search= re.search('neighbor\s+(.*)\s+local-ip+.*peer-as\s+(\d+)\s+router-id+.*in-open ipv\d\sunicast\s+(.*?)\s+next-hop self\s+(.*)',line,re.IGNORECASE)
-                        if (args.csv):
-                            print ("{},{},{},{},{}".format(node,route_search.group(3),route_search.group(2),route_search.group(1),route_search.group(4)))
-                        else:
-                            print ("neighbor {} prefix {} {} ".format(route_search.group(1),route_search.group(3),route_search.group(4)))
-
-                if  (args.v6):
-                    if (" in-open ipv6" in line):
-                        route_search = re.search('neighbor\s+(.*)\s+local-ip+.*peer-as\s+(\d+)\s+router-id+.*in-open ipv\d\sunicast\s+(.*?)\s+.*',line,re.IGNORECASE)
-                        if (args.csv):
-                            print ("{},{},{},{},{}".format(node,route_search.group(3),route_search.group(2),route_search.group(1),route_search.group(4)))
-                        else:
-                            print ("neighbor {} prefix {} {} ".format(route_search.group(1),route_search.group(3),route_search.group(4)))
-
-                        
+                            print (f"{cmd} IPv4/6 withdraw... done!")
+        
+        # check all the announces for specific nodes
+        elif (args.announces):
+            logging.info(f"=== ANNOUNCES ===")
+            if (args.csv):
+                print ('site,prefix,peer_as,neighbor,attributes')
+            for node in args.target:
+                logging.info ("working on Announces of [ %s ]", format(node))
+                cmd = " exabgpcli show adj-rib out extensive"
+                output = run_cmd(node,cmd)
+                if (not output):
+                    logging.info(f"[{node}] No announcement - no rib out")
+                    #print (f"== {node} No announcement") if not (args.csv) else False
+                    continue;
+        
                 if (not args.v4 and not args.v6):
-                        route_search = re.search('neighbor\s+(.*)\s+local-ip+.*in-open ipv\d\sunicast\s+(.*?)\s+next-hop self\s+(.*)',line,re.IGNORECASE)
-                        if (args.csv):
-                            print ("{},{},{},{},{}".format(node,route_search.group(3),route_search.group(2),route_search.group(1),route_search.group(4)))
-                        else:
-                            print ("neighbor {} prefix {} {} ".format(route_search.group(1),route_search.group(3),route_search.group(4)))
-
-
-    # add route (prefix) in BGP
-    elif (args.add):
-        logging.info(f"=== ADD ===")
-        for node in args.target:
-            logging.info("finding neighbor for %s", node)
-            cmd = "exabgpcli show neighbor summary"
-            output = run_cmd(node,cmd)
-            if (not output):
-                logging.info(f"No neighbors found at [{node}]")
-                continue;
-    
-            output = parse_peers(output)
-            neighbor_list = [neighbor['ip'] for neighbor in output]
-            
-            if (":" in args.route and not args.v6):
-                print ("route IPv6 will be added to IPv4 PEERS")
-
-            if (args.v4):
-               neighbor_list = [ip for ip in neighbor_list  if ':' not in ip]
-    
-            elif (args.v6):
-               neighbor_list = [ip for ip in neighbor_list  if ':'  in ip]
-    
-            logging.info(f"neighbor_list of {node} ==> {neighbor_list}")
-    
-            # prepare the cmd
-            cmd = "announce route {} next-hop self".format(args.route)
-    
-            # prepend - if prepend is set update the exabgpcli cmd
-            if (args.prepend):
-                n_preprend = int(args.prepend)
-                n_preprend = n_preprend + 1
-                prepend = "1149 "
-                prepend=prepend*n_preprend
-                cmd = "announce route {} next-hop self as-path [{}]".format(args.route,prepend)
-                logging.info(f"announce route {args.route} next-hop self as-path [{prepend}]")
-        
-            # run command in each neighbor
-            for neighbor in neighbor_list:
-                cmd_exec = "exabgpcli neighbor {} ".format(neighbor)
-                cmd_exec = cmd_exec+" " + cmd
-                print ("CMD={}".format(cmd_exec))
-                logging.info(cmd_exec)
-                output = run_cmd(node,cmd_exec)
-    
-    elif (args.cmd): 
-        logging.info(f"=== CMD ===")
-        for node in args.target:
-            logging.info("finding neighbor for {}".format(node))
-            cmd = "exabgpcli show neighbor summary"
-            output = run_cmd(node,cmd)
-            if (not output):
-                logging.info(f"No neighbors found at [{node}]")
-                continue;
-    
-            output = parse_peers(output)
-            neighbor_list = [neighbor['ip'] for neighbor in output]
-            logging.info(f"neighbor_list of {node} ==> {neighbor_list}")
-
-            #if (args.v4):
-            #   neighbor_list = [ip for ip in neighbor_list  if ':' not in ip]
-    
-            # default apply to IPv4
-            if (args.v6):
-               neighbor_list = [ip for ip in neighbor_list  if ':'  in ip]
-            else:
-               neighbor_list = [ip for ip in neighbor_list  if ':' not in ip]
-
-            logging.info(f"neighbor_list of {node} ==> {neighbor_list}")
-    
-            #cmd = "announce route 145.90.8.0/24 next-hop self community 100:667"
-        
-            # run command in each neighbor
-            for neighbor in neighbor_list:
-                cmd_exec = "exabgpcli neighbor {} ".format(neighbor)
-                cmd_exec = cmd_exec+" " + args.cmd
-                print ("CMD={}".format(cmd_exec))
-                logging.info(cmd_exec)
-                output = run_cmd(node,cmd_exec)
-    
-    elif (args.listnodesannounce):
-        logging.info(f"=== nodes-with-announces ===")
-        if args.debug: print  ("list nodes") 
-        result_array = []
-
-        # Get all announcement on all Nodes
-        for node in args.target:
-            logging.info(f"=== nodes-with-announces:: {node} ===")
-            cmd = "exabgpcli show adj-rib out extensive"
-
-            logging.info(f"nodes-with-announces:: {node} Go Run [{cmd}]")
-            output = run_cmd(node,cmd)
-            logging.info(f"nodes-with-announces:: {node} output [{output}]")
-
-            if (not output):
-                logging.info(f"nodes-with-announces:: {node} No announces (not output)==> {output}")
-                continue;
-            else:
+                    print ("== {}".format(node)) if not (args.csv) else False
+                if (args.v4):
+                    if any("in-open ipv4" in s for s in output):
+                        print ("== {}".format(node)) if not (args.csv) else False
+                if (args.v6):
+                    if any("in-open ipv6" in s for s in output):
+                        print ("== {}".format(node)) if not (args.csv) else False
+                 
                 for line in (output):
-                    route_search = re.search('neighbor\s+(.*)\s+local-ip+.*peer-as\s+(\d+)\s+router-id+.*in-open ipv\d\sunicast\s+(.*?)\s+.*',line,re.IGNORECASE)
-                    result = {
-                        "neighbor": route_search.group(1),
-                        "peer_as" : route_search.group(2),
-                        "prefix"  : route_search.group(3),
-                        "node"    : node
-                    }
-                    result_array.append(result)
-                    logging.info(f"nodes-with-announces:: {node} found [{result}]")
+                    if  (args.v4):
+                        if (" in-open ipv4" in line):
+                            route_search= re.search('neighbor\s+(.*)\s+local-ip+.*peer-as\s+(\d+)\s+router-id+.*in-open ipv\d\sunicast\s+(.*?)\s+next-hop self\s+(.*)',line,re.IGNORECASE)
+                            if (args.csv):
+                                print ("{},{},{},{},{}".format(node,route_search.group(3),route_search.group(2),route_search.group(1),route_search.group(4)))
+                            else:
+                                print ("neighbor {} prefix {} {} ".format(route_search.group(1),route_search.group(3),route_search.group(4)))
     
-        # build output list with result_array
-        sites = []
-        for route in result_array:
+                    if  (args.v6):
+                        if (" in-open ipv6" in line):
+                            route_search = re.search('neighbor\s+(.*)\s+local-ip+.*peer-as\s+(\d+)\s+router-id+.*in-open ipv\d\sunicast\s+(.*?)\s+.*',line,re.IGNORECASE)
+                            if (args.csv):
+                                print ("{},{},{},{},{}".format(node,route_search.group(3),route_search.group(2),route_search.group(1),route_search.group(4)))
+                            else:
+                                print ("neighbor {} prefix {} {} ".format(route_search.group(1),route_search.group(3),route_search.group(4)))
     
+                            
+                    if (not args.v4 and not args.v6):
+                            route_search = re.search('neighbor\s+(.*)\s+local-ip+.*in-open ipv\d\sunicast\s+(.*?)\s+next-hop self\s+(.*)',line,re.IGNORECASE)
+                            if (args.csv):
+                                print ("{},{},{},{},{}".format(node,route_search.group(3),route_search.group(2),route_search.group(1),route_search.group(4)))
+                            else:
+                                print ("neighbor {} prefix {} {} ".format(route_search.group(1),route_search.group(3),route_search.group(4)))
+    
+    
+        # add route (prefix) in BGP
+        elif (args.add):
+            logging.info(f"=== ADD ===")
+            for node in args.target:
+                logging.info("finding neighbor for %s", node)
+                cmd = "exabgpcli show neighbor summary"
+                output = run_cmd(node,cmd)
+                if (not output):
+                    logging.info(f"No neighbors found at [{node}]")
+                    continue;
+        
+                output = parse_peers(output)
+                neighbor_list = [neighbor['ip'] for neighbor in output]
+                
+                if (":" in args.route and not args.v6):
+                    print ("route IPv6 will be added to IPv4 PEERS")
+    
+                if (args.v4):
+                   neighbor_list = [ip for ip in neighbor_list  if ':' not in ip]
+        
+                elif (args.v6):
+                   neighbor_list = [ip for ip in neighbor_list  if ':'  in ip]
+        
+                logging.info(f"neighbor_list of {node} ==> {neighbor_list}")
+        
+                # prepare the cmd
+                cmd = "announce route {} next-hop self".format(args.route)
+        
+                # prepend - if prepend is set update the exabgpcli cmd
+                if (args.prepend):
+                    n_preprend = int(args.prepend)
+                    n_preprend = n_preprend + 1
+                    prepend = "1149 "
+                    prepend=prepend*n_preprend
+                    cmd = "announce route {} next-hop self as-path [{}]".format(args.route,prepend)
+                    logging.info(f"announce route {args.route} next-hop self as-path [{prepend}]")
+            
+                # run command in each neighbor
+                for neighbor in neighbor_list:
+                    cmd_exec = "exabgpcli neighbor {} ".format(neighbor)
+                    cmd_exec = cmd_exec+" " + cmd
+                    print ("CMD={}".format(cmd_exec))
+                    logging.info(cmd_exec)
+                    output = run_cmd(node,cmd_exec)
+        
+        elif (args.cmd): 
+            logging.info(f"=== CMD ===")
+            for node in args.target:
+                logging.info("finding neighbor for {}".format(node))
+                cmd = "exabgpcli show neighbor summary"
+                output = run_cmd(node,cmd)
+                if (not output):
+                    logging.info(f"No neighbors found at [{node}]")
+                    continue;
+        
+                output = parse_peers(output)
+                neighbor_list = [neighbor['ip'] for neighbor in output]
+                logging.info(f"neighbor_list of {node} ==> {neighbor_list}")
+    
+                #if (args.v4):
+                #   neighbor_list = [ip for ip in neighbor_list  if ':' not in ip]
+        
+                # default apply to IPv4
+                if (args.v6):
+                   neighbor_list = [ip for ip in neighbor_list  if ':'  in ip]
+                else:
+                   neighbor_list = [ip for ip in neighbor_list  if ':' not in ip]
+    
+                logging.info(f"neighbor_list of {node} ==> {neighbor_list}")
+        
+                #cmd = "announce route 145.90.8.0/24 next-hop self community 100:667"
+            
+                # run command in each neighbor
+                for neighbor in neighbor_list:
+                    cmd_exec = "exabgpcli neighbor {} ".format(neighbor)
+                    cmd_exec = cmd_exec+" " + args.cmd
+                    print ("CMD={}".format(cmd_exec))
+                    logging.info(cmd_exec)
+                    output = run_cmd(node,cmd_exec)
+        
+        elif (args.listnodesannounce):
+            logging.info(f"=== nodes-with-announces ===")
+            if args.debug: print  ("list nodes") 
+            result_array = []
+    
+            # Get all announcement on all Nodes
+            for node in args.target:
+                logging.info(f"=== nodes-with-announces:: {node} ===")
+                cmd = "exabgpcli show adj-rib out extensive"
+    
+                logging.info(f"nodes-with-announces:: {node} Go Run [{cmd}]")
+                output = run_cmd(node,cmd)
+                logging.info(f"nodes-with-announces:: {node} output [{output}]")
+    
+                if (not output):
+                    logging.info(f"nodes-with-announces:: {node} No announces (not output)==> {output}")
+                    continue;
+                else:
+                    for line in (output):
+                        route_search = re.search('neighbor\s+(.*)\s+local-ip+.*peer-as\s+(\d+)\s+router-id+.*in-open ipv\d\sunicast\s+(.*?)\s+.*',line,re.IGNORECASE)
+                        result = {
+                            "neighbor": route_search.group(1),
+                            "peer_as" : route_search.group(2),
+                            "prefix"  : route_search.group(3),
+                            "node"    : node
+                        }
+                        result_array.append(result)
+                        logging.info(f"nodes-with-announces:: {node} found [{result}]")
+        
+            # build output list with result_array
+            sites = []
+            for route in result_array:
+        
+                if (args.v4):
+                    if ":" not in (route['prefix']):
+                        sites.append(route['node'])
+                elif (args.v6):
+                    if ":" in (route['prefix']):
+                        sites.append(route['node'])
+                else:
+                    sites.append(route['node'])
+        
+            label = "#ipv4+ipv6,"
             if (args.v4):
-                if ":" not in (route['prefix']):
-                    sites.append(route['node'])
-            elif (args.v6):
-                if ":" in (route['prefix']):
-                    sites.append(route['node'])
-            else:
-                sites.append(route['node'])
-    
-        label = "#ipv4+ipv6,"
-        if (args.v4):
-            label = "#ipv4,"
-        if (args.v6):
-            label = "#ipv6,"
-        lst = ",".join(list(set(sites)))
-        print (label+lst)
+                label = "#ipv4,"
+            if (args.v6):
+                label = "#ipv6,"
+            lst = ",".join(list(set(sites)))
+            print (label+lst)
 
-#    except KeyboardInterrupt:
-#        print('Interrupted')
+    except KeyboardInterrupt:
+        print('Interrupted')
 sys.exit(0)
 
 ### END  ###

@@ -15,6 +15,7 @@ source 00-functions.sh
 ###############################################################################
 # short hitlist for testing purposes
 #HITLIST="$EXECDIR/toolbox/hitlist_example.txt"
+#SLEEP=30
 
 # Origin of icmp packets
 PINGER="us-mia-anycast01"
@@ -22,15 +23,12 @@ PINGER="us-mia-anycast01"
 # nodes on this experiment
 unset NODES
 declare -a NODES
-NODES+=("uk-lnd-anycast02")  
 NODES+=("fr-par-anycast01")  
+NODES+=("br-poa-anycast02")
+NODES+=("uk-lnd-anycast02")  
+NODES+=("us-mia-anycast01")
 NODES+=("au-syd-anycast01")  
 
-#NODES+=("br-poa-anycast02")
-#NODES+=("us-mia-anycast01")
-#NODES+=("nl-ams-anycast01")  
-
-#SLEEP=180 #fast mode
 
 ###############################################################################
 ### MAIN
@@ -64,7 +62,7 @@ show_nodes
 #----------------------------------------------------------
 #
 # start prepending
-NUM_PREPEND=3
+NUM_PREPEND=5
 for num_prepend in `seq $NUM_PREPEND`;
 do
     for NODE in "${NODES[@]}"
@@ -81,7 +79,8 @@ do
         ACTIVE_BGP_NODES=$($TANGLER_CLI --nodes-with-announces |  sed "s/-anycast[0-9][0-9]//g")
 	#IATA=$(echo $NODE | tr "[:lower:]" "[:upper:]" | cut -d"-" -f2 )
         #BGP="$num_prepend"x"$IATA"
-        BGP="$num_prepend"x"${IATA[$NODE]}"
+        #BGP="$num_prepend"x"${IATA[$NODE]}"
+	BGP="prepend-positive-$num_prepend"x"-$NODE"
         #OUTFILE="$REPO/prepend-$num_prepend"x"-$NODE-$ACTIVE_BGP_NODES-$DATE_VAR"
         OUTFILE="${BGP}${ACTIVE_BGP_NODES}#${DATE_VAR}"
 	echo "Active nodes"
@@ -107,6 +106,5 @@ echo " Prepend Finished!" | tee -a $LOG
 echo " Output at $REPO/$OUTFILE" | tee -a $LOG
 echo "-------------------------------------------------------------------------" | tee -a $LOG
 echo ""
-
 
 

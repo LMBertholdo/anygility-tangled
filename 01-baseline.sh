@@ -23,10 +23,11 @@ PINGER="us-mia-anycast01"
 # nodes on this experiment
 unset NODES
 declare -a NODES
-NODES+=("uk-lnd-anycast02")
 NODES+=("fr-par-anycast01")
+NODES+=("br-poa-anycast02")
+NODES+=("uk-lnd-anycast02")
+NODES+=("us-mia-anycast01")
 NODES+=("au-syd-anycast01")
-
 
 ###############################################################################
 ### MAIN
